@@ -1,61 +1,5 @@
 \documentclass[12pt,a4paper]{scrarticle}
-\usepackage[headsepline, footsepline]{scrlayer-scrpage}
-\usepackage{blindtext}% nur für Fülltext
-\usepackage[ngerman]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{blindtext}
-\usepackage{graphicx}
-\usepackage{geometry}
-\usepackage[version=4]{mhchem}
-\usepackage{bibleref-german}
-%%%%%%%%%%%%%%%%%%%%%%Link Formatierung%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[colorlinks = true,
-linkcolor = black,
-urlcolor  = blue,
-citecolor = black,
-anchorcolor = blue]{hyperref}
-
-\pagestyle{scrheadings}
-
-\chead{\headmark}
-\automark{section}
-
-
-
-\cfoot{Seite \pagemark}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%Griechische Zeichen%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{otherlanguage}{polutonikogreek} 
-%	Δοκεῖ δέ μοι καὶ Καρχηδόνα μὴ εἶναι. 
-%\end{otherlanguage} 
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Makro zur Namensvervollstädigung
-% Parameter: Kürzel --- Bibel
-%			LuN			Neue Luther Übersetzung
-%			Sch2		Schlachter 2000
-%			Elb			Elbfelder
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\newcommand{\bib}[1]{%
-	\ifthenelse{\equal{#1}{EI}}{Einheitsübersetzung}{%
-		\ifthenelse{\equal{#1}{Sch2}}{Schlachter 2000}{%
-			\ifthenelse{\equal{#1}{HFA}}{Hoffnung für Alle}{%
-				\ifthenelse{\equal{#1}{ELB}}{Elbfelder}{%
-					\ifthenelse{\equal{#1}{Gr}}{Griechisch}{%
-						\ifthenelse{\equal{#1}{LuN}}{Luther 2017}{#1}%
-					}%
-				}%
-			}%
-		}%
-	}%
-}%
+\input{head}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Makro für Bibelzitate
@@ -84,8 +28,6 @@ anchorcolor = blue]{hyperref}
 \begin{document}
 
 \maketitle
-\begin{bibeltext}{Sch2}{Matt}{1:1-4}
-    Ich bin der zitierte Bibeltext.
-\end{bibeltext}
-\blinddocument
+\section{Vorlage}
+Hier dein Text.
 \end{document}
