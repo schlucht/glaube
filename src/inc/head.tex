@@ -7,6 +7,7 @@
 \usepackage{lmodern}
 \usepackage{blindtext}
 \usepackage{graphicx}
+\usepackage{xcolor}
 \usepackage{geometry}
 \usepackage[version=4]{mhchem}
 \usepackage{bibleref-german}
@@ -17,6 +18,7 @@ linkcolor = black,
 urlcolor  = blue,
 citecolor = black,
 anchorcolor = blue]{hyperref}
+\documentclass[xcolor=dvipsnames]{beamer}
 
 \pagestyle{scrheadings}
 
@@ -49,8 +51,8 @@ anchorcolor = blue]{hyperref}
 		\ifthenelse{\equal{#1}{Sch2}}{Schlachter 2000}{%
 			\ifthenelse{\equal{#1}{HFA}}{Hoffnung für Alle}{%
 				\ifthenelse{\equal{#1}{ELB}}{Elbfelder}{%
-					\ifthenelse{\equal{#1}{Gr}}{Griechisch}{%
-						\ifthenelse{\equal{#1}{LuN}}{Luther 2017}{#1}%
+					\ifthenelse{\equal{#1}{NVU}}{neue ev. Übersetzung}{%
+						\ifthenelse{\equal{#1}{Lut}}{Luther}{#1}%
 					}%
 				}%
 			}%
@@ -66,11 +68,13 @@ anchorcolor = blue]{hyperref}
 %		\begin{bibeltext}{ELB}{Matt}{1:1-4}
 %			Ich bin der zitierte Bibeltext.
 %		\end{bibeltext}
-%1Petr, Matt, Offb, 1Mos, Joh
+%1Petr, Matt, Offb, 1Mos, Joh, IThess, 2Thess, Kol, Ps
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\bibtit}[1]{\large\bib{#1}}
 \newcommand{\tmpbib}{Hallo}
 \newcommand{\herr}{HERR}
+\newcommand{\beten}{\colorbox{red}{\textcolor{white}{Ich möchte noch beten!}}}
+\newcommand{\lied}[1]{\colorbox{yellow}{\textcolor{blue}{#1}}}
 \newenvironment{bibeltext}[3]{%
 	\quote \begin{itshape}
 			(\bib{#1})\newline	
