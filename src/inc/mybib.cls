@@ -8,6 +8,7 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{blindtext}
+\RequirePackage{csquotes}
 \RequirePackage[ngerman]{babel}
 \RequirePackage{lmodern}
 \RequirePackage{graphicx}
@@ -17,12 +18,15 @@
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{bibleref-german}
 \RequirePackage{setspace}
+\RequirePackage{xcolor}
+\RequirePackage{biblatex} %Imports biblatex package
 
+\addbibresource{../Biblio/book.bib} %Import the bibliography file
 % Automatische Anpassung des Seitenlayouts
 \setlength{\headheight}{22pt}
 \setlength{\topmargin}{-10pt}
 \setlength{\textheight}{650pt}
-\setlength{\footskip}{80pt}
+\setlength{\footskip}{40pt}
 
 % Kopf- und Fußzeilen definieren
 \clearpairofpagestyles

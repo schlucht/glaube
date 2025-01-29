@@ -1,0 +1,30 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/*.crswap": true,
+        "**/*.*.gz": true,
+        "**/*.aux": true,
+        "**/*.bak": true,
+        "**/*.bbl": true,
+        "**/*.bcf": true,
+        "**/*.blg": true,
+        "**/*.fdb_*": true,
+        "**/*.fls": true,
+        "**/*.out": true,
+        "**/*.toc": true,
+        "**/*.log": true,
+        "sub-dir":true,
+    },
+    "editor.wordWrapColumn": 80,   
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wrappingStrategy": "advanced",
+    "editor.formatOnSave": true,
+    "files.autoSaveDelay": 5000,
+    "files.autoSave": "afterDelay"
+    
+}
