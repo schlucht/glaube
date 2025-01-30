@@ -1,5 +1,11 @@
 \documentclass{../inc/mybibbook}
 
+\usepackage{../inc/bible_style}
+\usepackage{../inc/header}
+\usepackage[style=authoryear,backend=bibtex]{biblatex}
+
+\addbibresource{../Biblio/book.bib} %Import the bibliography file
+
 %%%%%%%%%%%%% Titelseite %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\title{\textcolor{green}{Bibelschule GBSM}}
 \author{Schmid Lothar}
@@ -20,12 +26,11 @@
 \tableofcontents
 
 \newpage
-
-\include{./AT/Allgemein}
-\section{Das Alte Testament}
-\include{./AT/AT_Kommentar}
-\section{Das Neue Testament}
-%\include{Kommentar/NT/NT_Kommentar}
+\setcounter{secnumdepth}{-1} %Kapitelnummerierung ausschalten
+\part{Das Alte Testament}
+\include{AT/AT_Kommentar}
+\part{Das Neue Testament}
+\include{NT/NT_Kommentar}
 
 \printbibliography
 

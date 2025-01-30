@@ -17,14 +17,15 @@
 \RequirePackage{geometry}
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{bibleref-german}
-\RequirePackage{setspace}
-\RequirePackage{bible_style}
+\RequirePackage{setspace} % Für zusätzliche Zeilenabstandoptionen
+\RequirePackage{import}
+\RequirePackage{microtype}
 %\RequirePackage{biblatex} %Imports biblatex package
 % \RequirePackage[style=authoryear,backend=bibtex]{biblatex}
 % \addbibresource{../Biblio/book.bib} %Import the bibliography file
 % \bibliographystyle{unsrt}
 % Automatische Anpassung des Seitenlayouts
-\setlength{\headheight}{22pt}
+\setlength{\headheight}{30pt}
 \setlength{\topmargin}{-10pt}
 \setlength{\textheight}{650pt}
 \setlength{\footskip}{22pt}
@@ -35,7 +36,8 @@
 
 % Kopf- und Fußzeilen definieren
 \clearpairofpagestyles
-\ihead{\includegraphics[height=1cm]{../assets/images/logo.png}}
+\graphicspath{{../assets/images}}
+\ihead{\includegraphics[height=1cm]{logo.png}}
 \chead{\headmark}
 % \ohead{\today}
 \ifoot{\today}
@@ -43,5 +45,5 @@
 \ofoot{Autor: \makeatletter\@author\makeatother}
 
 % Definition der Bibelzitate und Makros
-\include{./bible_style}
+
 
