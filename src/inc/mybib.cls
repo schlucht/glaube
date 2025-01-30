@@ -18,75 +18,30 @@
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{bibleref-german}
 \RequirePackage{setspace}
-\RequirePackage{xcolor}
-\RequirePackage{biblatex} %Imports biblatex package
-
-\addbibresource{../Biblio/book.bib} %Import the bibliography file
+\RequirePackage{bible_style}
+%\RequirePackage{biblatex} %Imports biblatex package
+% \RequirePackage[style=authoryear,backend=bibtex]{biblatex}
+% \addbibresource{../Biblio/book.bib} %Import the bibliography file
+% \bibliographystyle{unsrt}
 % Automatische Anpassung des Seitenlayouts
 \setlength{\headheight}{22pt}
 \setlength{\topmargin}{-10pt}
 \setlength{\textheight}{650pt}
-\setlength{\footskip}{40pt}
+\setlength{\footskip}{22pt}
+
+% Linien einfügen
+\KOMAoptions{headsepline=true, footsepline=true} % Linien aktivieren
+\KOMAoptions{headsepline=0.4pt, footsepline=0.4pt} % Liniendicke anpassen
 
 % Kopf- und Fußzeilen definieren
 \clearpairofpagestyles
-\ihead{Linker Kopftext}
-\chead{Mittiger Kopftext}
-\ohead{Rechter Kopftext}
-\ifoot{Linker Fußtext}
+\ihead{\includegraphics[height=1cm]{../assets/images/logo.png}}
+\chead{\headmark}
+% \ohead{\today}
+\ifoot{\today}
 \cfoot{Seite \thepage}
-\ofoot{Rechter Fußtext}
+\ofoot{Autor: \makeatletter\@author\makeatother}
 
 % Definition der Bibelzitate und Makros
-\newcommand{\bib}[1]{%
-\ifthenelse{\equal{#1}{EI}}{Einheitsübersetzung}{%
-    \ifthenelse{\equal{#1}{SchL}}{Schlachter 2000}{%
-        \ifthenelse{\equal{#1}{HFA}}{Hoffnung für Alle}{%
-            \ifthenelse{\equal{#1}{ELB}}{Elbfelder}{%
-                \ifthenelse{\equal{#1}{Gr}}{Griechisch}{%
-                    \ifthenelse{\equal{#1}{LuN}}{Luther 2017}{#1}{%
-                        \ifthenelse{\equal{#1}{NUE}}{Neue ev. Übersetzung}{#1}%
-                   }%%
-                }%
-            }%
-        }%
-    }%
-}%
-}
+\include{./bible_style}
 
-% Makros für Bibelzitate
-\newcommand{\bibtit}[1]{\large\bib{#1}}
-\newcommand{\tmpbib}{Hello}
-
-\newenvironment{bibeltext}[3]{%
-    \quote \begin{itshape}
-	(\bib{#1})\newline	
-		\biblerefformat{lang}
-		\renewcommand{\tmpbib}{\textbf{\bibleverse{#2}(#3)}}		 
-	}{%
-	\end{itshape}        
-    \endquote		
-}
-
-\newenvironment{bibelbox}[3]{%	
-        \renewcommand{\tmpbib}{\textbf{\bibleverse{#2}( #3)}}
-		\biblerefformat{lang}
-        \begin{tcolorbox}[
-        title=\tmpbib \hspace{1.5cm} (\bibtit{#1}),
-        colback=black!2!white,
-        colframe=black!55!black]        
-	}{%	
-		\newline		
-        \end{tcolorbox}	
-	\endquote		
-}
-
-% Diverse Fontstyles
-\newcommand{\aus}[1]{\textcolor{red}{ #1 }} %%Markiert den Text der nicht in den Druck soll
-%\renewcommand{\aus}[1]{} %%Kommentar entfernen und der markierte Text wird ausgeblendet
-\newcommand{\herr}{HERR}
-\newcommand{\lied}[1]{\colorbox{yellow}{\textcolor{blue}{Lied: #1}}}
-\newcommand{\beten}{\red{Ich möchte noch beten!}}
-\newcommand{\green}[1]{\colorbox{green}{\textcolor{black}{#1}}}
-\newcommand{\red}[1]{\colorbox{red}{\textcolor{white}{#1}}}
-\newcommand{\hh}[1]{\textsuperscript{#1}}

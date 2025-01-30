@@ -18,6 +18,8 @@
         "**/*.out": true,
         "**/*.toc": true,
         "**/*.log": true,
+        "**/*.bib": true,
+        "**/*.xml": true,
         "sub-dir":true,
     },
     "editor.wordWrapColumn": 80,   
