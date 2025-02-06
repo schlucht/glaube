@@ -9,6 +9,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{blindtext}
 \RequirePackage{csquotes}
+\RequirePackage{numprint}
 \RequirePackage[ngerman]{babel}
 \RequirePackage{lmodern}
 \RequirePackage{graphicx}
