@@ -1,0 +1,79 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthememnrstyle}[2025/02/10 MNR Custom Theme]
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\usepackage{alltt}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% Farben definieren
+\definecolor{mnrgreen}{HTML}{009640}
+\setbeamercolor{title}{bg=mnrgreen, fg=white}
+\setbeamercolor{frametitle}{bg=mnrgreen, fg=white}
+\setbeamercolor{background canvas}{bg=black}
+\setbeamercolor{structure}{fg=mnrgreen}
+\setbeamercolor{footer}{bg=mnrgreen, fg=white}
+\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{title}{fg=white}
+
+\hypersetup{
+	colorlinks,
+	linkcolor=mnrgreen,
+	anchorcolor=red,
+	citecolor=blue!80,
+	urlcolor=mnrgreen,
+}
+
+% Standard-Frametitel entfernen
+\setbeamertemplate{frametitle}{}
+\setbeamertemplate{enumerate item}[circle]
+
+
+
+
+% Header definieren
+\setbeamertemplate{headline}{%
+    \begin{tikzpicture}[overlay,remember picture]
+        % Grüne Box für den Header
+        \fill[mnrgreen] (0,0) rectangle (\paperwidth,-1.5cm);
+
+        % Logo links positionieren
+        \node[anchor=west,xshift=3mm,yshift=-0.75cm]{
+            \includegraphics[height=1.2cm]{../assets/images/mnr.png}
+        };
+
+        % Frametitel zentriert in der Box, mit größerer Schrift
+        \node[anchor=center] at (\paperwidth/2,-0.75cm) {%
+        \usebeamerfont{frametitle}\color{white}\Large\textbf{%
+            \ifx\insertframetitle\empty\else\insertframetitle\fi}
+        };
+
+    \end{tikzpicture}
+}
+
+\setbeamertemplate{title page}{%
+    \begin{tikzpicture}[overlay,remember picture]
+        \fill[mnrgreen] (\paperwidth/2-1cm, -1cm) ellipse (4cm and 2cm);
+        \node[center] at (\paperwidth/2-1cm, -1){\Large\color{white}\inserttitle};
+    \end{tikzpicture}
+}
+
+\setbeamertemplate{footline}{%
+    \begin{tikzpicture}[overlay,remember picture]
+        % Grüne Box für den Header
+        \fill[mnrgreen] (0,0) rectangle (\paperwidth,.5cm);
+        \node[anchor=west,xshift=3mm,yshift=0.25cm]{\color{white}Schmid Lothar};
+        \node[anchor=center] at (\paperwidth/2,0.25cm){\color{white}\today};
+        \node[anchor=east] at (\paperwidth - 3mm, .25cm){\color{white}\insertframenumber\ / \inserttotalframenumber};
+    \end{tikzpicture}
+}
+
+% Beamer-Elemente farblich anpassen
+
