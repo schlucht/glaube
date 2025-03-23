@@ -1,17 +1,27 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamerthememnrstyle}[2025/02/10 MNR Custom Theme]
 
+% Standard-Beamer-Einstellungen
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage[ngerman]{babel}
 \usepackage{amsfonts, amsmath, amssymb, amsthm}
 \usepackage{alltt}
-\usepackage{hyperref}
 \usepackage{blindtext}
 \usepackage{color}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{xparse} %zum definieren von Standartwerten
+\usepackage{caption} 
+\captionsetup{justification=centerlast} % Zentriert Caption
+
+\usepackage{hyperref}
+
+\mode<presentation>
+\usetheme{default}
+\useinnertheme{rounded}
+\useoutertheme{infolines}
 
 % Farben definieren
 \definecolor{mnrgreen}{HTML}{009640}
@@ -21,7 +31,7 @@
 \setbeamercolor{structure}{fg=mnrgreen}
 \setbeamercolor{footer}{bg=mnrgreen, fg=white}
 \setbeamercolor{normal text}{fg=white}
-\setbeamercolor{title}{fg=white}
+% \setbeamercolor{title}{fg=white}
 
 \hypersetup{
 	colorlinks,
@@ -52,8 +62,13 @@
         % Frametitel zentriert in der Box, mit größerer Schrift
         \node[anchor=center] at (\paperwidth/2,-0.75cm) {%
         \usebeamerfont{frametitle}\color{white}\Large\textbf{%
-            \ifx\insertframetitle\empty\else\insertframetitle\fi}
-};
+            \ifx\insertframetitle\undefined % Falls \insertframetitle nicht definiert ist
+                Ohne Titel % Alternativer Text
+            \else
+                \insertframetitle
+            \fi
+            }%
+        };
 
     \end{tikzpicture}
 }
@@ -61,7 +76,7 @@
 \setbeamertemplate{title page}{%
     \begin{tikzpicture}[overlay,remember picture]
         \fill[mnrgreen] (\paperwidth/2-1cm, -1cm) ellipse (4cm and 2cm);
-        \node[center] at (\paperwidth/2-1cm, -1){\Large\color{white}\inserttitle};
+        \node[anchor=center] at (\paperwidth/2-1cm, -1){\Large\color{white}\inserttitle};
     \end{tikzpicture}
 }
 
@@ -73,6 +88,13 @@
         \node[anchor=center] at (\paperwidth/2,0.25cm){\color{white}\today};
         \node[anchor=east] at (\paperwidth - 3mm, .25cm){\color{white}\insertframenumber\ / \inserttotalframenumber};
     \end{tikzpicture}
+}
+
+\NewDocumentCommand{\twocols}{O{0.33} m O{0.66} m}{
+    \begin{columns}
+        \begin{column}{#1\textwidth} #2 \end{column}
+        \begin{column}{#3\textwidth} #4 \end{column}
+    \end{columns}
 }
 
 % Beamer-Elemente farblich anpassen

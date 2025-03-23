@@ -1,0 +1,31 @@
+\documentclass[12pt]{mybib}
+
+\begin{document}
+\begin{table}[t]
+    \centering
+    \begin{tabular}{l|c | c}
+        \hline
+        \textbf{Name} & \textbf{Vorname} & \textbf{Anzahl} \\ [0.5ex]
+        \hline\hline
+      Hallo   &  Lothar & 120 \\
+      Schmid   & Birgisch & 25
+    \end{tabular}
+    \caption{Beschreibung zur Tabelle}
+    \label{tab:my_label}
+\end{table}
+\begin{quote}
+    $f=1/3+25sin(25)$
+\end{quote}
+\begin{tikzpicture}
+    % Achsen zeichnen
+    \draw[->] (0,0) -- (4,0) node[right] {x-Achse};
+    \draw[->] (0,0) -- (0,4) node[above] {y-Achse};
+    
+    % Ursprung markieren
+    \filldraw[red] (0,0) circle (2pt) node[anchor=north east] {0,0};
+    
+    % Weitere Punkte einzeichnen
+    \filldraw[blue] (2,2) circle (2pt) node[anchor=south west] {(2,2)};
+    \filldraw[green] (-1,-1) circle (2pt) node[anchor=north east] {(-1,-1)};
+\end{tikzpicture}
+\end{document}

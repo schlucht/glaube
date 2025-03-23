@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{mybiblatex}[2025/01/28 Custom Bibel Vorlage]
 
-\LoadClass[a4paper,12pt]{scrbook}
+\LoadClass[a4paper]{scrbook}
 % Paket-Imports und Einstellungen
 \RequirePackage[automark]{scrlayer-scrpage}
 \RequirePackage[utf8]{inputenc}

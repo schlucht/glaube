@@ -1,7 +1,12 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{mybiblatex}[2025/01/28 Custom Bibel Vorlage]
 
-\LoadClass[a4paper,12pt]{scrartcl}
+% Weitergabe aller Optionen an die geladene Klasse
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{scrartcl}}
+\ProcessOptions\relax
+
+% Standardklasse mit übergebenen Optionen laden
+\LoadClass{scrartcl}
 
 % Paket-Imports und Einstellungen
 \RequirePackage[automark]{scrlayer-scrpage}
@@ -45,6 +50,14 @@
 \cfoot{Seite \thepage}
 \ofoot{Autor: \makeatletter\@author\makeatother}
 
+\geometry{
+   left=25mm,
+   right=20mm,
+   top=25mm,
+   bottom=25mm,
+   textwidth=8cm,
+   marginpar=3cm
+   }
 % Definition der Bibelzitate und Makros
 
 
