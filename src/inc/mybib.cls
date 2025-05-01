@@ -60,4 +60,10 @@
    }
 % Definition der Bibelzitate und Makros
 
+\newcommand{\setincpath}[1]{%
+  \makeatletter
+  \def\input@path{{#1}}%
+  \makeatother
+}
+
 

@@ -1,27 +1,45 @@
-\documentclass[12pt,a4paper,oneside,ngerman]{scrartcl}
-
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage[ngerman]{babel}
-\usepackage{amsfonts, amsmath, amssymb, amsthm}
-\usepackage{alltt}
-\usepackage{hyperref}
-\usepackage{blindtext}
-\usepackage{color}
+\documentclass[a5paper,12pt]{article}
+\usepackage[a5paper,margin=1.5cm]{geometry}
 \usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{multicol}
 \usepackage{tikz}
-\usepackage{tgheros}
-\definecolor{mnrgreen}{HTML}{009640}
+\usepackage{microtype}
+%\usepackage{fontspec}
+
+%\setmainfont{Fira Sans}
+
+\definecolor{flyerBlue}{RGB}{30,200,10}
+
+\tcbset{flyerstyle/.style={
+  colback=flyerBlue!5,
+  colframe=flyerBlue,
+  fonttitle=\bfseries,
+  sharp corners,
+  boxrule=1pt
+}}
 
 \begin{document}
-\begin{figure}[h]  
 
-    \begin{tikzpicture}
-        \fill[mnrgreen] (\paperwidth,0) rectangle (1,10);
-        \node[anchor=west] at (10mm,5cm) {\color{white}\Large {\fontfamily{qhv}MNR-NATERS\selectfont}};        
-    \end{tikzpicture}
-\end{figure}
+\begin{center}
+  {\LARGE\bfseries Dein Event – Sei dabei!}
+\end{center}
 
+\vspace{1em}
+
+\begin{multicols}{2}
+  \begin{tcolorbox}[flyerstyle, title=Wann?]
+    Samstag, 27. April, 19 Uhr
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[flyerstyle, title=Wo?]
+    Kulturhaus Stadtmitte
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[flyerstyle, title=Was erwartet dich?]
+    Musik, Impuls, gute Gespräche.
+  \end{tcolorbox}
+\end{multicols}
 
 \end{document}
