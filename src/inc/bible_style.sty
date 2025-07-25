@@ -1,41 +1,41 @@
-\usepackage{bibleref-german}
-\usepackage[most]{tcolorbox}
+%\usepackage{bibleref-german}
+%\usepackage[most]{tcolorbox}
+
+
 
 \newcommand{\bib}[1]{%
-    \ifthenelse{\equal{#1}{EI}}{Einheitsübersetzung}{%
-        \ifthenelse{\equal{#1}{SCHL}}{Schlachter 2000}{%
-            \ifthenelse{\equal{#1}{HFA}}{Hoffnung für Alle}{%
-                \ifthenelse{\equal{#1}{ELB}}{Elbfelder}{%
-                    \ifthenelse{\equal{#1}{GR}}{Griechisch}{%
-                        \ifthenelse{\equal{#1}{LUT}}{Luther 2017}{%
-                            \ifthenelse{\equal{#1}{NUE}}{Neue ev. Übersetzung}{#1}%
-                        }%
-                    }%
-                }%
-            }%
-        }%
-    }%
+    \IfStrEqCase{#1}{%
+        {EI}{Einheitsübersetzung}%
+        {SCHL}{Schlachter 2000}%
+        {HFA}{Hoffnung für Alle}%
+        {ELB}{Elbfelder}%
+        {GR}{Griechisch}%
+        {LUT}{Luther 2017}%
+        {NUE}{Neue ev. Übersetzung}%
+        {JAZ}{Bibel Deutsche Fassung}%
+    }[\textbf{#1}]%
 }
+
+
 
 % Makros für Bibelzitate
 \newcommand{\bibtit}[1]{\large\bib{#1}}
 \newcommand{\tmpbib}{Hello}
+%\newcommand{\bv}[2]{\bibleverse {#1}(#2)}
 
 \newenvironment{bibeltext}[3]{%
     \quote \begin{itshape}
-	(\bib{#1})\newline	
-		\biblerefformat{lang}
+	(\bibtit{#1})\newline			
 		\renewcommand{\tmpbib}{\textbf{\bibleverse{#2}(#3)}}		 
 	}{%
-    \newline
+    \newline    
     \tmpbib
 	\end{itshape}        
     \endquote		
 }
 
-\newenvironment{bibelbox}[3]{%	
-        \renewcommand{\tmpbib}{\textbf{\bibleverse{#2}( #3)}}
-		\biblerefformat{lang}
+\newenvironment{bibelbox}[3]{%			
+        \renewcommand{\tmpbib}{\textbf{\bibleverse{#2}(#3)}}
         \begin{tcolorbox}[
             title=\tmpbib \hspace{1.5cm} (\bibtit{#1}),
             colback=black!2!white,
@@ -50,8 +50,7 @@
 }
 
 \newcommand{\biblezit}[2]{%
-	\bib{SCHL} 
-	\biblerefformat{lang}
+	\bib{SCHL} 	
 	\bibleverse{#1}(#2)
 }
 

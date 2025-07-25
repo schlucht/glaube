@@ -10,12 +10,31 @@
 
 % Paket-Imports und Einstellungen
 \RequirePackage[automark]{scrlayer-scrpage}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
+\RequirePackage{iftex}
+
+\ifPDFTeX
+  % pdfLaTeX Konfiguration
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[ngerman]{babel}
+\else
+  % XeLaTeX oder LuaLaTeX Konfiguration
+  \RequirePackage{fontspec}
+  \RequirePackage{polyglossia}
+
+  \setdefaultlanguage{german}
+  \setotherlanguage{greek}
+  \setotherlanguage{hebrew}
+
+  \setmainfont{Linux Libertine O}
+  \newfontfamily\greekfont{Gentium Plus}
+  \newfontfamily\hebrewfont{Ezra SIL}
+\fi
+
 \RequirePackage{blindtext}
 \RequirePackage{csquotes}
 \RequirePackage{numprint}
-\RequirePackage[ngerman]{babel}
+% \RequirePackage[ngerman]{babel}
 \RequirePackage{lmodern}
 \RequirePackage{graphicx}
 \RequirePackage{xcolor}
@@ -26,6 +45,7 @@
 \RequirePackage{setspace} % Für zusätzliche Zeilenabstandoptionen
 \RequirePackage{import}
 \RequirePackage{microtype}
+\RequirePackage{xstring}
 %\RequirePackage{biblatex} %Imports biblatex package
 % \RequirePackage[style=authoryear,backend=bibtex]{biblatex}
 % \addbibresource{../Biblio/book.bib} %Import the bibliography file
@@ -65,5 +85,8 @@
   \def\input@path{{#1}}%
   \makeatother
 }
+
+\biblerefstyle{Lutherbibel}
+\biblerefformat{lang}
 
 

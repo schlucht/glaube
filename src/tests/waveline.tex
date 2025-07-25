@@ -1,0 +1,35 @@
+\documentclass{article}
+
+\newcommand{\wavyunderline}[1]{%
+  \leavevmode
+  \setbox0=\hbox{#1}%
+  \dimen0=\wd0
+  #1%
+  \pdfliteral direct {
+    q
+    0.5 w
+    0 0 0 RG
+    0 0 m
+  }%
+  \luaexec{
+    local w = tex.dimen[0]/65781.76
+    local amp = 0.3
+    local freq = 6
+    local steps = 30
+    for i=0,steps do
+      local x = w * i / steps
+      local y = amp * math.sin(freq * math.pi * x / w)
+      tex.sprint(string.format("%.3f %.3f l ", x, y))
+    end
+  }
+  \pdfliteral direct {
+    S
+    Q
+  }%
+}
+
+\begin{document}
+
+Test: \wavyunderline{Beispieltext}
+
+\end{document}
