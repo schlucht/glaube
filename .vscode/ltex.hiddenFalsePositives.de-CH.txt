@@ -4,3 +4,4 @@
 {"rule":"DE_CASE","sentence":"^\\QFolgende Kirchenväter vertraten die Hoffnung, dass die Juden errettet werden: Hieronymus (ca. 347-420) Tiro von Aquitanien (ca. 390-455) Ambrosius (ca. 340-397) Theodor von Cyrus (ca. 393-457) Auch wenn die Kirchenväter glaubten, dass das Volk Israel aufgrund seines Ungehorsams und seiner Ablehnung Christi von Gott verstossen worden war, so glaubten sie doch an eine zukünftige Errettung Israels.\\E$"}
 {"rule":"DE_CASE","sentence":"^\\QZusammenfassung zu dem Buch Hat die Gemeinde Israel ersetzt?.\\E$"}
 {"rule":"DE_CASE","sentence":"^\\QZusammenfassung zu dem Buch Hat die Gemeinde Israel ersetzt?\\E$"}
+{"rule":"UNPAIRED_BRACKETS","sentence":"^\\QDie Endphase ist in Offb(21:-22:) beschrieben.\\E$"}
