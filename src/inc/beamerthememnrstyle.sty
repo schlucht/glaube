@@ -14,15 +14,17 @@
 \usepackage{tikz}
 \usepackage{xparse} %zum definieren von Standartwerten
 \usepackage{caption} 
+\usepackage[most]{tcolorbox}
+\usepackage{xstring}
 \captionsetup{justification=centerlast} % Zentriert Caption
 
 \usepackage{hyperref}
 
-\mode<presentation>
-\usetheme{default}
-\useinnertheme{rounded}
-\useoutertheme{infolines}
-
+\mode<presentation>{
+    \usetheme{default}
+    \useinnertheme{rounded}
+    \useoutertheme{infolines}
+}
 % Farben definieren
 \definecolor{mnrgreen}{HTML}{009640}
 \setbeamercolor{title}{bg=mnrgreen, fg=white}
@@ -45,28 +47,28 @@
 \setbeamertemplate{frametitle}{}
 \setbeamertemplate{enumerate item}[circle]
 
+\newcommand{\mnrTitle}{}
+\newcommand{\setmnrTitle}[1]{\renewcommand{\mnrTitle}{#1}}
 
-
+\newcommand{\green}[1]{\textcolor{mnrgreen}{#1}}
+\newenvironment{greenblock}{\color{mnrgreen}}{}
 
 % Header definieren
 \setbeamertemplate{headline}{%
     \begin{tikzpicture}[overlay,remember picture]
         % Grüne Box für den Header
-        \fill[mnrgreen] (0,0) rectangle (\paperwidth,-1.5cm);
-
+        \def\headerheight{0.8cm}
+        \fill[mnrgreen] (0,0) rectangle (\paperwidth,-\headerheight);
+        \def\centerY{-0.5*\headerheight}
         % Logo links positionieren
-        \node[anchor=west,xshift=3mm,yshift=-0.75cm]{
-            \includegraphics[height=1.2cm]{src/assets/images/mnr.png}
+        \node[anchor=west,xshift=3mm,yshift=\centerY]{
+            \includegraphics[height=0.6cm]{mnr.png}
         };
 
         % Frametitel zentriert in der Box, mit größerer Schrift
-        \node[anchor=center] at (\paperwidth/2,-0.75cm) {%
+        \node[anchor=center] at (\paperwidth/2,\centerY) {%
         \usebeamerfont{frametitle}\color{white}\Large\textbf{%
-            \ifx\insertframetitle\undefined % Falls \insertframetitle nicht definiert ist
-                Ohne Titel % Alternativer Text
-            \else
-                \insertframetitle
-            \fi
+            \mnrTitle
             }%
         };
 
@@ -83,10 +85,12 @@
 \setbeamertemplate{footline}{%
     \begin{tikzpicture}[overlay,remember picture]
         % Grüne Box für den Header
-        \fill[mnrgreen] (0,0) rectangle (\paperwidth,.5cm);
-        \node[anchor=west,xshift=3mm,yshift=0.25cm]{\color{white}Schmid Lothar};
-        \node[anchor=center] at (\paperwidth/2,0.25cm){\color{white}\today};
-        \node[anchor=east] at (\paperwidth - 3mm, .25cm){\color{white}\insertframenumber\ / \inserttotalframenumber};
+        \def\footerhight{0.5cm}
+        \def\ycenter{0.5*\footerhight}
+        \fill[mnrgreen] (0,0) rectangle (\paperwidth,\footerhight);
+        \node[anchor=west,xshift=3mm,yshift=\ycenter]{\color{white}Schmid Lothar};
+        \node[anchor=center] at (\paperwidth/2,\ycenter){\color{white}\today};
+        \node[anchor=east] at (\paperwidth - 3mm, \ycenter){\color{white}\insertframenumber\ / \inserttotalframenumber};
     \end{tikzpicture}
 }
 
@@ -97,5 +101,58 @@
     \end{columns}
 }
 
+\newcommand{\bibtit}[1]{\large\bib{#1}}
+\newcommand{\tmpbib}{Hello}
+\newcommand{\bib}[1]{%
+    \IfStrEqCase{#1}{%
+        {EI}{Einheitsübersetzung}%
+        {SCHL}{Schlachter 2000}%
+        {HFA}{Hoffnung für Alle}%
+        {ELB}{Elbfelder}%
+        {GR}{Griechisch}%
+        {LUT}{Luther 2017}%
+        {NUE}{Neue ev. Übersetzung}%
+        {BDF}{Bibel Deutsche Fassung}%
+    }[\textbf{#1}]%
+}
+
+\newcommand{\tmpbibtext}[3]{\textbf{\bibleverse{#2}(#3)}\quad(\bibtit{#1})}
+
+\newenvironment{bibelbox}[3]{%
+    \begin{tcolorbox}[
+        title=\tmpbibtext{#1}{#2}{#3},
+        colback=black!2!white,
+        colframe=black!55!black,
+        width=\textwidth,
+        before skip=1em,
+        after skip=1em,
+        fonttitle=\bfseries,
+        sharp corners
+    ]
+}{%
+    \end{tcolorbox}
+}
+
+% \NewDocumentEnvironment{mnrframe}{m}{
+%   \begin{frame}
+%     \begin{tikzpicture}[overlay,remember picture]
+%       \node[anchor=north west, xshift=1cm, yshift=-1cm] at (current page.north west) {};
+%     \end{tikzpicture}
+%     \vspace{1cm} % Abstand zum Header
+%     \begin{minipage}{0.9\textwidth}
+%       #1
+%     \end{minipage}
+%     \vspace{0.5cm} % Abstand zum Footer
+%   \end{frame}
+% }{}
+\NewDocumentEnvironment{mnrframe}{m}{
+  \begin{frame}
+    \vspace*{1cm} % Abstand zum Header
+    \begin{minipage}{\textwidth}
+      #1
+    \end{minipage}
+    \vspace*{0.5cm} % Abstand zum Footer
+  \end{frame}
+}{}
 % Beamer-Elemente farblich anpassen
 
