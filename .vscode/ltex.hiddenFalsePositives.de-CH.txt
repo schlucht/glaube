@@ -5,3 +5,4 @@
 {"rule":"DE_CASE","sentence":"^\\QZusammenfassung zu dem Buch Hat die Gemeinde Israel ersetzt?.\\E$"}
 {"rule":"DE_CASE","sentence":"^\\QZusammenfassung zu dem Buch Hat die Gemeinde Israel ersetzt?\\E$"}
 {"rule":"UNPAIRED_BRACKETS","sentence":"^\\QDie Endphase ist in Offb(21:-22:) beschrieben.\\E$"}
+{"rule":"PRAEP_DAT","sentence":"^\\QIn den Evangelien lesen wir wie Jesus zu diesen Pharisäer stand.\\E$"}
