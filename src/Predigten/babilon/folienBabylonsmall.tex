@@ -1,0 +1,80 @@
+\documentclass[aspectratio=43]{beamer}
+
+\makeatletter
+\def\input@path{{../../inc/}}
+\makeatother
+% Pakete für das Dokument
+
+%\usepackage{blindtext}
+\graphicspath{{../../assets/images/}}
+\usepackage{beamerthememnrstyle}
+
+% Eigenes Theme laden
+\usetheme{mnrstyle}
+
+% Eigene Definition von enumerate
+% \setlist[enumerate, 2]{label=\roman*., format=\itshape, leftmargin=2cm}
+
+% Metadaten für das Dokument
+\title{Glaubensbekenntnis MNR}
+\author{OTS}
+\date{2025}
+\begin{document}
+
+\setmnrTitle{Turmbau von Babylon}
+\begin{frame}
+    \vspace{.7cm}
+    \begin{figure}[ht]
+    
+    \begin{tikzpicture}[scale=0.8]
+    \begin{scope}[scale=0.9]
+        \draw[gray] (0,0) -- (0mm, 112mm);
+        
+        %Noah 500-450 (0 - 93.6)
+        \filldraw[blue!40] (2mm,110mm) rectangle(39mm,102mm);
+        \filldraw[red!40] (39mm,110mm) rectangle(74.1mm,102mm) node[right, pos=.5, align=left, white] {\tiny \textbf{Noah (950 Jahre)}};
+        
+        %Sem 100-500 (0 - 93.6)
+        \filldraw[blue!40] (39mm, 100mm) rectangle(48.8mm,92mm);
+        \filldraw[red!40] (48.8mm,100mm) rectangle(87.8mm,92mm) node[right, pos=.5, align=left, white] {\tiny  \textbf{Sem (600 Jahre)}};
+        
+         %Arpakschad 35-403 (15.6 - 62.4)
+         \filldraw[blue!40] (48.8mm,90mm) rectangle(52.2mm,82mm);
+        \filldraw[red!40] (52.2mm,90mm) rectangle(83.6mm,82mm) node[right, pos=.5, align=left, white]  {\tiny \textbf{Arpakschad (438 Jahre)}};
+        
+        %Schelach 30-403 (15.6 - 62.4)
+        \filldraw[blue!40] (52.2mm,80mm) rectangle(55.1mm,72mm);
+        \filldraw[red!40] (55.1mm,80mm) rectangle(86.5mm,72mm) node[right, pos=.5, align=left, white] {\tiny \textbf{Schelach (433 Jahre)}};
+        
+        \filldraw[blue!40] (55.1mm,70mm) rectangle(58.4mm,62mm);
+        \filldraw[red!40] (58.4mm,70mm) rectangle(91.9mm,62mm) node[right, pos=.5, align=left, white] {\tiny \textbf{Heber (464 Jahre)}};
+        
+        \filldraw[blue!40] (58.4mm,60mm) rectangle(61.3mm,52mm);
+        \filldraw[red!40] (61.3mm,60mm) rectangle(77.6mm,52mm) node[right, pos=.5, align=left, white] {\tiny \textbf{Peleg (239 Jahre)}};
+        
+        \filldraw[blue!40] (61.3mm,50mm) rectangle(64.4mm,42mm);
+        \filldraw[red!40] (64.4mm,50mm) rectangle(80.6mm,42mm) node[right, pos=.5, align=left, white] {\tiny \textbf{Regu (239 Jahre)}};
+        
+        \filldraw[blue!40] (64.4mm,40mm) rectangle(67.4mm,32mm);
+        \filldraw[red!40] (67.4mm,40mm) rectangle(83.0mm,32mm) node[right, pos=.5, align=left, white] {\tiny \textbf{Serug (230 Jahre)}};
+        
+        \filldraw[blue!40] (67.4mm,30mm) rectangle(70.2mm,22mm);
+        \filldraw[red!40] (70.2mm,30mm) rectangle(79.5mm,22mm) node[right, pos=.5, align=left, white] {\tiny \textbf{Nahor (148 Jahre)}};
+        
+        \filldraw[blue!40] (70.2mm,20mm) rectangle(77mm,12mm);
+        \filldraw[red!40] (77mm,20mm) rectangle(93.0mm,12mm) node[right, pos=.5, align=left, white] {\tiny \textbf{Terach (275 Jahre)}};
+
+        \filldraw[blue!40] (77mm,10mm) rectangle(86.8mm,2mm);
+        \filldraw[red!40] (86.8mm,10mm) rectangle(92.6mm,2mm) node[right, pos=.5, align=left, white] {\tiny \textbf{Abraham (175 Jahre)}};
+        \draw[gray] (0,0) -- (\textwidth, 0mm);
+        \draw[red, line width=.5mm] (74mm,0) -- (74mm, 112mm);
+        \end{scope}
+    \end{tikzpicture}
+
+    \caption{Lebensjahre von Noah bis Abraham}
+    \label{balken_alter}
+
+\end{figure}
+\end{frame}
+
+\end{document}
