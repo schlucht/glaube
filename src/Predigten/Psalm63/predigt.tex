@@ -1,0 +1,39 @@
+\author{OTS}
+\documentclass[14pt]{../../inc/mybib}
+
+\setincpath{../../inc/}
+
+\usepackage{bible_style}
+\graphicspath{{../../assets/images/}}
+\usepackage{header}
+\usepackage{numprint}
+% \usepackage{parskip}
+
+\newcommand{\q}[1]{\blockquote{#1}}
+
+\newenvironment{block}[1][]{%
+  \vspace{1.5em}%
+  \noindent\textbf{#1}\par%
+  \vspace{0.0em}%
+}{%
+  \vspace{1em}%
+}
+
+\author{Lothar Schmid}
+
+\begin{document}
+\setlength{\baselineskip}{1.5\baselineskip}
+
+\section*{Psalm 63}
+    \subsection{Einleitung}
+    \bibleverse{Ps}(63:1)
+    \subsection{Gott suchen}
+    \bibleverse{Ps}(63:2-7)
+    \subsection{Gott finden}
+    \bibleverse{Ps}(63:8-9)
+    \subsection{Gott vertrauen}
+    \bibleverse{Ps}(63:10-12)
+
+    \begin{block}[Einleitung]
+    \end{block}
+\end{document}
