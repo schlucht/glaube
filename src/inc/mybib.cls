@@ -37,6 +37,7 @@
 % \RequirePackage[ngerman]{babel}
 \RequirePackage{lmodern}
 \RequirePackage{graphicx}
+\RequirePackage{tikz}
 \RequirePackage{xcolor}
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{geometry}
@@ -86,7 +87,13 @@
   \def\input@path{{#1}}%
   \makeatother
 }
-
+\newenvironment{block}[1][]{%
+  \vspace{1.5em}%
+  \noindent\textbf{#1}\par%
+  \vspace{0.0em}%
+}{%
+  \vspace{1em}%
+}
 \biblerefstyle{Lutherbibel}
 \biblerefformat{lang}
 
