@@ -92,7 +92,7 @@
   \noindent\textbf{#1}\par%
   \vspace{0.0em}%
 }{%
-  \vspace{1em}%
+  \vspace{1em}\par\noindent%
 }
 \biblerefstyle{Lutherbibel}
 \biblerefformat{lang}
