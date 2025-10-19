@@ -88,11 +88,11 @@
   \makeatother
 }
 \newenvironment{block}[1][]{%
-  \vspace{1.5em}%
+  \vspace{0.5em}%
   \noindent\textbf{#1}\par%
   \vspace{0.0em}%
 }{%
-  \vspace{1em}\par\noindent%
+  \vspace{.2em}\par\noindent%
 }
 \biblerefstyle{Lutherbibel}
 \biblerefformat{lang}

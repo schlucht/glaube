@@ -34,26 +34,26 @@
     \endquote		
 }
 
-\newenvironment{bibelbox2}[3]{%			
-        \renewcommand{\tmpbib}{\textbf{\bibleverse{#2}(#3)}}
-        \begin{tcolorbox}[
-            title=\tmpbib \hspace{1.5cm} (\bibtit{#1}),
-            colback=black!2!white,
-            colframe=black!55!black,
-            width=\textwidth,
-            halign=justify  
-        ]
-	}{%	
-		\newline		
-        \end{tcolorbox}	
-	\endquote		
-}
+% \newenvironment{bibelbox2}[3]{%			
+%         \renewcommand{\tmpbib}{\textbf{\bibleverse{#2}(#3)}}
+%         \begin{tcolorbox}[
+%             title=\tmpbib \hspace{1.5cm} (\bibtit{#1}),
+%             colback=black!2!white,
+%             colframe=black!55!black,
+%             width=\textwidth,
+%             halign=justify  
+%         ]
+% 	}{%	
+% 		\newline		
+%         \end{tcolorbox}	
+% 	\endquote		
+% }
 \newcommand{\tmpbibtext}[3]{\textbf{\bibleverse{#2}(#3)}\quad(\bibtit{#1})}
 \newenvironment{bibelbox}[3]{%
     \begin{tcolorbox}[
         title=\tmpbibtext{#1}{#2}{#3},
-        colback=black!2!white,
-        colframe=black!55!black,
+        colback=white,
+        colframe=black!25!white,
         width=\textwidth,
         before skip=1em,
         after skip=1em,
