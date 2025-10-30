@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mybiblatex}[2025/01/28 Custom Bibel Vorlage]
+\ProvidesClass{mybib}[2025/01/28 Custom Bibel Vorlage]
 
 % Weitergabe aller Optionen an die geladene Klasse
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{scrartcl}}
@@ -76,8 +76,7 @@
    left=25mm,
    right=20mm,
    top=25mm,
-   bottom=25mm,
-   textwidth=8cm,
+   bottom=25mm,   
    marginpar=3cm
    }
 % Definition der Bibelzitate und Makros
@@ -96,5 +95,11 @@
 }
 \biblerefstyle{Lutherbibel}
 \biblerefformat{lang}
+
+\newcommand{\numcirc}[2][]{%
+  \tikz[baseline=(char.base)]{%
+    \node[shape=circle,fill=purple!70,text=white,inner sep=0.6pt,minimum size=1.6em,font=\sffamily\small,#1] (char) {#2};%
+  }%
+}
 
 

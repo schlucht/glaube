@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mybiblatex}[2025/01/28 Custom Bibel Vorlage]
+\ProvidesClass{mybibbook}[2025/01/28 Custom Bibel Vorlage]
 
 \LoadClass[a4paper]{scrbook}
 % Paket-Imports und Einstellungen
