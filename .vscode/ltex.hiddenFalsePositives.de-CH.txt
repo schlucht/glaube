@@ -9,3 +9,4 @@
 {"rule":"DE_SUBJECT_VERB_AGREEMENT","sentence":"^\\QUnser Schöpfergott und unser heiliger Gott ist auch ein erstaunlich treuer Gott.\\E$"}
 {"rule":"DE_REPEATEDWORDS","sentence":"^\\QNun wird der Fürst dieser Welt hinausgeworfen werden; uns ich, wenn ich von der Erde erhöht bin, werde alle zu mir ziehen.\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qdein Haus und dein Königreich sollen ewig Bestand haben wie dein Angesicht; dein Thron soll auf ewig fest stehen.\\E$"}
+{"rule":"DE_DU_UPPER_LOWER","sentence":"^\\Q2 Du bist Emmanuel Predigt.\\E$"}
