@@ -10,3 +10,8 @@
 {"rule":"DE_REPEATEDWORDS","sentence":"^\\QNun wird der Fürst dieser Welt hinausgeworfen werden; uns ich, wenn ich von der Erde erhöht bin, werde alle zu mir ziehen.\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qdein Haus und dein Königreich sollen ewig Bestand haben wie dein Angesicht; dein Thron soll auf ewig fest stehen.\\E$"}
 {"rule":"DE_DU_UPPER_LOWER","sentence":"^\\Q2 Du bist Emmanuel Predigt.\\E$"}
+{"rule":"DE_SENTENCE_WHITESPACE","sentence":"^\\QNicht das ich es.\\E$"}
+{"rule":"EINHEIT_LEERZEICHEN","sentence":"^\\Q16Nämlich auch in Thessalonich schicktet ihr mir einmal, sogar zweimal etwas für meinen Bedarf.\\E$"}
+{"rule":"KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2","sentence":"^\\Q17Nicht dass ich die Gabe suche, sondern ich suche die sich für eure Rechnung mehrende Frucht.\\E$"}
+{"rule":"KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2","sentence":"^\\Q11Nicht dass ich das aufgrund von Mangel sage, denn ich habe gelernt, worin ich bin genügsam zu sein.\\E$"}
+{"rule":"KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2","sentence":"^\\Q12Ich will aber, dass ihr wisst, Brüder, dass meine Umstände mehr zum Fortschreiten des Evangeliums geführt haben, 13sodass meine Fesseln als Fesseln in Christus offenbar geworden sind im ganzen Prätorium und den übrigen allen, 14und dass die meisten der Brüder, da sie im Herrn Vertrauen haben durch meine Fesseln, umso mehr wagen, das Wort Gottes zu sagen ohne Furcht.\\E$"}
