@@ -53,10 +53,10 @@
 % \addbibresource{../Biblio/book.bib} %Import the bibliography file
 % \bibliographystyle{unsrt}
 % Automatische Anpassung des Seitenlayouts
-\setlength{\headheight}{30pt}
-\setlength{\topmargin}{-10pt}
-\setlength{\textheight}{650pt}
-\setlength{\footskip}{22pt}
+% \setlength{\headheight}{30pt}
+% \setlength{\topmargin}{-10pt}
+% \setlength{\textheight}{650pt}
+% \setlength{\footskip}{22pt}
 
 % Linien einfügen
 \KOMAoptions{headsepline=true, footsepline=true} % Linien aktivieren
@@ -71,13 +71,18 @@
 \ifoot{\today}
 \cfoot{Seite \thepage}
 \ofoot{Autor: \makeatletter\@author\makeatother}
+% \makeatletter
+% \newcommand{\insertauthor}{\@author}
+% \makeatother
+% \ofoot{Autor: \insertauthor}
 
 \geometry{
    left=25mm,
    right=20mm,
    top=25mm,
    bottom=25mm,   
-   marginpar=3cm
+   marginpar=3cm,
+   head=38pt
    }
 % Definition der Bibelzitate und Makros
 

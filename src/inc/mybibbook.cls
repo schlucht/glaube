@@ -11,12 +11,14 @@
 \RequirePackage[ngerman]{babel}
 \RequirePackage{lmodern}
 \RequirePackage{graphicx}
-\RequirePackage{xcolor}
+\RequirePackage[table]{xcolor}
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{geometry}
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{bibleref-german}
 \RequirePackage{setspace}
+\RequirePackage{amssymb}
+
 % \RequirePackage{biblatex} %Imports biblatex package
 % \RequirePackage[style=authoryear,backend=bibtex]{biblatex}
 % \addbibresource{../Biblio/book.bib} %Import the bibliography file

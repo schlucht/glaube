@@ -7,13 +7,47 @@
 \graphicspath{{../../assets/images/}}
 \usepackage{header}
 
+\newcommand{\verbN}[1]{\colorbox{green}{\textcolor{black}{#1}}} 
+\newcommand{\verbP}[1]{\verbN{#1}\textsuperscript{\textbf{P}}}
+
+\newcommand{\verbI}[1]{\colorbox{yellow}{\textcolor{black}{#1}}} 
+\newcommand{\ort}[1]{\colorbox[rgb]{1,0,1}{\textcolor{white}{#1}}} 
+\newcommand{\person}[1]{\colorbox{blue}{\textcolor{white}{#1}}} 
+\newcommand{\bindW}[1]{\colorbox[rgb]{1,0,0}{\textcolor{white}{#1}}} 
+\newcommand{\hr}{\par\noindent\hrulefill\par}
+\newcommand{\lineheight}[1]{\setlength{\baselineskip}{{#1}\baselineskip}}
+\geometry{
+   left=25mm,
+   right=40mm,
+   top=25mm,
+   bottom=25mm,   
+   marginpar=3cm,
+   head=20cm
+   }
+\setlength{\footheight}{29pt} % oder etwas mehr, je nach Boxhöhe
+\setlength{\footskip}{40pt}   % optional, falls Abstand zum Text zu klein
 \author{Lothar Schmid}
 \setlength{\baselineskip}{2.5\baselineskip}
 \begin{document}
-\begin{spacing}{2}
-    \include{phil_1}
-    \include{phil_2}
-    \include{phil_3}
-    \include{phil_4}
+\section{Legende}
+
+\renewcommand{\arraystretch}{1.8} % mehr Zeilenhöhe
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|p{3cm}|p{4cm}|}
+        \hline
+        \verbP{passiv Veb}  & \verbN{normal Verb} \\ \hline
+        \verbI{imperativ Verb} & \ort{Orte} \\ \hline
+        \person{Personen} & \bindW{Bindewort} \\ \hline
+    \end{tabular}
+    \caption{Übersicht der Farben}
+\end{table}
+
+
+\begin{spacing}{2}    
+    % \include{phil_1_ots}
+    % \include{phil_2_ots}
+    % \include{phil_3_ots}
+     \include{phil_4_ots}
 \end{spacing}
 \end{document}
