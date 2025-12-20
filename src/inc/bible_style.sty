@@ -1,8 +1,10 @@
 %\usepackage{bibleref-german}
 %\usepackage[most]{tcolorbox}
+% \usepackage{soul}
 
 \usetikzlibrary{positioning} 
-\usepackage{amssymb}
+% \usepackage{amssymb}
+% \usepackage{calc}
 
 
 \newcommand{\bib}[1]{%
@@ -71,29 +73,59 @@
 	\bibleverse{#1}(#2)
 }
 
+% --- Farbpalette ---
+\definecolor{gnade}{RGB}{180,210,255}      % sanftes Himmelsblau
+\definecolor{gericht}{RGB}{255,180,180}    % mildes Rot
+\definecolor{heiligkeit}{RGB}{255,240,180} % warmes Gold
+\definecolor{geist}{RGB}{180,255,230}      % türkisgrün
+\definecolor{bund}{RGB}{220,180,255}       % Purpur/Lila
+\definecolor{infos}{RGB}{200,255,200}   % weiches Grün
+\definecolor{betonung}{RGB}{255,200,200}      % zartes Rosa
+\definecolor{rot}{RGB}{255,000,000}      % rot
+\definecolor{gelb}{RGB}{255,255,000}      % gelb
+
+\sethlcolor{gray!10}
+\newcommand{\bt}[2][]{%
+  {\sethlcolor{#1}\hl{#2}}%
+} %%Leichtes rot
+\newcommand{\btc}[3]{%
+    \textcolor{#2}{\bt[#1]{#3}}%
+}
+
 % Diverse Fontstyles
 \newcommand{\aus}[1]{\textcolor{red}{ #1 }} %%Markiert den Text der nicht in den Druck soll
 %\renewcommand{\aus}[1]{} %%Kommentar entfernen und der markierte Text wird ausgeblendet
-\newcommand{\herr}{HERR}
-\newcommand{\lied}[1]{\colorbox{yellow}{\textcolor{blue}{Lied: #1}}}
-\newcommand{\beten}{\red{Ich möchte noch beten!}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Diverse Farbpaletten
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\lied}[1]{%
+  \btc{yellow}{blue}{Lied: #1}%
+}
+
+\newcommand{\beten}{%
+  \btc{red}{white}%
+    {Ich möchte noch beten!}%
+  }%
+
 \newcommand{\green}[1]{\colorbox{green}{\textcolor{black}{#1}}}
-\newcommand{\blue}[1]{\colorbox{blue}{\textcolor{black}{#1}}}
-\newcommand{\red}[1]{\colorbox{red}{\textcolor{white}{#1}}}
-\newcommand{\betonung}[1]{%
-\colorbox{red!10}{#1}%
-} %%Leichtes rot
+\newcommand{\blau}[1]{\colorbox{blue}{\textcolor{black}{#1}}}
+\newcommand{\rot}[1]{\colorbox{red}{\textcolor{white}{#1}}}
+\newcommand{\betonung}[1]{\colorbox{red!10}{\textcolor{black}{#1}}}
+
+
 \newcommand{\leise}[1]{\colorbox{blue!10}{#1}} %%Leichtes rot
 \newcommand{\zitat}[1]{\colorbox{gray!10}{\enquote{#1}}} %%Leichtes rot
 \newcommand{\hh}[1]{\textsuperscript{#1}} %% Text Hochstellen
 \newcommand{\es}[1]{[#1]} %% Text Hochstellen
 \newcommand{\gott}[2][red]{%
-  \tikz[baseline]{
-    \node[inner sep=0pt,outer sep=0pt] (w) {#2};
-    \node[above=-.2cm of w, text=#1] {$\triangle$};
+\tikz[baseline]{
+  \node[inner sep=0pt,outer sep=0pt] (w) {#2};
+  \node[above=-.2cm of w, text=#1] {$\triangle$};
   }%
-}
-\newcommand{\jesus}[2][red]{%
+  }
+  \newcommand{\jesus}[2][red]{%
   \tikz[baseline]{
     \node[inner sep=0pt,outer sep=0pt] (w) {#2};
     \node[above=-.2cm of w, text=#1] {\Large$\dagger$};
@@ -105,3 +137,5 @@
     \node[above=-.2cm of w, text=#1] {\Large$\preccurlyeq$};
   }%
 }
+
+\newcommand{\herr}{HERR}

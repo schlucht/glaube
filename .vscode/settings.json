@@ -1,3 +1,5 @@
 {
-  "latex-workshop.formatting.latex": "latexindent"
+  "latex-workshop.formatting.latex": "latexindent",
+  "editor.overtypeCursorStyle": "line",
+  "editor.cursorStyle": "line",
 }

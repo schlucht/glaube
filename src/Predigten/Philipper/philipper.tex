@@ -7,7 +7,9 @@
 \graphicspath{{../../assets/images/}}
 \usepackage{header}
 
-\newcommand{\verbN}[1]{\colorbox{green}{\textcolor{black}{#1}}} 
+\newcommand{\verbN}[1]{%
+    \textcolor{black}{\bt[green]{#1}}%
+} 
 \newcommand{\verbP}[1]{\verbN{#1}\textsuperscript{\textbf{P}}}
 
 \newcommand{\verbI}[1]{\colorbox{yellow}{\textcolor{black}{#1}}} 
