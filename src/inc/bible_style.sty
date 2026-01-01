@@ -2,22 +2,22 @@
 %\usepackage[most]{tcolorbox}
 % \usepackage{soul}
 
-\usetikzlibrary{positioning} 
+\usetikzlibrary{positioning}
 % \usepackage{amssymb}
 % \usepackage{calc}
 
 
 \newcommand{\bib}[1]{%
-    \IfStrEqCase{#1}{%
-        {EI}{Einheitsübersetzung}%
-        {SCHL}{Schlachter 2000}%
-        {HFA}{Hoffnung für Alle}%
-        {ELB}{Elbfelder}%
-        {GR}{Griechisch}%
-        {LUT}{Luther 2017}%
-        {NUE}{Neue ev. Übersetzung}%
-        {BDF}{Bibel Deutsche Fassung}%
-    }[\textbf{#1}]%
+  \IfStrEqCase{#1}{%
+    {EI}{Einheitsübersetzung}%
+      {SCHL}{Schlachter 2000}%
+      {HFA}{Hoffnung für Alle}%
+      {ELB}{Elbfelder}%
+      {GR}{Griechisch}%
+      {LUT}{Luther 2017}%
+      {NUE}{Neue ev. Übersetzung}%
+      {BDF}{Bibel Deutsche Fassung}%
+  }[\textbf{#1}]%
 }
 
 
@@ -28,14 +28,14 @@
 %\newcommand{\bv}[2]{\bibleverse {#1}(#2)}
 
 \newenvironment{bibeltext}[3]{%
-    \quote \begin{itshape}
-	(\bibtit{#1})\newline			
-		\renewcommand{\tmpbib}{\textbf{\bibleverse{#2}(#3)}}		 
-	}{%
-    \newline    
+  \quote \begin{itshape}
+    (\bibtit{#1})\newline
+    \renewcommand{\tmpbib}{\textbf{\bibleverse{#2}(#3)}}
+    }{%
+    \newline
     \tmpbib
-	\end{itshape}        
-    \endquote		
+  \end{itshape}
+  \endquote
 }
 
 % \newenvironment{bibelbox2}[3]{%			
@@ -54,23 +54,23 @@
 % }
 \newcommand{\tmpbibtext}[3]{\textbf{\bibleverse{#2}(#3)}\quad(\bibtit{#1})}
 \newenvironment{bibelbox}[3]{%
-    \begin{tcolorbox}[
-        title=\tmpbibtext{#1}{#2}{#3},
-        colback=white,
-        colframe=black!25!white,
-        width=\textwidth,
-        before skip=1em,
-        after skip=1em,
-        fonttitle=\bfseries,
-        sharp corners
+  \begin{tcolorbox}[
+      title=\tmpbibtext{#1}{#2}{#3},
+      colback=white,
+      colframe=black!25!white,
+      width=\textwidth,
+      before skip=1em,
+      after skip=1em,
+      fonttitle=\bfseries,
+      sharp corners
     ]
-}{%
-    \end{tcolorbox}
+    }{%
+  \end{tcolorbox}
 }
 
 \newcommand{\biblezit}[2]{%
-	\bib{SCHL} 	
-	\bibleverse{#1}(#2)
+  \bib{SCHL}
+  \bibleverse{#1}(#2)
 }
 
 % --- Farbpalette ---
@@ -79,17 +79,23 @@
 \definecolor{heiligkeit}{RGB}{255,240,180} % warmes Gold
 \definecolor{blau}{RGB}{180,255,230}      % türkisgrün
 \definecolor{bund}{RGB}{220,180,255}       % Purpur/Lila
-\definecolor{infos}{RGB}{200,255,200}   % weiches Grün
-\definecolor{betonung}{RGB}{255,200,200}      % zartes Rosa
+\definecolor{infos}{RGB}{200,255,200}      % weiches Grün
+\definecolor{betonung}{RGB}{255,200,200}   % zartes Rosa
+
+% Standart Farben
 \definecolor{rot}{RGB}{255,000,000}      % rot
 \definecolor{gelb}{RGB}{255,255,000}      % gelb
+\definecolor{magenta}{RGB}{255,100,255}   % magenta
+\definecolor{blau}{RGB}{100,100,205}      % magenta
+\definecolor{gruen}{RGB}{50,205,50}     % magenta
 
 \sethlcolor{gray!10}
 \newcommand{\bt}[2][]{%
   {\sethlcolor{#1}\hl{#2}}%
 } %%Leichtes rot
+
 \newcommand{\btc}[3]{%
-    \textcolor{#2}{\bt[#1]{#3}}%
+  \textcolor{#2}{\bt[#1]{#3}}%
 }
 
 % Diverse Fontstyles
@@ -106,8 +112,8 @@
 
 \newcommand{\beten}{%
   \btc{red}{white}%
-    {Ich möchte noch beten!}%
-  }%
+  {Ich möchte noch beten!}%
+}%
 
 \newcommand{\green}[1]{\colorbox{green}{\textcolor{black}{#1}}}
 %\newcommand{\blau}[1]{\colorbox{blue}{\textcolor{black}{#1}}}
@@ -118,19 +124,22 @@
 \newcommand{\leise}[1]{\colorbox{blue!10}{#1}} %%Leichtes rot
 \newcommand{\zitat}[1]{\colorbox{gray!10}{\enquote{#1}}} %%Leichtes rot
 \newcommand{\hh}[1]{\textsuperscript{#1}} %% Text Hochstellen
-\newcommand{\es}[1]{[#1]} %% Text Hochstellen
+\newcommand{\es}[1]{[#1]}
+
 \newcommand{\gott}[2][red]{%
-\tikz[baseline]{
-  \node[inner sep=0pt,outer sep=0pt] (w) {#2};
-  \node[above=-.2cm of w, text=#1] {$\triangle$};
+  \tikz[baseline]{
+    \node[inner sep=0pt,outer sep=0pt] (w) {#2};
+    \node[above=-.2cm of w, text=#1] {$\triangle$};
   }%
-  }
-  \newcommand{\jesus}[2][red]{%
+}
+
+\newcommand{\jesus}[2][red]{%
   \tikz[baseline]{
     \node[inner sep=0pt,outer sep=0pt] (w) {#2};
     \node[above=-.2cm of w, text=#1] {\Large$\dagger$};
   }%
 }
+
 \newcommand{\geist}[2][red]{%
   \tikz[baseline]{
     \node[inner sep=0pt,outer sep=0pt] (w) {#2};

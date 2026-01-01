@@ -7,15 +7,13 @@
 \graphicspath{{../../assets/images/}}
 \usepackage{header}
 
-\newcommand{\verbN}[1]{%
-    \textcolor{black}{\bt[green]{#1}}%
-} 
+\newcommand{\verbN}[1]{\btc{gruen}{white}{#1}}
 \newcommand{\verbP}[1]{\verbN{#1}\textsuperscript{\textbf{P}}}
+\newcommand{\verbI}[1]{\btc{gelb}{black}{#1}}
+\newcommand{\ort}[1]{\btc{magenta}{black}{#1}} 
+\newcommand{\person}[1]{\btc{blau}{white}{#1}} 
+\newcommand{\bindW}[1]{\btc{rot}{white}{#1}}
 
-\newcommand{\verbI}[1]{\colorbox{yellow}{\textcolor{black}{#1}}} 
-\newcommand{\ort}[1]{\colorbox[rgb]{1,0,1}{\textcolor{white}{#1}}} 
-\newcommand{\person}[1]{\colorbox{blue}{\textcolor{white}{#1}}} 
-\newcommand{\bindW}[1]{\colorbox[rgb]{1,0,0}{\textcolor{white}{#1}}} 
 \newcommand{\hr}{\par\noindent\hrulefill\par}
 \newcommand{\lineheight}[1]{\setlength{\baselineskip}{{#1}\baselineskip}}
 \geometry{
@@ -47,9 +45,9 @@
 
 
 \begin{spacing}{2}    
-    \include{phil_1}
-    \include{phil_2}
-    \include{phil_3}
-    \include{phil_4}
+    % \include{phil_1_ots}
+    % \include{phil_2_ots}
+    \include{phil_3_ots}
+    % \include{phil_4}
 \end{spacing}
 \end{document}
