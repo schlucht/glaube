@@ -25,3 +25,4 @@
 {"rule":"VON_WOHER","sentence":"^\\Q20Aber unser Gemeinwesen ist in den Himmeln, von woher wir auch als Retter den Herrn Jesus, den Gesalbten, erwarten, 21der unseren Leib der Niedrigkeit umwandeln wird, sodass er gleichgestaltet wird seinem Leib der Herrlichkeit, nach der Wirkkraft, mit der er sich auch Alles zu unterwerfen vermag.\\E$"}
 {"rule":"KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2","sentence":"^\\Q11Nicht dass ich das aufgrund von Mangel sage, denn ich habe gelernt, worin ich bin, genügsam zu sein.\\E$"}
 {"rule":"KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2","sentence":"^\\Q11Nicht dass ich das aufgrund von Mangel sage, denn ich habe gelernt, worin ich bin, genügsam zu sein.\\E$"}
+{"rule":"GERMAN_WRONG_WORD_IN_CONTEXT_LEIB_LAIB","sentence":"^\\QUnd er nahm das Brot, dankte, brach es, gab es ihnen und sprach: Dies ist mein Leib der für euch gegeben wird; das tut zu meinem Gedächtnis!\\E$"}
