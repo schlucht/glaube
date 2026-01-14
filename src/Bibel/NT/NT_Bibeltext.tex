@@ -1,0 +1,159 @@
+\author{OTS}
+\documentclass[14pt]{../../inc/mybib}
+
+\setincpath{../../inc/}
+
+\usepackage{bible_style}
+\graphicspath{{../../assets/images/}}
+\usepackage{header}
+\usepackage{changepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tabularx}
+\usepackage{xparse}
+\usepackage{calc}
+\usepackage{expl3}
+
+% Konfigurierbares Layout
+\newcommand{\VersNumberBox}[1]{\makebox[0em][r]{\textsuperscript{#1}}}
+\newcommand{\VersSourceFmt}[1]{[\textsc{#1}] }
+
+\ExplSyntaxOn
+\clist_new:N \g_lothar_versions_clist
+\tl_new:N \g_lothar_default_tl
+
+% Setze die Default-Bibel
+\NewDocumentCommand{\setdefault}{m}
+ {
+   \tl_gset:Nn \g_lothar_default_tl { #1 }
+ }
+
+% Setze die Auswahl-Liste
+\NewDocumentCommand{\setversions}{m}
+ {
+   \clist_gset:Nn \g_lothar_versions_clist { #1 }
+ }
+ \NewDocumentCommand{\getdefault}{}{\tl_use:N \g_lothar_default_tl}
+ \NewDocumentCommand{\getversions}{}{\clist_use:Nn \g_lothar_versions_clist {, }}
+% Prüfen, ob Version gesetzt werden soll
+\prg_new_conditional:Npnn \lothar_version_selected_p:n #1 { p, T, F, TF }
+ {
+   % Wenn Liste leer -> nur Default anzeigen
+   \clist_if_empty:NTF \g_lothar_versions_clist
+     {
+       \tl_if_eq:NnTF \g_lothar_default_tl { #1 }
+         { \prg_return_true: }
+         { \prg_return_false: }
+     }
+     {
+       % Wenn "ALL" in Liste -> alle anzeigen
+       \clist_if_in:NnTF \g_lothar_versions_clist { ALL }
+         { \prg_return_true: }
+         {
+           % Sonst prüfen, ob Version in Liste ist
+           \clist_if_in:NnTF \g_lothar_versions_clist { #1 }
+             { \prg_return_true: } { \prg_return_false: }
+         }
+     }
+ }
+% Prüfen, ob #1 die Default-Version ist
+\prg_new_conditional:Npnn \lothar_is_default_p:n #1 { p, T, F, TF }
+  {
+    \tl_if_eq:NnTF \g_lothar_default_tl { #1 }
+      { \prg_return_true: } { \prg_return_false: }
+  }
+% Makro für die Ausgabe
+\NewDocumentCommand{\verstab}{ m m +m }
+ {
+   \lothar_version_selected_p:nTF { #2 }
+     {
+       \noindent
+       \begin{tabularx}{\linewidth}{@{} l X@{}}        
+         \VersNumberBox{#1} & 
+         \lothar_is_default_p:nTF{#2}
+         {#3}         
+         {\VersSourceFmt{#2}  #3}
+       \end{tabularx}\par
+     }
+     {        
+     }
+ }
+\bool_new:N \l_color_verbN_bool
+\bool_new:N \l_color_verbI_bool
+\bool_new:N \l_color_verbP_bool
+\bool_new:N \l_color_person_bool
+\bool_new:N \l_color_ort_bool
+\bool_new:N \l_color_bindW_bool
+
+\bool_set_true:N \l_color_verbN_bool
+\bool_set_true:N \l_color_verbI_bool
+\bool_set_true:N \l_color_verbP_bool
+\bool_set_true:N \l_color_person_bool
+\bool_set_true:N \l_color_ort_bool
+\bool_set_true:N \l_color_bindW_bool
+
+\NewDocumentCommand{\verbN}{m}{
+  \bool_if:NTF \l_color_verbN_bool
+    {\colorbox{green}{\textcolor{black}{#1}}}
+    {#1}
+}
+\NewDocumentCommand{\verbI}{m}{
+  \bool_if:NTF \l_color_verbI_bool
+    {\colorbox{yellow}{\textcolor{black}{#1}}}
+    {#1}
+}
+\NewDocumentCommand{\verbP}{m}{
+  \bool_if:NTF \l_color_verbP_bool
+    {\verbN{#1}\textsuperscript{\textbf{P}}}
+    {#1}
+}
+\NewDocumentCommand{\ort}{m}{
+  \bool_if:NTF \l_color_ort_bool
+    {\colorbox{magenta}{\textcolor{white}{#1}}}
+    {#1}
+}
+\NewDocumentCommand{\person}{m}{
+  \bool_if:NTF \l_color_person_bool
+    {\colorbox{blue}{\textcolor{white}{#1}}}
+    {#1}
+}
+\NewDocumentCommand{\bindW}{m}{
+  \bool_if:NTF \l_color_bindW_bool
+    {\colorbox{red}{\textcolor{white}{#1}}}
+    {#1}
+}
+\ExplSyntaxOff
+
+
+% Optional: Absatzformatierung für schönere Blockoptik
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\hr}{\par\noindent\hrulefill\par}
+\newcommand{\lineheight}[1]{\setlength{\baselineskip}{{#1}\baselineskip}}
+\newcommand{\mySpacing}{1}
+\newcommand{\myRight}{55mm}
+
+\setlength{\footheight}{29pt} % oder etwas mehr, je nach Boxhöhe
+\setlength{\footskip}{40pt}   % optional, falls Abstand zum Text zu klein
+\author{Lothar Schmid}
+\setlength{\baselineskip}{3.5\baselineskip}
+\begin{document}
+\tableofcontents
+
+\begin{adjustwidth*}{0mm}{\myRight} % [linke Einrückung]{rechte Einrückung}
+    \leavevmode
+    \begin{spacing}{\mySpacing} 
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+        \input{Matthäus/matth}  
+        \input{Philipper/phil}      
+        \input{Philemon/philm}     
+      
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+       
+      
+    \end{spacing}
+\end{adjustwidth*}
+\end{document}
+

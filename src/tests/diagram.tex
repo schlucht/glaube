@@ -1,15 +1,60 @@
-\documentclass{article}
+\documentclass[14pt]{article}
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{etoolbox} % für \newtoggle
 
-\usepackage{smartdiagram}
+% \newcommand{\bindW}[1]{\btc{rot}{white}{#1}}
+
+% ---- Globaler Farbschalter ----
+\ExplSyntaxOn
+\bool_new:N \l_color_verbN_bool
+\bool_new:N \l_color_verbI_bool
+\bool_new:N \l_color_verbP_bool
+\bool_new:N \l_color_person_bool
+\bool_new:N \l_color_ort_bool
+\bool_new:N \l_color_bindW_bool
+
+\bool_set_true:N \l_color_verbN_bool
+\bool_set_true:N \l_color_verbI_bool
+\bool_set_true:N \l_color_verbP_bool
+\bool_set_true:N \l_color_person_bool
+\bool_set_true:N \l_color_ort_bool
+\bool_set_true:N \l_color_bindW_bool
+
+\NewDocumentCommand{\verbN}{m}{
+  \bool_if:NTF \l_color_verbN_bool
+    {\colorbox{green}{\textcolor{black}{#1}}}
+    {#1}
+}
+\NewDocumentCommand{\verbI}{m}{
+  \bool_if:NTF \l_color_verbI_bool
+    {\colorbox{yellow}{\textcolor{black}{#1}}}
+    {#1}
+}
+\NewDocumentCommand{\verbP}{m}{
+  \bool_if:NTF \l_color_verbP_bool
+    {\verbN{#1}\textsuperscript{\textbf{P}}}
+    {#1}
+}
+\NewDocumentCommand{\ort}{m}{
+  \bool_if:NTF \l_color_ort_bool
+    {\colorbox{magenta}{\textcolor{white}{#1}}}
+    {#1}
+}
+\NewDocumentCommand{\person}{m}{
+  \bool_if:NTF \l_color_person_bool
+    {\colorbox{blue}{\textcolor{white}{#1}}}
+    {#1}
+}
+\NewDocumentCommand{\bindW}{m}{
+  \bool_if:NTF \l_color_bindW_bool
+    {\colorbox{red}{\textcolor{white}{#1}}}
+    {#1}
+}
+% \newcommand{\verbP}[1]{\verbN{#1}\textsuperscript{\textbf{P}}}
+
+\ExplSyntaxOff
 
 \begin{document}
-
-\smartdiagramset{back arrow disabled=true,text width=2cm, font=\fontsize{6pt}{12pt}\selectfont}
-\smartdiagram[flow diagram:horizontal]{% 
-    EPS:\\ ,
-    PPS: \\ Weeds \& Crops, 
-    SPS:,
-    Field trials
-}  
-
+So \verbI{sind} es nun von \person{Abraham} \verbN{bis} zu David insgesamt vierzehn Generationen und von David bis zur Wegführung nach \verbP{Babylon} vierzehn Generationen \bindW{und} von der Wegführung nach \ort{Babylon} bis zu Christus vierzehn Generationen.
 \end{document}
