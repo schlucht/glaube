@@ -2,4 +2,20 @@
   "latex-workshop.formatting.latex": "latexindent",
   "editor.overtypeCursorStyle": "line",
   "editor.cursorStyle": "line",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/*.crswap": true,
+    "**/*.aux": true,
+    "**/*.bbl": true,
+    "**/*.blg": true,
+    "**/*-blx.bib": true,
+    "**/*.fdb_latexmk": true,
+    "**/*.log": true,
+    "**/*.gz": true,
+    "**/*.fls": true,
+  } 
 }
