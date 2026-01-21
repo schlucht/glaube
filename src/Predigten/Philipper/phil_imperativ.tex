@@ -1,0 +1,31 @@
+\author{OTS}
+\documentclass[12pt]{../../inc/mybib}
+
+\setincpath{../../inc/}
+
+\usepackage{bible_style}
+\graphicspath{{../../assets/images/}}
+\usepackage{header}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand{\Name}{Thomas}
+% ensure scrlayer-scrpage has sufficient footheight
+\setlength{\footheight}{20.4pt}
+
+\begin{document}
+\section{Tabellarische Auflisung der Imperative im Philipperbrief}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{c c c p{7cm}}
+\hline 
+\textbf{Vers} & \textbf{Imperativ} & \textbf{Grammatik} & \textbf{Bemerkung} \\ \hline
+1,27 & Führt & 2. Person Plural & Aufforderung ein Leben nach dem Evangelium von Christus zu führen \\ \hline
+1,27 & Führt & 2. Person Plural & Aufforderung ein Leben nach dem Evangelium von Christus zu führen \\ \hline
+\end{tabular}
+
+% \begin{tabularx}{\textwidth}{|c|c|c|X|} \hline \textbf{Vers} & \textbf{Imperativ} & \textbf{Grammatik} & \textbf{Bemerkung} \\ \hline 1,27 & Führt & 2. Person Plural & Aufforderung ein Leben nach dem Evangelium von Christus zu führen \\ \hline \end{tabularx}
+
+% \begin{tabularx}{\textwidth}{c c c X} \toprule \textbf{Vers} & \textbf{Imperativ} & \textbf{Grammatik} & \textbf{Bemerkung} \\ \midrule 1,27 & Führt & 2. Person Plural & Aufforderung ein Leben nach dem Evangelium von Christus zu führen \\ \bottomrule \end{tabularx}
+
+% \begin{tabularx}{\textwidth}{|p{1.5cm}|p{2cm}|p{3cm}|X|} \hline \textbf{Vers} & \textbf{Imperativ} & \textbf{Grammatik} & \textbf{Bemerkung} \\ \hline 1,27 & Führt & 2. Person Plural & Aufforderung ein Leben nach dem Evangelium von Christus zu führen \\ \hline \end{tabularx}
+
+\end{document}
