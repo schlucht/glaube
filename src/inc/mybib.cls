@@ -51,6 +51,9 @@
 \RequirePackage{soul}
 \RequirePackage{amssymb}
 \RequirePackage{calc}
+
+\RequirePackage{tabularx}
+\RequirePackage[hidelinks]{hyperref}
 %\RequirePackage{biblatex} %Imports biblatex package
 % \RequirePackage[style=authoryear,backend=bibtex]{biblatex}
 % \addbibresource{../Biblio/book.bib} %Import the bibliography file
