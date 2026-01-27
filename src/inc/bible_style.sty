@@ -148,3 +148,12 @@
 }
 
 \newcommand{\herr}{HERR}
+
+\newcommand{\verslink}[3]{%
+  \begingroup
+  \edef\url{https://www.esrabibel.de/#1#2\%2C#3}%
+  \uline{\href{\url}{#2,#3}}%
+  \endgroup
+}
+
+

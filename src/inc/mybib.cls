@@ -38,7 +38,7 @@
 \RequirePackage{lmodern}
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
-\RequirePackage{xcolor}
+\RequirePackage[table]{xcolor}
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{geometry}
 \RequirePackage[version=4]{mhchem}
@@ -51,18 +51,17 @@
 \RequirePackage{soul}
 \RequirePackage{amssymb}
 \RequirePackage{calc}
+\RequirePackage[normalem]{ulem}
 
-\RequirePackage{tabularx}
-\RequirePackage[hidelinks]{hyperref}
-%\RequirePackage{biblatex} %Imports biblatex package
-% \RequirePackage[style=authoryear,backend=bibtex]{biblatex}
-% \addbibresource{../Biblio/book.bib} %Import the bibliography file
-% \bibliographystyle{unsrt}
-% Automatische Anpassung des Seitenlayouts
-% \setlength{\headheight}{30pt}
-% \setlength{\topmargin}{-10pt}
-% \setlength{\textheight}{650pt}
-% \setlength{\footskip}{22pt}
+\RequirePackage{longtable}
+\RequirePackage[colorlinks=false]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=black,
+  citecolor=black
+}
+
 
 % Linien einfügen
 \KOMAoptions{headsepline=true, footsepline=true} % Linien aktivieren
