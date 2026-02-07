@@ -92,6 +92,13 @@
 \bool_set_true:N \l_color_ort_bool
 \bool_set_true:N \l_color_bindW_bool
 
+% \bool_set_false:N \l_color_verbN_bool
+% \bool_set_false:N \l_color_verbI_bool
+% \bool_set_false:N \l_color_verbP_bool
+% \bool_set_false:N \l_color_person_bool
+% \bool_set_false:N \l_color_ort_bool
+% \bool_set_false:N \l_color_bindW_bool
+
 \NewDocumentCommand{\verbN}{m}{
   \bool_if:NTF \l_color_verbN_bool
     {\colorbox{green}{\textcolor{black}{#1}}}
@@ -114,7 +121,7 @@
 }
 \NewDocumentCommand{\person}{m}{
   \bool_if:NTF \l_color_person_bool
-    {\colorbox{blue}{\textcolor{white}{#1}}}
+    {\colorbox{gnade}{\textcolor{black}{#1}}}
     {#1}
 }
 \NewDocumentCommand{\bindW}{m}{
@@ -137,7 +144,7 @@
 
 \setlength{\footheight}{29pt} % oder etwas mehr, je nach Boxhöhe
 \setlength{\footskip}{40pt}   % optional, falls Abstand zum Text zu klein
-\author{Lothar Schmid}
+\author{ESRA-BIBEL}
 \setlength{\baselineskip}{3.5\baselineskip}
 \begin{document}
 \tableofcontents
