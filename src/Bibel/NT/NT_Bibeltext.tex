@@ -14,6 +14,15 @@
 \usepackage{calc}
 \usepackage{expl3}
 
+
+\definecolor{blau}{RGB}{180,210,255}      % sanftes Himmelsblau
+\definecolor{rot}{RGB}{255,180,180}    % mildes Rot
+\definecolor{orange}{RGB}{255,240,180} % warmes Gold
+\definecolor{lila}{RGB}{220,180,255}       % Purpur/Lila
+\definecolor{gruen}{RGB}{200,255,200}      % weiches Grün
+\definecolor{rosa}{RGB}{238,153,239}   % zartes Rosa rgb(238, 153, 239)   
+
+
 % Konfigurierbares Layout
 \newcommand{\VersNumberBox}[1]{\makebox[0em][r]{\textsuperscript{#1}}}
 \newcommand{\VersSourceFmt}[1]{[\textsc{#1}] }
@@ -91,15 +100,18 @@
 \bool_set_true:N \l_color_person_bool
 \bool_set_true:N \l_color_ort_bool
 \bool_set_true:N \l_color_bindW_bool
+\bool_set_true:N \l_color_bindA_bool
+\bool_set_true:N \l_color_bindB_bool
+\bool_set_true:N \l_color_bindV_bool
 
 \NewDocumentCommand{\verbN}{m}{
   \bool_if:NTF \l_color_verbN_bool
-    {\colorbox{green}{\textcolor{black}{#1}}}
+    {\colorbox{gruen}{\textcolor{black}{#1}}}
     {#1}
 }
 \NewDocumentCommand{\verbI}{m}{
   \bool_if:NTF \l_color_verbI_bool
-    {\colorbox{yellow}{\textcolor{black}{#1}}}
+    {\colorbox{orange}{\textcolor{black}{#1}}}
     {#1}
 }
 \NewDocumentCommand{\verbP}{m}{
@@ -107,19 +119,37 @@
     {\verbN{#1}\textsuperscript{\textbf{P}}}
     {#1}
 }
+
 \NewDocumentCommand{\ort}{m}{
   \bool_if:NTF \l_color_ort_bool
-    {\colorbox{magenta}{\textcolor{white}{#1}}}
+    {\colorbox{rosa}{\textcolor{black}{#1}}}
     {#1}
 }
 \NewDocumentCommand{\person}{m}{
   \bool_if:NTF \l_color_person_bool
-    {\colorbox{blue}{\textcolor{white}{#1}}}
+    {\colorbox{gnade}{\textcolor{black}{#1}}}
     {#1}
 }
-\NewDocumentCommand{\bindW}{m}{
+
+%% Bindewörter
+\NewDocumentCommand{\bind}{m}{
   \bool_if:NTF \l_color_bindW_bool
-    {\colorbox{red}{\textcolor{white}{#1}}}
+    {\colorbox{rot}{\textcolor{black}{#1}}}
+    {#1}
+}
+\NewDocumentCommand{\bindA}{m}{
+  \bool_if:NTF \l_color_bindA_bool
+    {\bind{#1}\textsuperscript{\textbf{A}}}
+    {#1}
+}
+\NewDocumentCommand{\bindB}{m}{
+  \bool_if:NTF \l_color_bindB_bool
+    {\bind{#1}\textsuperscript{\textbf{B}}}
+    {#1}
+}
+\NewDocumentCommand{\bindV}{m}{
+  \bool_if:NTF \l_color_bindV_bool
+    {\bind{#1}\textsuperscript{\textbf{V}}}
     {#1}
 }
 \ExplSyntaxOff
@@ -137,19 +167,19 @@
 
 \setlength{\footheight}{29pt} % oder etwas mehr, je nach Boxhöhe
 \setlength{\footskip}{40pt}   % optional, falls Abstand zum Text zu klein
-\author{Lothar Schmid}
+\author{ESRA-BIBEL}
 \setlength{\baselineskip}{3.5\baselineskip}
 \begin{document}
 \tableofcontents
-\newpage
+%\newpage
 \begin{adjustwidth*}{0mm}{\myRight} % [linke Einrückung]{rechte Einrückung}
     \leavevmode
     \begin{spacing}{\mySpacing} 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-        \input{Matthäus/matth}  
+        % \input{Matthäus/matth}  
         \input{Philipper/phil}      
-        \input{1_Timotheus/1tim}      
-        \input{Philemon/philm}     
+        % \input{1_Timotheus/1tim}      
+        % \input{Philemon/philm}     
       
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
        
