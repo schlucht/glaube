@@ -1,9 +1,9 @@
-% \documentclass[12pt,a4paper]{article}
-% \usepackage[utf8]{inputenc}
-% \usepackage[ngerman]{babel}
+% \documentclass{12pt,a4paper}{article}
+% \usepackage{utf8}{inputenc}
+% \usepackage{ngerman}{babel}
 % \usepackage{xcolor}
 % \usepackage{setspace}
-% \usepackage[margin=2.5cm]{geometry}
+% \usepackage{margin=2.5cm}{geometry}
 
 \author{OTS}
 \documentclass[12pt]{../../inc/mybib}
@@ -15,13 +15,14 @@
 \graphicspath{{../../assets/images/}}
 
 % Farbdefinitionen für grammatische Kategorien
-\definecolor{verbcolor}{RGB}{0,128,0}      % Grün für Verbstämme
-\definecolor{nouncolor}{RGB}{255,140,0}    % Orange für Nomen
-\definecolor{conjcolor}{RGB}{255,0,0}      % Rot für Konjunktionen
-\definecolor{prepcolor}{RGB}{0,0,255}      % Blau für Präpositionen/Partikel
-\definecolor{annotcolor}{RGB}{128,128,128} % Grau für Annotationen
-\definecolor{pluralcolor}{RGB}{255,0,255}  % Magenta für Plural
-\definecolor{locationcolor}{RGB}{200,150,255} % Lila für Ortsangaben
+\definecolor{verbcolor}{RGB}{0,128,0}      % Grün für Verbstämme rgb(0,128,0)
+\definecolor{nouncolor}{RGB}{255,140,0}    % Orange für Nomen rgb(255,140,0)
+\definecolor{conjcolor}{RGB}{255,0,0}      % Rot für Konjunktionen rgb(255,0,0)
+\definecolor{prepcolor}{RGB}{0,0,255}      % Blau für Präpositionen/Partikel rgb(0,0,255)
+\definecolor{annotcolor}{RGB}{128,128,128} % Grau für Annotationen rgb(128,128,128)
+\definecolor{pluralcolor}{RGB}{255,0,255}  % Magenta für Plural rgb(255,0,255)
+\definecolor{locationcolor}{RGB}{200,150,255} % Lila für Ortsangaben rgb(200,150,255)
+\definecolor{imperacolor}{RGB}{243,231,8} % Gelb für Imperativ rgb(243,231,8)
 
 % Makros für Verben und Verbformen
 \newcommand{\verbstamm}[1]{\textcolor{verbcolor}{#1}}
@@ -39,11 +40,13 @@
 \newcommand{\partikel}[1]{\textcolor{prepcolor}{#1}}
 
 % Makros für besondere Formen
-\newcommand{\plural}[1]{\textcolor{pluralcolor}{#1}}
+{}\newcommand{\plural}[1]{\textcolor{pluralcolor}{#1}}
+
+% Makro für Ortsangaben
 \newcommand{\ort}[1]{\textcolor{locationcolor}{#1}}
 
 % Makro für Annotationen in eckigen Klammern
-\newcommand{\annot}[1]{{\footnotesize\textit{[#1]}}}
+\newcommand{\annot}[1]{{\footnotesize\textit{{#1}}}}
 
 % Absatzformatierung
 \setlength{\parindent}{0pt}
@@ -60,39 +63,50 @@
 
     \hspace*{1cm}\konj{Und}\annot{Aufreihung} schärfer als jedes zweischneidige Schwert, 
 
-    \hspace*{2cm}\konj{und}\annot{Vortsetzung} es \annot{Das Wort} \verbstamm{dringt durch}\annot{Präsens: Indikativ}, 
+        \hspace*{2cm}\konj{und}\annot{Vortsetzung} es \annot{Das Wort} \verbstamm{dringt durch}\annot{Präsens: Indikativ}, 
 
-    \hspace*{3cm}\konj{bis}\annot{Zeit} es\annot{Das Wort} \verbstamm{scheidet}\annot{Futur: Konjunktiv}, 
+            \hspace*{3cm}\konj{bis}\annot{Zeit} es\annot{Das Wort} \verbstamm{scheidet}\annot{Futur: Konjunktiv}, 
 
-    \hspace*{4cm}\konj{sowohl}\annot{Nebenordnend} Seele als auch Geist,
+                \hspace*{4cm}\konj{sowohl}\annot{Nebenordnend} Seele als auch Geist,
 
-    \hspace*{4cm}\konj{sowohl}\annot{Nebenordnend} Mark als auch Bein,
+                \hspace*{4cm}\konj{sowohl}\annot{Nebenordnend} Mark als auch Bein,
 
-    \hspace*{2cm}\konj{und}\annot{Vortsetzung} es\annot{Das Wort} \verbstamm{ist}\annot{Präsens: Indikativ} ein \pers{Richter} der Gedanken 
+        \hspace*{2cm}\konj{und}\annot{Vortsetzung} es\annot{Das Wort} \verbstamm{ist}\annot{Präsens: Indikativ} ein \pers{Richter} der Gedanken 
 
-    \hspace*{2cm}\konj{und}\annot{Aufreihung} Gesinnungen des Herzens.
+        \hspace*{2cm}\konj{und}\annot{Aufreihung} Gesinnungen des Herzens.
 
-\textbf{13} \konj{Und}\annot{Vortsetzung} kein Geschöpf ist[Präsens: Indikativ] vor ihm[Das Wort] verborgen[Partizip 2], 
-sondern[Folge] alles ist[Präsens: Indikativ] enthüllt[Partizip2] 
-\konj{und}[Aufzählung] aufgedeckt[Partizip 2] vor den Augen dessen{WESSEN AUGEN?}, 
-dem[dessen] wir Rechenschaft zu geben[Infinitiv] haben[Präsens: Indikativ].
+\textbf{13} \konj{Und}\annot{Vortsetzung} kein \ort{Geschöpf} \verbstamm{ist}\annot{Präsens: Indikativ} vor ihm\annot{Das Wort} \verbstamm{verborgen}\annot{Partizip 2}, 
 
-\textbf{14} Da[Quelle] wir nun[ZEIT] einen Grossen Hohepriester haben[Präsens: Indikativ], 
-der[Jesus] die Himmel durchschritten hat[Perfekt: Indikativ], Jesus, den Sohn Gottes, 
-so[Folge] lasst[Präsens: Imperativ] uns festhalten[Infinitiv] an dem Bekenntnis!
+    \hspace{1cm}\konj{sondern}\annot{Folge} alles \verbstamm{ist}\annot{Präsens: Indikativ} \verbstamm{enthüllt}\annot{Partizip 2}
 
-\textbf{15} Denn[Begründung] wir haben[Präsens: Indikativ] nicht einen Hohepriester, 
-der kein Mitleid haben[Infinitv] könnte[Präteritum] mit unseren Schwachheiten, 
-sondern[Gegensatz] einen[Hohepriester], 
-der[Hohepriester],  
-in allem versucht worden ist[Passiv] 
-in ähnlicher Weise [wie wir], 
-doch[Einschränkung] ohne Sünde.
+        \hspace{2cm}\konj{und}\annot{Aufzählung} \verbstamm{aufgedeckt}\annot{Partizip 2} vor den Augen dessen\annot{WESSEN AUGEN?}, 
 
-\textbf{16} So[Folge] lasst[Präsens: Imperativ] uns 
-Nun[Zeit] mit Freimütigkeit hinzutreten[Partizip 2] zum Thron der Gnade. 
-Damit[Ergebnis] wir Barmherzigkeit erlangen[Präsens: Infinitiv] 
-\konj{Und}[Aufzählung] Gnade finden zu rechtzeitiger Hilfe!
+        \hspace{2cm}dem\annot{dessen} wir Rechenschaft zu \verbstamm{geben}\annot{Infinitiv} \verbstamm{haben}\annot{Präsens: Indikativ}.
+
+\textbf{14} \konj{Da}\annot{Quelle} wir \konj{nun}\annot{ZEIT} einen Grossen \pers{Hohepriester} \verbstamm{haben}\annot{Präsens: Indikativ},
+
+    \hspace{1cm}der\pers{Jesus}\annot{Hohepriester} die \ort{Himmel} \verbstamm{durchschritten hat}\annot{Perfekt: Indikativ}, \pers{Jesus, den Sohn Gottes}, 
+
+    \hspace{1cm}\konj{so}\annot{Folge} \verbstamm{lasst}\annot{Präsens: Imperativ} uns \verbstamm{festhalten}\annot{Infinitiv} an dem Bekenntnis!
+
+\textbf{15} \konj{Denn}\annot{Begründung} wir \verbstamm{haben}\annot{Präsens: Indikativ} nicht einen \pers{Hohepriester}\annot{Jesus},
+
+    \hspace{1cm}der kein Mitleid \verbstamm{haben}\annot{Infinitv} \verbstamm{könnte}\annot{Präteritum} mit unseren Schwachheiten, 
+
+        \hspace{2cm}\konj{sondern}\annot{Gegensatz} einen\pers{Hohepriester}, 
+
+            \hspace{3cm}der\pers{Hohepriester},  
+
+            \hspace{3cm}in allem \verbstamm{versucht worden ist}\annot{Passiv}
+
+            \hspace{3cm}in ähnlicher Weise\annot{wie wir}, 
+
+doch{Einschränkung} ohne Sünde.
+
+\textbf{16} \konj{So}{Folge} \verbstamm{lasst}\annot{Präsens: Imperativ} uns 
+Nun{Zeit} mit Freimütigkeit hinzutreten{Partizip 2} zum Thron der Gnade. 
+\konj{Damit}\annot{Ergebnis} wir Barmherzigkeit erlangen{Präsens: Infinitiv} 
+\konj{Und}{Aufzählung} Gnade \verbstamm{finden} zu rechtzeitiger Hilfe!
 
 \subsubsection{Hinweise}
 \begin{itemize}     
