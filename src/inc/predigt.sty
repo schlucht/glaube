@@ -1,9 +1,26 @@
-\newcommand{\verbN}[1]{\btc{gruen}{white}{#1}}
-\newcommand{\verbP}[1]{\verbN{#1}\textsuperscript{\textbf{P}}}
-\newcommand{\verbI}[1]{\btc{gelb}{black}{#1}}
-\newcommand{\ort}[1]{\btc{magenta}{black}{#1}} 
-\newcommand{\person}[1]{\btc{blau}{white}{#1}} 
-\newcommand{\bindW}[1]{\btc{rot}{white}{#1}}
+% predigt.sty - Makros für Predigten
+% Verwendet zentrale Farbdefinitionen aus colors.sty
+
+\RequirePackage{colors}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ALTE MAKROS (auskommentiert - siehe textanalysis.sty für vereinheitlichte Versionen)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newcommand{\verbN}[1]{\btc{gruen}{white}{#1}}
+% \newcommand{\verbP}[1]{\verbN{#1}\textsuperscript{\textbf{P}}}
+% \newcommand{\verbI}[1]{\btc{gelb}{black}{#1}}
+% \newcommand{\ort}[1]{\btc{magenta}{black}{#1}} 
+% \newcommand{\person}[1]{\btc{blau}{white}{#1}} 
+% \newcommand{\bindW}[1]{\btc{rot}{white}{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% HINWEIS: Die Makros \verbN, \verbP, \verbI, \ort, \person, \bindW, \verbK
+% sind jetzt in textanalysis.sty und bibeltext.sty definiert.
+% Laden Sie \usepackage{textanalysis} in Ihrem Dokument.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hilfsmakros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\hr}{\par\noindent\hrulefill\par}
 \newcommand{\lineheight}[1]{\setlength{\baselineskip}{{#1}\baselineskip}}

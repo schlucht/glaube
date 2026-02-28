@@ -1,0 +1,77 @@
+% textanalysis.sty
+% Makros für grammatische Textanalyse (Hebräisch, Griechisch, Deutsch)
+% Autor: OTS
+% Version: 1.0
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{textanalysis}[2026/02/28 Textanalyse Makros]
+
+\RequirePackage{colors}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ALTE FARBDEFINITIONEN (auskommentiert - siehe colors.sty)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \definecolor{verbcolor}{RGB}{0,128,0}          % Grün für Verbstämme
+% \definecolor{nouncolor}{RGB}{255,140,0}        % Orange für Nomen
+% \definecolor{conjcolor}{RGB}{255,0,0}          % Rot für Konjunktionen
+% \definecolor{prepcolor}{RGB}{0,0,255}          % Blau für Präpositionen/Partikel
+% \definecolor{annotcolor}{RGB}{128,128,128}     % Grau für Annotationen
+% \definecolor{pluralcolor}{RGB}{255,0,255}      % Magenta für Plural
+% \definecolor{locationcolor}{RGB}{200,150,255}  % Lila für Ortsangaben
+% \definecolor{imperacolor}{RGB}{243,231,8}      % Gelb für Imperativ
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Makros für Verben und Verbformen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Textfarben
+\newcommand{\verbstamm}[1]{\textcolor{verbcolor}{#1}}           %Verb (normal Text)
+\newcommand{\verbpart}[1]{\textcolor{praepositioncolor}{#1}}    %Verbpartikel (Text)
+\newcommand{\verbImp}[1]{\textcolor{imperacolor}{#1}}           %Verb (Imperativ Text)
+% Hintergrundfarben      
+\newcommand{\verbN}[1]{\cbox{verbcolor}{white}{#1}}             %Verb (normal Block)  
+\newcommand{\verbI}[1]{\cbox{verbimperativcolor}{black}{#1}}    %Verb (Imperativ Blok)
+\newcommand{\verbP}[1]{\verbN{#1}\textsuperscript{\textbf{P}}}  %Verb (Passiv)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Makros für Nomen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\nomen}[1]{\textcolor{nomencolor}{#1}}
+\newcommand{\nomenB}[1]{\cbox{nomencolor}{white}{#1}}  
+% Duplikate entfernt - siehe unten für vereinheitlichte Versionen
+
+\newcommand{\pers}[1]{\textcolor{personcolor}{#1}}
+\newcommand{\person}[1]{\cbox{blau}{white}{#1}}
+
+\newcommand{\orttxt}[1]{\textcolor{magenta}{#1}}
+\newcommand{\ort}[1]{\cbox{magenta}{white}{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Makros für Konjunktionen und Partikeln
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\konj}[1]{\textcolor{konjunktioncolor}{#1}}
+\newcommand{\bindW}[1]{\cbox{rot}{white}{#1}}
+% Verben (Konjunktiv) - Rot
+\newcommand{\verbK}[1]{\cbox{konjunktioncolor}{white}{#1}}
+% Duplikate entfernt - siehe unten für vereinheitlichte Versionen
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Makros für Präpositionen und Partikeln
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\prep}[1]{\textcolor{praepositioncolor}{#1}}
+\newcommand{\partikel}[1]{\textcolor{praepositioncolor}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Makros für besondere Formen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\plural}[1]{\textcolor{magenta}{#1}}
+
+% Annotationen in eckigen Klammern (klein und kursiv)
+\newcommand{\annot}[1]{{\footnotesize\textit{{#1}}}}
+
+
+\endinput

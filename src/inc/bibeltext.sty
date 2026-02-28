@@ -1,0 +1,219 @@
+% bibeltext.sty
+% Makros für Bibeltexte mit Versvergleich und grammatischen Annotationen
+% Autor: OTS
+% Version: 1.0
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bibeltext}[2026/02/28 Bibeltext Makros für Versvergleich]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Benötigte Pakete
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{colors}
+\RequirePackage{tabularx}
+\RequirePackage{xparse}
+\RequirePackage{calc}
+\RequirePackage{expl3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ALTE FARBDEFINITIONEN (auskommentiert - siehe colors.sty)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \definecolor{blau}{RGB}{180,210,255}      % sanftes Himmelsblau
+% \definecolor{rot}{RGB}{255,180,180}       % mildes Rot
+% \definecolor{orange}{RGB}{255,240,180}    % warmes Gold
+% \definecolor{lila}{RGB}{220,180,255}      % Purpur/Lila
+% \definecolor{gruen}{RGB}{200,255,200}     % weiches Grün
+% \definecolor{rosa}{RGB}{238,153,239}      % zartes Rosa
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Verstab-System: Mehrsprachige Bibelverse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Konfigurierbares Layout
+\newcommand{\VersNumberBox}[1]{\makebox[0em][r]{\textsuperscript{#1}}}
+\newcommand{\VersSourceFmt}[1]{[\textsc{#1}] }
+
+\ExplSyntaxOn
+\clist_new:N \g_lothar_versions_clist
+\tl_new:N \g_lothar_default_tl
+
+% Setze die Default-Bibel
+\NewDocumentCommand{\setdefault}{m}
+ {
+   \tl_gset:Nn \g_lothar_default_tl { #1 }
+ }
+
+% Setze die Auswahl-Liste
+\NewDocumentCommand{\setversions}{m}
+ {
+   \clist_gset:Nn \g_lothar_versions_clist { #1 }
+ }
+
+\NewDocumentCommand{\getdefault}{}{\tl_use:N \g_lothar_default_tl}
+\NewDocumentCommand{\getversions}{}{\clist_use:Nn \g_lothar_versions_clist {, }}
+
+% Prüfen, ob Version gesetzt werden soll
+\prg_new_conditional:Npnn \lothar_version_selected_p:n #1 { p, T, F, TF }
+ {
+   % Wenn Liste leer -> nur Default anzeigen
+   \clist_if_empty:NTF \g_lothar_versions_clist
+     {
+       \tl_if_eq:NnTF \g_lothar_default_tl { #1 }
+         { \prg_return_true: }
+         { \prg_return_false: }
+     }
+     {
+       % Wenn "ALL" in Liste -> alle anzeigen
+       \clist_if_in:NnTF \g_lothar_versions_clist { ALL }
+         { \prg_return_true: }
+         {
+           % Sonst prüfen, ob Version in Liste ist
+           \clist_if_in:NnTF \g_lothar_versions_clist { #1 }
+             { \prg_return_true: } { \prg_return_false: }
+         }
+     }
+ }
+
+% Prüfen, ob #1 die Default-Version ist
+\prg_new_conditional:Npnn \lothar_is_default_p:n #1 { p, T, F, TF }
+  {
+    \tl_if_eq:NnTF \g_lothar_default_tl { #1 }
+      { \prg_return_true: } { \prg_return_false: }
+  }
+
+% Makro für die Ausgabe von Versen mit verschiedenen Übersetzungen
+% \verstab{Versnummer}{Übersetzung}{Text}
+\NewDocumentCommand{\verstab}{ m m +m }
+ {
+   \lothar_version_selected_p:nTF { #2 }
+     {
+       \noindent
+       \begin{tabularx}{\linewidth}{@{} l X@{}}        
+         \VersNumberBox{#1} & 
+         \lothar_is_default_p:nTF{#2}
+         {#3}         
+         {\VersSourceFmt{#2}  #3}
+       \end{tabularx}\par
+     }
+     {        
+     }
+ }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Boolean-Schalter für grammatische Farbmarkierungen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bool_new:N \l_color_verbN_bool
+\bool_new:N \l_color_verbI_bool
+\bool_new:N \l_color_verbP_bool
+\bool_new:N \l_color_verbK_bool
+\bool_new:N \l_color_person_bool
+\bool_new:N \l_color_ort_bool
+\bool_new:N \l_color_bindW_bool
+\bool_new:N \l_color_bindA_bool
+\bool_new:N \l_color_bindB_bool
+\bool_new:N \l_color_bindV_bool
+
+% Standardmäßig alle Farben aktiviert
+\bool_set_true:N \l_color_verbN_bool
+\bool_set_true:N \l_color_verbI_bool
+\bool_set_true:N \l_color_verbP_bool
+\bool_set_true:N \l_color_verbK_bool
+\bool_set_true:N \l_color_person_bool
+\bool_set_true:N \l_color_ort_bool
+\bool_set_true:N \l_color_bindW_bool
+\bool_set_true:N \l_color_bindA_bool
+\bool_set_true:N \l_color_bindB_bool
+\bool_set_true:N \l_color_bindV_bool
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% VEREINHEITLICHTE MAKROS (wie in textanalysis.sty)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Verben (Normal) - Grün
+\NewDocumentCommand{\verbN}{m}{
+  \bool_if:NTF \l_color_verbN_bool
+    {\cbox{gruen}{white}{#1}}
+    {#1}
+}
+
+% Verben (Imperativ) - Gelb
+\NewDocumentCommand{\verbI}{m}{
+  \bool_if:NTF \l_color_verbI_bool
+    {\cbox{gelb}{black}{#1}}
+    {#1}
+}
+
+% Verben (Passiv) - Grün mit Superscript P
+\NewDocumentCommand{\verbP}{m}{
+  \bool_if:NTF \l_color_verbP_bool
+    {\verbN{#1}\textsuperscript{\textbf{P}}}
+    {#1}
+}
+
+% Verben (Konjunktiv) - Rot
+\NewDocumentCommand{\verbK}{m}{
+  \bool_if:NTF \l_color_verbK_bool
+    {\cbox{rot}{white}{#1}}
+    {#1}
+}
+
+% Ortsangaben - Magenta
+\NewDocumentCommand{\ort}{m}{
+  \bool_if:NTF \l_color_ort_bool
+    {\cbox{magenta}{white}{#1}}
+    {#1}
+}
+
+% Personen - Blau
+\NewDocumentCommand{\person}{m}{
+  \bool_if:NTF \l_color_person_bool
+    {\cbox{blau}{white}{#1}}
+    {#1}
+}
+
+% Bindewörter (Basis) - Rot
+\NewDocumentCommand{\bind}{m}{
+  \bool_if:NTF \l_color_bindW_bool
+    {\cbox{rot}{white}{#1}}
+    {#1}
+}
+
+% Bindewörter mit Annotationen
+\NewDocumentCommand{\bindA}{m}{
+  \bool_if:NTF \l_color_bindA_bool
+    {\bind{#1}\textsuperscript{\textbf{A}}}
+    {#1}
+}
+
+\NewDocumentCommand{\bindB}{m}{
+  \bool_if:NTF \l_color_bindB_bool
+    {\bind{#1}\textsuperscript{\textbf{B}}}
+    {#1}
+}
+
+\NewDocumentCommand{\bindV}{m}{
+  \bool_if:NTF \l_color_bindV_bool
+    {\bind{#1}\textsuperscript{\textbf{V}}}
+    {#1}
+}
+
+\ExplSyntaxOff
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hilfsmakros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\hr}{\par\noindent\hrulefill\par}
+\newcommand{\lineheight}[1]{\setlength{\baselineskip}{{#1}\baselineskip}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Optional: Absatzformatierung (kann aktiviert werden)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \setlength{\parindent}{0pt}
+% \setlength{\parskip}{0.4em}
+
+\endinput
