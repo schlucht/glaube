@@ -1,195 +1,219 @@
-# glaube
-```go
+# Projekt Organisation - LaTeX Vorlagen
 
-package main
+## Verzeichnisstruktur
 
-import (
-    "bufio"
-    "encoding/json"
-    "errors"
-    "flag"
-    "fmt"
-    "os"
-    "regexp"
-    "strconv"
-    "strings"
-)
+### `/src/inc/` - Zentrale Stil- und Klassendateien
 
-type Chapter struct {
-    Title  string  `json:"title"`
-    Verses []Verse `json:"verses"`
-}
+Dieser Ordner enthält alle wiederverwendbaren LaTeX-Pakete und Klassen für das gesamte Projekt:
 
-type Verse struct {
-    Number int    `json:"number"`
-    Source string `json:"source"`
-    Text   string `json:"text"`
-}
+#### Hauptklassen
+- **`mybib.cls`** - Hauptklasse für Bibelstudienmaterialien (basiert auf scrartcl)
+  - Enthält alle grundlegenden Pakete (babel, fontspec, tcolorbox, etc.)
+  - Definiert Header/Footer-Layout mit Logo
+  - Geometrie-Einstellungen
 
-var (
-    // \subsection*{Kapitel 7}
-    reSubsection = regexp.MustCompile(`^\\subsection\*\{([^}]*)\}`)
-    // optional: \addcontentsline{toc}{subsection}{Kapitel 7}
-    reAddContents = regexp.MustCompile(`^\\addcontentsline\{toc\}\{subsection\}\{([^}]*)\}`)
-    // \verstab{1}{Schlachter}{Text …}
-    // Gruppiert: (1) Versnummer, (2) Quelle, (3) Text
-    reVerstab = regexp.MustCompile(`^\\verstab\{(\d+)\}\{([^}]*)\}\{(.*)\}\s*$`)
-)
+- **`mybibbook.cls`** - Klasse für längere Buchprojekte
 
-func parseTex(path string) (Chapter, error) {
-    file, err := os.Open(path)
-    if err != nil {
-        return Chapter{}, err
-    }
-    defer file.Close()
+#### Stil-Dateien (.sty)
+- **`colors.sty`** ⭐ **NEU** - Zentrale Farbdefinitionen
+  - Alle Farbdefinitionen an einem Ort
+  - Grammatische Kategorien:
+    - Personen: Blau (`personcolor`)
+    - Orte: Magenta (`ortcolor`)
+    - Verben: Grün (`verbcolor`)
+    - Imperativ: Gelb (`verbimperativcolor`)
+    - Konjunktiv: Rot (`verbkonjunktivcolor`)
+  - Theologische Konzepte (gnade, gericht, heiligkeit, bund, etc.)
+  - Standard-Basisfarben (rot, gelb, gruen, blau, magenta, orange, lila, rosa)
+  - Hilfsmakros: `\bt{}`, `\btc{}`, `\cbox{}`
 
-    var chap Chapter
-    scanner := bufio.NewScanner(file)
-    lineNo := 0
+- **`bible_style.sty`** - Bibel-spezifische Makros
+  - Bibelzitate-Makros (`\bib{}`, `\bibeltext{}`, `\bibelbox{}`)
+  - Highlight-Makros
+  - Diverse Formatierungshilfen
+  - Verwendet `colors.sty` für alle Farben
 
-    for scanner.Scan() {
-        line := scanner.Text()
-        lineNo++
+- **`textanalysis.sty`** ⭐ **NEU**
+  - Makros für grammatische Textanalyse (Hebräisch, Griechisch, Deutsch)
+  - Verwendet `colors.sty` für standardisierte Farben
+  - Farbcodierte grammatische Kategorien:
+    - Verben: `\verbstamm{}`, `\verbN{}` (grün), `\verbI{}` (gelb), `\verbP{}` (grün+P), `\verbK{}` (rot)
+    - Nomen: `\nomen{}` (orange)
+    - Personen: `\pers{}`, `\person{}` (blau)
+    - Ortsangaben: `\ort{}` (magenta)
+    - Konjunktionen: `\konj{}`, `\bindW{}` (rot)
+    - Präpositionen: `\prep{}`, `\partikel{}` (blau)
+    - Annotationen: `\annot{}` (grau, klein)
 
-        // Trim BOM (falls vorhanden) und Whitespace
-        line = strings.TrimSpace(strings.TrimPrefix(line, "\uFEFF"))
-        if line == "" {
-            continue
-        }
+- **`textmakro.sty`** ⭐ **NEU** - Vereinfachte Text-Makros
+  - Einfache, übersichtliche Makros mit optionaler Box-/Textfarbe
+  - Syntax: `\makro{Text}` (Textfarbe) oder `\makro[b]{Text}` (Box)
+  - **Verben**: `\verb{}`, `\verbI{}` (imperativ), `\verbP{}` (passiv)
+  - **Nomen**: `\nomen{}`
+  - **Konjunktionen**: `\konj{}`
+  - **Orte**: `\ort{}`
+  - **Personen**: `\person{}`, `\mensch{}`
+  - **Theologisch**: `\gott{}`, `\jesus{}`, `\geist{}`, `\israel{}`, `\teufel{}`
+  - Dokumentation: [src/inc/dokus/textmakro_anleitung.md](src/inc/dokus/textmakro_anleitung.md)
 
-        // Kapitel-Titel (erste Übereinstimmung gewinnt)
-        if chap.Title == "" {
-            if m := reSubsection.FindStringSubmatch(line); m != nil {
-                chap.Title = latexUnescape(m[1])
-                continue
-            }
-            if m := reAddContents.FindStringSubmatch(line); m != nil {
-                chap.Title = latexUnescape(m[1])
-                continue
-            }
-        }
+- **`bibeltext.sty`** ⭐ **NEU**
+  - Verwendet `colors.sty` für standardisierte Farben
+  - Verstab-System für mehrsprachige Bibelverse
+    - `\verstab{Versnummer}{Übersetzung}{Text}`
+    - `\setdefault{Übersetzung}` - Hauptübersetzung setzen
+    - `\setversions{Liste}` - Zu anzeigende Übersetzungen auswählen
+  - Grammatische Makros mit optionalen Farben (per Boolean aktivierbar):
+    - Verben: `\verbN{}` (grün), `\verbI{}` (gelb), `\verbP{}` (grün+P), `\verbK{}` (rot)
+    - Personen: `\person{}` (blau)
+    - Orte: `\ort{}` (magenta)
+    - Bindewörter: `\bind{}`, `\bindA{}`, `\bindB{}`, `\bindV{}` (rot)
+  - Hilfsmakros: `\hr`, `\lineheight{}`
 
-        // Verse
-        if m := reVerstab.FindStringSubmatch(line); m != nil {
-            num, err := strconv.Atoi(m[1])
-            if err != nil {
-                return chap, fmt.Errorf("ungültige Versnummer in Zeile %d: %v", lineNo, err)
-            }
-            source := latexUnescape(m[2])
-            text := latexUnescape(m[3])
+- **`predigt.sty`** - Predigt-spezifische Makros
+  - Verwendet `colors.sty` für standardisierte Farben
+  - Hilfsmakros (`\hr`, `\lineheight{}`, `\q{}`)
+  - Verweist auf `textanalysis.sty` für grammatische Makros
 
-            chap.Verses = append(chap.Verses, Verse{
-                Number: num,
-                Source: source,
-                Text:   text,
-            })
-            continue
-        }
-    }
+- **`header.sty`** - Alternative Header/Footer Einstellungen
+  - Überschreibt die Standard-Header aus mybib.cls
+  - Benutzerdefinierte Kopf- und Fußzeilen
 
-    if err := scanner.Err(); err != nil {
-        return chap, err
-    }
+- **`beamerthememnrstyle.sty`** - Beamer-Präsentationsthema
 
-    if chap.Title == "" && len(chap.Verses) == 0 {
-        return chap, errors.New("keine passenden LaTeX-Strukturen gefunden (\n  erwartet: \\subsection*{…} oder \\verstab{…}{…}{…}\n)")
-    }
-    return chap, nil
-}
+#### Hilfsdateien
+- **`bibelbücher.txt`** - Liste aller Bibelbücher
 
-// latexUnescape nimmt einfache LaTeX-Formattokens aus dem Fließtext raus.
-// Erweiterbar je nach Bedarf (z.B. \emph{}, \"a, \, etc.)
-func latexUnescape(s string) string {
-    // Entferne einfache Umbrüche am Ende (z.B. \\)
-    s = strings.TrimSpace(s)
+## Verwendung
 
-    // Gängige LaTeX-Entities (minimale Behandlung)
-    replacements := map[string]string{
-        `---`: "—",
-        `--`:  "–",
-        `\%`:  "%",
-        `\_`:  "_",
-        `\#`:  "#",
-        `\&`:  "&",
-        `\,`:  " ",
-        `~`:   " ",
-    }
+### Standard-Dokument
+```latex
+\documentclass[12pt]{../../inc/mybib}
+\author{Ihr Name}
 
-    for k, v := range replacements {
-        s = strings.ReplaceAll(s, k, v)
-    }
+\setincpath{../../inc/}
+\usepackage{bible_style}
+\graphicspath{{../../assets/images/}}
 
-    // Entferne einfache Formatkommandos wie \emph{...}, \textbf{...}
-    // Grob: \cmd{...} -> ...
-    reCmdBraces := regexp.MustCompile(`\\[a-zA-Z]+\{([^}]*)\}`)
-    for {
-        if !reCmdBraces.MatchString(s) {
-            break
-        }
-        s = reCmdBraces.ReplaceAllString(s, `$1`)
-    }
-
-    // Entferne verbleibende Backslashes vor normalen Buchstaben, z.B. \"a -> ä (minimal, deutsch)
-    // Hier sehr rudimentär – für echte Umlaute könntest du eine vollständige Mapping-Tabelle einführen.
-    // Beispielhafte Ersetzungen:
-    umlaut := map[string]string{
-        `\"a`: "ä", `\"A`: "Ä",
-        `\"o`: "ö", `\"O`: "Ö",
-        `\"u`: "ü", `\"U`: "Ü",
-        `\'a`: "á", `\'e`: "é", `\'i`: "í", `\'o`: "ó", `\'u`: "ú",
-        "\`a": "à", "\`e": "è", "\`i": "ì", "\`o": "ò", "\`u": "ù",
-        `\^a`: "â", `\^e`: "ê", `\^i`: "î", `\^o`: "ô", `\^u`: "û",
-    }
-    for k, v := range umlaut {
-        s = strings.ReplaceAll(s, k, v)
-    }
-
-    // Entferne sonstige Backslashes, die vor normalen Zeichen stehen
-    s = regexp.MustCompile(`\\([{}])`).ReplaceAllString(s, `$1`)
-
-    return s
-}
-
-func main() {
-    in := flag.String("in", "", "Pfad zur LaTeX-Datei (UTF-8)")
-    out := flag.String("out", "", "Ausgabedatei (JSON). Leer = stdout")
-    flag.Parse()
-
-    if *in == "" {
-        fmt.Fprintln(os.Stderr, "Bitte mit -in <file.tex> aufrufen")
-        os.Exit(1)
-    }
-
-    chapter, err := parseTex(*in)
-    if err != nil {
-        fmt.Fprintln(os.Stderr, "Fehler:", err)
-        os.Exit(1)
-    }
-
-    enc := json.NewEncoder(os.Stdout)
-    enc.SetIndent("", "  ")
-
-    if *out == "" {
-        if err := enc.Encode(chapter); err != nil {
-            fmt.Fprintln(os.Stderr, "JSON-Fehler:", err)
-            os.Exit(1)
-        }
-        return
-    }
-
-    f, err := os.Create(*out)
-    if err != nil {
-        fmt.Fprintln(os.Stderr, "Kann Ausgabedatei nicht erstellen:", err)
-        os.Exit(1)
-    }
-    defer f.Close()
-
-    enc = json.NewEncoder(f)
-    enc.SetIndent("", "  ")
-    if err := enc.Encode(chapter); err != nil {
-        fmt.Fprintln(os.Stderr, "JSON-Fehler:", err)
-        os.Exit(1)
-    }
-}
-
+\begin{document}
+% Ihr Inhalt
+\end{document}
 ```
+
+### Textanalyse-Dokument 
+```latex
+\documentclass[12pt]{../../inc/mybib}
+\author{OTS}
+
+\setincpath{../../inc/}
+\usepackage{bible_style}
+\usepackage{textanalysis}  % Für grammatische Analyse
+\graphicspath{{../../assets/images/}}
+
+% Absatzformatierung (optional)
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\begin{document}
+\section{Textanalysen}
+\konj{Denn} das Wort \pers{Gottes} \verbstamm{ist} lebendig...
+\end{document}
+```
+
+### Predigt-Dokument
+```latex
+\documentclass[12pt]{../../inc/mybib}
+\author{Lothar Schmid}
+
+\setincpath{../../inc/}
+\usepackage{bible_style}
+\usepackage{header}    % Alternative Header-Einstellungen
+\usepackage{predigt}   % Predigt-Makros
+\graphicspath{{../../assets/images/}}
+
+\begin{document}
+% Predigt-Inhalt
+\end{document}
+```
+
+### Bibeltext-Dokument (z.B. AT_Bibeltext.tex, NT_Bibeltext.tex)
+```latex
+\documentclass[14pt]{../../inc/mybib}
+\author{OTS}
+
+\setincpath{../../inc/}
+\usepackage{bible_style}
+\usepackage{bibeltext}  % Verstab-System und grammatische Makros
+\graphicspath{{../../assets/images/}}
+\usepackage{header}
+\usepackage{changepage}
+
+% Absatzformatierung
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+% Konfiguration für Versvergleich
+\setdefault{SCHL}           % Schlachter als Hauptversion
+\setversions{SCHL,ELB,GR}   % Zeige diese Übersetzungen an
+% \setversions{ALL}         % oder: zeige alle Übersetzungen
+
+\begin{document}
+% Mehrsprachige Verse
+\verstab{1}{SCHL}{Im Anfang war das Wort...}
+\verstab{1}{ELB}{Im Anfang war das Wort...}
+\verstab{1}{GR}{Ἐν ἀρχῇ ἦν ὁ λόγος...}
+
+% Grammatische Markierungen (mit optionalen Farben)
+\verbN{sprach} \person{Gott} zu \person{Abraham} in \ort{Ur}
+\end{document}
+```
+
+## Projektbereiche
+
+### `/src/EBTC/` - EBTC Studienmaterialien
+- **3A/** - Textanalysen (nutzt textanalysis.sty)
+- **GnGP/** - Gott nach Gottes Plan
+- **Hg1/**, **Hg2/** - Hermeneutik
+- **Substitution/** - Substitutionstheorie
+
+### `/src/Predigten/` - Predigtmanuskripte
+- **Vorlage/** - Predigtvorlagen
+- Verschiedene Predigtreihen (Philipper, Psalm63, etc.)
+
+### `/src/Bibel/` - Bibelkommentare
+- **AT/** - Altes Testament
+- **NT/** - Neues Testament
+
+### `/src/Vorträge/` - Präsentationen und Vorträge
+
+### `/src/Briefe/` - Briefvorlagen
+
+## Änderungsprotokoll
+
+### 28.02.2026
+- ✅ Neue Datei `textanalysis.sty` erstellt
+- ✅ Grammatische Makros von `Josua.tex` nach `textanalysis.sty` verschoben
+- ✅ `Josua.tex` bereinigt und `textanalysis.sty` eingebunden
+- ✅ Neue Datei `bibeltext.sty` erstellt
+- ✅ Verstab-System und grammatische Makros von `AT_Bibeltext.tex` und `NT_Bibeltext.tex` nach `bibeltext.sty` verschoben
+- ✅ `AT_Bibeltext.tex` bereinigt und `bibeltext.sty` eingebunden
+- ✅ `NT_Bibeltext.tex` bereinigt und `bibeltext.sty` eingebunden
+- ✅ **Neue Datei `colors.sty` erstellt** - Zentrale Farbdefinitionen
+- ✅ **Farbdefinitionen zentralisiert**: Alle Farben aus `bible_style.sty`, `textanalysis.sty`, `bibeltext.sty` und `predigt.sty` nach `colors.sty` verschoben
+- ✅ **Standardisierte Farbschema**:
+  - Personen = Blau
+  - Orte = Magenta
+  - Verben = Grün
+  - Imperativ = Gelb
+  - Konjunktiv = Rot
+  - Verben Passiv = Grün + Superscript "P"
+- ✅ **Alte Farbdefinitionen auskommentiert** (nicht gelöscht) zum Vergleich
+- ✅ **Makros vereinheitlicht**: `\verbN`, `\verbI`, `\verbP`, `\verbK`, `\person`, `\ort`, `\bindW` in allen Dateien konsistent
+- 📝 Bessere Trennung zwischen projektweiten Stilen (inc/) und dokumentspezifischen Einstellungen
+
+## Best Practices
+
+1. **Wiederverwendbare Makros** gehören in `/src/inc/*.sty` Dateien
+2. **Dokumentspezifische Einstellungen** bleiben in den `.tex` Dateien
+3. **Relative Pfade** nutzen: `../../inc/mybib`
+4. **Standardautor** kann in der Dokumentklasse überschrieben werden
+5. **Bilder** zentral in `/src/assets/images/` ablegen

@@ -29,6 +29,7 @@
 \bool_new:N \l_color_geist_bool
 \bool_new:N \l_color_israel_bool
 \bool_new:N \l_color_teufel_bool
+\bool_new:N \l_color_sp_bool
 
 % Standardmäßig alle Farben aktiviert
 \bool_set_true:N \l_color_verb_bool
@@ -43,6 +44,7 @@
 \bool_set_true:N \l_color_geist_bool
 \bool_set_true:N \l_color_israel_bool
 \bool_set_true:N \l_color_teufel_bool
+\bool_set_true:N \l_color_sp_bool
 
 \ExplSyntaxOff
 
@@ -257,7 +259,20 @@
 % HILFSMAKROS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% \ExplSyntaxOn
+
+% % Teufel - Gericht (Rot) rgb(255,180,180)
+% \NewDocumentCommand{\spa}{m}{%
+%   \bool_if:NTF \l_color_sp_bool
+%     {     
+%         {\vspace*{#1cm}}                  % Einzug
+%     }                                   
+% }
+
+% \ExplSyntaxOff
+
 % Annotation - Grau, klein, kursiv
-\newcommand{\annot}[1]{{\footnotesize\textit{{#1}}}}
+\newcommand{\annot}[1]{{\footnotesize\textit{[#1]}}}
+\newcommand{\spa}[1]{\hspace*{#1em}} % Horizontale Einrückung
 
 \endinput

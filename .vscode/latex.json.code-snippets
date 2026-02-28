@@ -27,17 +27,25 @@
 	// }  
 	
 	
-  "Verbstamm": {
-    "prefix": "vs",
-    "body": "\\\\verbstamm{${TM_SELECTED_TEXT:$1}}$0"
+  "Verben": {
+    "prefix": "vb",
+    "body": "\\\\vb{${TM_SELECTED_TEXT:$1}}$0"
   },
-  "Verbpart": {
+  "Imperativ": {
+    "prefix": "vi",
+    "body": "\\\\verbI{${TM_SELECTED_TEXT:$1}}$0"
+  },
+  "Verbpassiv": {
     "prefix": "vp",
-    "body": "\\\\verbpart{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\verbP{${TM_SELECTED_TEXT:$1}}$0"
   },
   "Person": {
     "prefix": "ps",
-    "body": "\\\\pers{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\person{${TM_SELECTED_TEXT:$1}}$0"
+  },
+  "Mensch": {
+    "prefix": "me",
+    "body": "\\\\mensch{${TM_SELECTED_TEXT:$1}}$0"
   },
   "Nomen": {
     "prefix": "nm",
@@ -66,6 +74,10 @@
   "Annotation": {
     "prefix": "an",
     "body": "\\\\annot{${TM_SELECTED_TEXT:$1}}$0"
+  },
+  "Space": {
+    "prefix": "spa",
+    "body": "\\\\spa{$1}$0"
   }
 }
 

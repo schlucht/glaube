@@ -126,21 +126,21 @@
 \newcommand{\hh}[1]{\textsuperscript{#1}} %% Text Hochstellen
 \newcommand{\es}[1]{[#1]}
 
-\newcommand{\gott}[2][red]{%
+\newcommand{\gottIco}[2][red]{%
   \tikz[baseline]{
     \node[inner sep=0pt,outer sep=0pt] (w) {#2};
     \node[above=-.2cm of w, text=#1] {$\triangle$};
   }%
 }
 
-\newcommand{\jesus}[2][red]{%
+\newcommand{\jesusIco}[2][red]{%
   \tikz[baseline]{
     \node[inner sep=0pt,outer sep=0pt] (w) {#2};
     \node[above=-.2cm of w, text=#1] {\Large$\dagger$};
   }%
 }
 
-\newcommand{\geist}[2][red]{%
+\newcommand{\geistIco}[2][red]{%
   \tikz[baseline]{
     \node[inner sep=0pt,outer sep=0pt] (w) {#2};
     \node[above=-.2cm of w, text=#1] {\Large$\preccurlyeq$};
