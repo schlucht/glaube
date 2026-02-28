@@ -1,0 +1,493 @@
+% textmakro.sty - Schnellreferenz
+% Autor: OTS
+% Datum: 28. Februar 2026
+
+\documentclass[12pt,a4paper]{scrartcl}
+
+% Pakete
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{textmakro}
+
+% Seitengeometrie
+\geometry{
+  left=2.5cm,
+  right=2.5cm,
+  top=2.5cm,
+  bottom=2.5cm
+}
+
+% Listings-Konfiguration
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  backgroundcolor=\color{gray!10},
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!60!black},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  language=[LaTeX]TeX
+}
+
+% Farbdefinitionen für Demonstration
+\definecolor{verbcolor}{RGB}{50,205,50}
+\definecolor{verbimperativcolor}{RGB}{255,255,0}
+\definecolor{nomencolor}{RGB}{255,140,0}
+\definecolor{konjunktioncolor}{RGB}{255,0,0}
+\definecolor{ortcolor}{RGB}{255,0,255}
+\definecolor{personcolor}{RGB}{100,100,205}
+\definecolor{gnade}{RGB}{180,210,255}
+\definecolor{bund}{RGB}{220,180,255}
+\definecolor{gericht}{RGB}{255,180,180}
+
+% Titel
+\title{\textbf{textmakro.sty}\\[0.5em]\Large Schnellreferenz für Textmarkierungs-Makros}
+\author{OTS}
+\date{28. Februar 2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Installation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Um das \texttt{textmakro}-Paket zu verwenden, fügen Sie folgende Zeile in Ihre Präambel ein:
+
+\begin{lstlisting}
+\usepackage{textmakro}
+\end{lstlisting}
+
+Das Paket erfordert:
+\begin{itemize}
+  \item \texttt{colors.sty} -- Zentrale Farbdefinitionen
+  \item \texttt{xparse} -- Für erweiterte Makro-Definitionen
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Verwendung}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Alle Makros in \texttt{textmakro.sty} unterstützen zwei Modi:
+
+\begin{itemize}
+  \item \textbf{Textfarbe:} \lstinline|\makro{Text}| -- Nur der Text wird eingefärbt
+  \item \textbf{Box-Hintergrund:} \lstinline|\makro[b]{Text}| -- Text mit farbigem Hintergrund
+\end{itemize}
+
+\subsection{Syntax-Beispiel}
+
+\begin{lstlisting}
+\verb{ging}         % Text in Grün
+\verb[b]{ging}      % Text mit grünem Hintergrund
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Makro-Übersicht}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%--------------------------------------------------------
+\subsection{Verben}
+%--------------------------------------------------------
+
+\begin{longtable}{llp{8cm}}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\endhead
+%
+\lstinline|\verb{Text}| & Grün (RGB 50,205,50) & Normale Verben \\
+& & Beispiel: \lstinline|Abraham \verb{ging} nach Ur.| \\[0.5em]
+%
+\lstinline|\verbI{Text}| & Gelb (RGB 255,255,0) & Imperative Verben \\
+& & Beispiel: \lstinline|\verbI{Gehe} und \verbI[b]{verkünde}!| \\[0.5em]
+%
+\lstinline|\verbP{Text}| & Grün + P & Passive Verben \\
+& & Beispiel: \lstinline|Das Wort \verbP{wurde gesprochen}.| \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Beispiele}
+
+\begin{lstlisting}
+Abraham \verb{ging} nach Ur.
+\verbI{Gehe} und \verbI[b]{verkünde}!
+Das Wort \verbP{wurde gesprochen}.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Nomen}
+%--------------------------------------------------------
+
+\begin{longtable}{llp{8cm}}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\endhead
+%
+\lstinline|\nomen{Text}| & Orange (RGB 255,140,0) & Nomen und Substantive \\
+& & Beispiel: \lstinline|Das \nomen{Haus} des Herrn.| \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Beispiel}
+
+\begin{lstlisting}
+Das \nomen{Haus} des \nomen[b]{Herrn}.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Konjunktionen}
+%--------------------------------------------------------
+
+\begin{longtable}{llp{8cm}}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\endhead
+%
+\lstinline|\konj{Text}| & Rot (RGB 255,0,0) & Bindewörter \\
+& & Beispiel: \lstinline|Abraham \konj{und} Sara.| \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Beispiel}
+
+\begin{lstlisting}
+Abraham \konj{und} Sara, \konj[b]{aber} auch Lot.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Orte und Geographie}
+%--------------------------------------------------------
+
+\begin{longtable}{llp{8cm}}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\endhead
+%
+\lstinline|\ort{Text}| & Magenta (RGB 255,0,255) & Geografische Orte \\
+& & Beispiel: \lstinline|Von \ort{Jerusalem} nach \ort[b]{Bethlehem}.| \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Beispiel}
+
+\begin{lstlisting}
+Von \ort{Jerusalem} nach \ort[b]{Bethlehem}.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Personen -- Allgemein}
+%--------------------------------------------------------
+
+\begin{longtable}{llp{8cm}}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\endhead
+%
+\lstinline|\person{Text}| & Blau (RGB 100,100,205) & Allgemeine Personen \\
+& & Beispiel: \lstinline|\person{Abraham} war ein Glaubensmann.| \\[0.5em]
+%
+\lstinline|\mensch{Text}| & Blau (RGB 100,100,205) & Menschliche Wesen \\
+& & Beispiel: \lstinline|\mensch{Adam} war der erste Mensch.| \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Beispiel}
+
+\begin{lstlisting}
+\person{Abraham} war ein \mensch[b]{Mensch} des Glaubens.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Theologische Personen -- Gottheit}
+%--------------------------------------------------------
+
+\begin{longtable}{llp{8cm}}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\endhead
+%
+\lstinline|\gott{Text}| & Himmelsblau (RGB 180,210,255) & Gott \\
+& & Beispiel: \lstinline|\gott{Gott} ist Liebe.| \\[0.5em]
+%
+\lstinline|\jesus{Text}| & Himmelsblau (RGB 180,210,255) & Jesus Christus \\
+& & Beispiel: \lstinline|\jesus{Jesus} ist der Sohn Gottes.| \\[0.5em]
+%
+\lstinline|\geist{Text}| & Himmelsblau (RGB 180,210,255) & Heiliger Geist \\
+& & Beispiel: \lstinline|Der \geist{Heilige Geist} wirkt.| \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Beispiel}
+
+\begin{lstlisting}
+\gott{Gott} sandte \jesus[b]{Jesus}, und der \geist{Heilige Geist} wirkt.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Theologische Personen -- Volk Gottes}
+%--------------------------------------------------------
+
+\begin{longtable}{llp{8cm}}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\endhead
+%
+\lstinline|\israel{Text}| & Lila/Bund (RGB 220,180,255) & Israel \\
+& & Beispiel: \lstinline|\gott{Gott} erwählte \israel[b]{Israel}.| \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Beispiel}
+
+\begin{lstlisting}
+\gott{Gott} erwählte \israel[b]{Israel} als sein Volk.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Theologische Personen -- Gegenspieler}
+%--------------------------------------------------------
+
+\begin{longtable}{llp{8cm}}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\endhead
+%
+\lstinline|\teufel{Text}| & Rot/Gericht (RGB 255,180,180) & Teufel/Satan \\
+& & Beispiel: \lstinline|\teufel{Der Teufel} versucht.| \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Beispiel}
+
+\begin{lstlisting}
+\teufel{Der Teufel} versucht, \teufel[b]{Satan} widersetzt sich.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Hilfsmakros}
+%--------------------------------------------------------
+
+\begin{longtable}{lp{10cm}}
+\toprule
+\textbf{Makro} & \textbf{Beschreibung} \\
+\midrule
+\endhead
+%
+\lstinline|\annot{Text}| & Annotation (grau, klein, kursiv) für Erklärungen \\
+& Beispiel: \lstinline|\annot{Dies ist eine Erklärung.}| \\
+\bottomrule
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Vollständiges Beispiel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{lstlisting}
+\documentclass[12pt]{../../inc/mybib}
+\author{OTS}
+
+\setincpath{../../inc/}
+\usepackage{bible_style}
+\usepackage{textmakro}
+\graphicspath{{../../assets/images/}}
+
+\begin{document}
+
+\section{Genesis 12,1-3}
+
+\gott[b]{Der HERR} \verb{sprach} zu \person{Abram}: 
+
+\verbI{Geh} aus deinem Land \konj{und} von deiner Verwandtschaft 
+\konj{und} aus dem \nomen{Haus} deines Vaters in das \ort{Land}, 
+das ich dir \verb{zeigen} werde.
+
+\konj{Und} ich will dich zu einem gro{\ss}en \nomen{Volk} \verb{machen} 
+\konj{und} will dich \verb{segnen} \konj{und} dir einen gro{\ss}en 
+\nomen{Namen} \verb{machen}, \konj{und} du sollst ein \nomen{Segen} sein.
+
+\annot{Dies ist der Anfang der Verhei{\ss}ung an Abraham.}
+
+\end{document}
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Farbübersicht}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{longtable}{lll}
+\toprule
+\textbf{Kategorie} & \textbf{Farbe} & \textbf{RGB} \\
+\midrule
+\endhead
+%
+Verben & Grün & rgb(50,205,50) \\
+Imperativ & Gelb & rgb(255,255,0) \\
+Nomen & Orange & rgb(255,140,0) \\
+Konjunktionen & Rot & rgb(255,0,0) \\
+Orte & Magenta & rgb(255,0,255) \\
+Personen & Blau & rgb(100,100,205) \\
+Gott/Jesus/Geist & Himmelsblau & rgb(180,210,255) \\
+Israel & Lila & rgb(220,180,255) \\
+Teufel & Rot (hell) & rgb(255,180,180) \\
+\bottomrule
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Farben Deaktivieren (Boolean-Schalter)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Alle Makros unterstützen Boolean-Schalter, um Farben selektiv zu deaktivieren. Dies ist nützlich für:
+
+\begin{itemize}
+  \item Schwarz-Weiß-Druck
+  \item Vereinfachte Ansichten
+  \item Selektive Hervorhebung einzelner Kategorien
+\end{itemize}
+
+%--------------------------------------------------------
+\subsection{Verwendung}
+%--------------------------------------------------------
+
+Fügen Sie diese Zeilen \textbf{nach} \lstinline|\usepackage{textmakro}| in Ihrer Präambel ein:
+
+\begin{lstlisting}
+\ExplSyntaxOn
+
+% Farben deaktivieren (false) oder aktivieren (true)
+\bool_set_false:N \l_color_verb_bool      % Deaktiviert normale Verben
+\bool_set_false:N \l_color_verbI_bool     % Deaktiviert Imperative
+\bool_set_false:N \l_color_verbP_bool     % Deaktiviert Passiv-Verben
+\bool_set_false:N \l_color_nomen_bool     % Deaktiviert Nomen
+\bool_set_false:N \l_color_konj_bool      % Deaktiviert Konjunktionen
+\bool_set_false:N \l_color_ort_bool       % Deaktiviert Orte
+\bool_set_false:N \l_color_person_bool    % Deaktiviert Personen
+\bool_set_false:N \l_color_gott_bool      % Deaktiviert Gott
+\bool_set_false:N \l_color_jesus_bool     % Deaktiviert Jesus
+\bool_set_false:N \l_color_geist_bool     % Deaktiviert Heiliger Geist
+\bool_set_false:N \l_color_israel_bool    % Deaktiviert Israel
+\bool_set_false:N \l_color_teufel_bool    % Deaktiviert Teufel
+
+\ExplSyntaxOff
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Beispiel: Nur theologische Personen hervorheben}
+%--------------------------------------------------------
+
+\begin{lstlisting}
+\documentclass[12pt]{../../inc/mybib}
+\author{OTS}
+
+\setincpath{../../inc/}
+\usepackage{bible_style}
+\usepackage{textmakro}
+
+% Alle Farben au{\ss}er theologischen Personen deaktivieren
+\ExplSyntaxOn
+\bool_set_false:N \l_color_verb_bool
+\bool_set_false:N \l_color_verbI_bool
+\bool_set_false:N \l_color_verbP_bool
+\bool_set_false:N \l_color_nomen_bool
+\bool_set_false:N \l_color_konj_bool
+\bool_set_false:N \l_color_ort_bool
+\bool_set_false:N \l_color_person_bool
+% Gott, Jesus, Geist, Israel, Teufel bleiben aktiviert (true)
+\ExplSyntaxOff
+
+\begin{document}
+\gott{Gott} sprach zu Abraham...  % Nur Gott wird farbig sein
+\end{document}
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Beispiel: Schwarz-Weiß-Druck}
+%--------------------------------------------------------
+
+\begin{lstlisting}
+\ExplSyntaxOn
+% Alle Farben deaktivieren
+\bool_set_false:N \l_color_verb_bool
+\bool_set_false:N \l_color_verbI_bool
+\bool_set_false:N \l_color_verbP_bool
+\bool_set_false:N \l_color_nomen_bool
+\bool_set_false:N \l_color_konj_bool
+\bool_set_false:N \l_color_ort_bool
+\bool_set_false:N \l_color_person_bool
+\bool_set_false:N \l_color_gott_bool
+\bool_set_false:N \l_color_jesus_bool
+\bool_set_false:N \l_color_geist_bool
+\bool_set_false:N \l_color_israel_bool
+\bool_set_false:N \l_color_teufel_bool
+\ExplSyntaxOff
+\end{lstlisting}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Hinweis]
+Standardmäßig sind alle Farben aktiviert (\lstinline|\bool_set_true:N|). Sie müssen nur die Farben deaktivieren, die Sie nicht benötigen.
+\end{tcolorbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tipps und Best Practices}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+  \item \textbf{Konsistenz:} Verwenden Sie entweder nur Textfarben ODER nur Box-Farben in einem Dokument für ein einheitliches Erscheinungsbild.
+  
+  \item \textbf{Lesbarkeit:} Zu viele Box-Farben können überladen wirken -- setzen Sie sie sparsam ein.
+  
+  \item \textbf{Kombinationen:} Box-Farben eignen sich gut für wichtige Schlüsselwörter, während Textfarben für allgemeine Markierungen geeignet sind.
+  
+  \item \textbf{Annotationen:} Verwenden Sie \lstinline|\annot{}| für Erklärungen, die nicht Teil des Haupttextes sind.
+  
+  \item \textbf{Boolean-Schalter:} Nutzen Sie Boolean-Schalter, um Farben für Druck oder fokussierte Analysen zu deaktivieren.
+  
+  \item \textbf{Selektive Hervorhebung:} Deaktivieren Sie alle Farben au{\ss}er einer Kategorie, um spezifische grammatische oder theologische Aspekte zu analysieren.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Boolean-Schalter Referenz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{longtable}{lll}
+\toprule
+\textbf{Boolean-Variable} & \textbf{Makro(s)} & \textbf{Beschreibung} \\
+\midrule
+\endhead
+%
+\lstinline|\l_color_verb_bool| & \lstinline|\verb{}| & Normale Verben \\
+\lstinline|\l_color_verbI_bool| & \lstinline|\verbI{}| & Imperative Verben \\
+\lstinline|\l_color_verbP_bool| & \lstinline|\verbP{}| & Passive Verben \\
+\lstinline|\l_color_nomen_bool| & \lstinline|\nomen{}| & Nomen/Substantive \\
+\lstinline|\l_color_konj_bool| & \lstinline|\konj{}| & Konjunktionen \\
+\lstinline|\l_color_ort_bool| & \lstinline|\ort{}| & Orte/Geographie \\
+\lstinline|\l_color_person_bool| & \lstinline|\person{}, \mensch{}| & Personen \\
+\lstinline|\l_color_gott_bool| & \lstinline|\gott{}| & Gott \\
+\lstinline|\l_color_jesus_bool| & \lstinline|\jesus{}| & Jesus Christus \\
+\lstinline|\l_color_geist_bool| & \lstinline|\geist{}| & Heiliger Geist \\
+\lstinline|\l_color_israel_bool| & \lstinline|\israel{}| & Israel \\
+\lstinline|\l_color_teufel_bool| & \lstinline|\teufel{}| & Teufel/Satan \\
+\bottomrule
+\end{longtable}
+
+\end{document}

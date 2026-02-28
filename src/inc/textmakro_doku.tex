@@ -1,0 +1,267 @@
+% textmakro.sty - Dokumentation
+% Autor: OTS
+% Datum: 28. Februar 2026
+
+\documentclass[12pt,a4paper]{scrartcl}
+
+% Pakete
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{textmakro}
+
+% Seitengeometrie
+\geometry{
+  left=2.5cm,
+  right=2.5cm,
+  top=2.5cm,
+  bottom=2.5cm
+}
+
+% Listings-Konfiguration
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  backgroundcolor=\color{gray!10},
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!60!black},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  language=[LaTeX]TeX
+}
+
+% Titel
+\title{\textbf{textmakro.sty}\\[0.5em]\Large Schnellreferenz}
+\author{OTS}
+\date{28. Februar 2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Installation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Um das \texttt{textmakro}-Paket zu verwenden:
+
+\begin{lstlisting}
+\usepackage{textmakro}
+\end{lstlisting}
+
+Erfordert: \texttt{colors.sty} und \texttt{xparse}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Verwendung}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Zwei Modi:
+\begin{itemize}
+  \item \textbf{Textfarbe:} \lstinline|\makro{Text}|
+  \item \textbf{Box:} \lstinline|\makro[b]{Text}|
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Makro-{\"U}bersicht}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%--------------------------------------------------------
+\subsection{Verben}
+%--------------------------------------------------------
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\lstinline|\verb{Text}| & Gr{\"u}n & Normale Verben \\
+\lstinline|\verbI{Text}| & Gelb & Imperative \\
+\lstinline|\verbP{Text}| & Gr{\"u}n + P & Passive \\
+\bottomrule
+\end{tabular}
+
+Beispiele:
+\begin{lstlisting}
+Abraham \verb{ging} nach Ur.
+\verbI{Gehe} und \verbI[b]{verkuende}!
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Nomen}
+%--------------------------------------------------------
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\lstinline|\nomen{Text}| & Orange & Substantive \\
+\bottomrule
+\end{tabular}
+
+Beispiel:
+\begin{lstlisting}
+Das \nomen{Haus} des Herrn.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Konjunktionen}
+%--------------------------------------------------------
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\lstinline|\konj{Text}| & Rot & Bindew{\"o}rter \\
+\bottomrule
+\end{tabular}
+
+Beispiel:
+\begin{lstlisting}
+Abraham \konj{und} Sara.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Orte}
+%--------------------------------------------------------
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\lstinline|\ort{Text}| & Magenta & Geografische Orte \\
+\bottomrule
+\end{tabular}
+
+Beispiel:
+\begin{lstlisting}
+Von \ort{Jerusalem} nach \ort[b]{Bethlehem}.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Personen}
+%--------------------------------------------------------
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\lstinline|\person{Text}| & Blau & Personen \\
+\lstinline|\mensch{Text}| & Blau & Menschen \\
+\bottomrule
+\end{tabular}
+
+Beispiel:
+\begin{lstlisting}
+\person{Abraham} war ein \mensch{Mensch} des Glaubens.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Theologische Personen}
+%--------------------------------------------------------
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Makro} & \textbf{Farbe} & \textbf{Verwendung} \\
+\midrule
+\lstinline|\gott{Text}| & Himmelsblau & Gott \\
+\lstinline|\jesus{Text}| & Himmelsblau & Jesus \\
+\lstinline|\geist{Text}| & Himmelsblau & Heiliger Geist \\
+\lstinline|\israel{Text}| & Lila & Israel \\
+\lstinline|\teufel{Text}| & Rot (hell) & Teufel \\
+\bottomrule
+\end{tabular}
+
+Beispiel:
+\begin{lstlisting}
+\gott{Gott} sandte \jesus[b]{Jesus}.
+\end{lstlisting}
+
+%--------------------------------------------------------
+\subsection{Hilfsmakros}
+%--------------------------------------------------------
+
+\begin{tabular}{ll}
+\toprule
+\textbf{Makro} & \textbf{Beschreibung} \\
+\midrule
+\lstinline|\annot{Text}| & Annotation (grau, klein, kursiv) \\
+\bottomrule
+\end{tabular}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Farb{\"u}bersicht}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Kategorie} & \textbf{Farbe} & \textbf{RGB} \\
+\midrule
+Verben & Gr{\"u}n & 50,205,50 \\
+Imperativ & Gelb & 255,255,0 \\
+Nomen & Orange & 255,140,0 \\
+Konjunktionen & Rot & 255,0,0 \\
+Orte & Magenta & 255,0,255 \\
+Personen & Blau & 100,100,205 \\
+Gott/Jesus/Geist & Himmelsblau & 180,210,255 \\
+Israel & Lila & 220,180,255 \\
+Teufel & Rot (hell) & 255,180,180 \\
+\bottomrule
+\end{tabular}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Boolean-Schalter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Farben k{\"o}nnen deaktiviert werden:
+
+\begin{lstlisting}
+\ExplSyntaxOn
+\bool_set_false:N \l_color_verb_bool
+\bool_set_false:N \l_color_nomen_bool
+...
+\ExplSyntaxOff
+\end{lstlisting}
+
+\subsection{Verf{\"u}gbare Boolean-Schalter}
+
+\begin{tabular}{ll}
+\toprule
+\textbf{Variable} & \textbf{Makro} \\
+\midrule
+\lstinline|\l_color_verb_bool| & \lstinline|\verb{}| \\
+\lstinline|\l_color_verbI_bool| & \lstinline|\verbI{}| \\
+\lstinline|\l_color_verbP_bool| & \lstinline|\verbP{}| \\
+\lstinline|\l_color_nomen_bool| & \lstinline|\nomen{}| \\
+\lstinline|\l_color_konj_bool| & \lstinline|\konj{}| \\
+\lstinline|\l_color_ort_bool| & \lstinline|\ort{}| \\
+\lstinline|\l_color_person_bool| & \lstinline|\person{}, \mensch{}| \\
+\lstinline|\l_color_gott_bool| & \lstinline|\gott{}| \\
+\lstinline|\l_color_jesus_bool| & \lstinline|\jesus{}| \\
+\lstinline|\l_color_geist_bool| & \lstinline|\geist{}| \\
+\lstinline|\l_color_israel_bool| & \lstinline|\israel{}| \\
+\lstinline|\l_color_teufel_bool| & \lstinline|\teufel{}| \\
+\bottomrule
+\end{tabular}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tipps}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+  \item Verwenden Sie entweder Textfarben ODER Box-Farben
+  \item Zu viele Boxen wirken {\"u}berladen
+  \item Boxen f{\"u}r Schl{\"u}sselw{\"o}rter
+  \item Boolean-Schalter f{\"u}r Druck nutzen
+\end{enumerate}
+
+\end{document}
