@@ -275,4 +275,65 @@
 \newcommand{\annot}[1]{{\footnotesize\textit{[#1]}}}
 \newcommand{\spa}[1]{\hspace*{#1em}} % Horizontale Einrückung
 
+\sethlcolor{gray!10}
+% \bt und \btc Makros sind jetzt in colors.sty definiert
+
+% Gebet-Makro
+\newcommand{\beten}{\btc{gnade}{black}{Gebet}}
+
+% Diverse Fontstyles
+\newcommand{\aus}[1]{\textcolor{red}{ #1 }} %%Markiert den Text der nicht in den Druck soll
+%\renewcommand{\aus}[1]{} %%Kommentar entfernen und der markierte Text wird ausgeblendet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Diverse Farbpaletten
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\lied}[1]{%
+  \btc{yellow}{blue}{Lied: #1}%
+}
+
+
+
+\newcommand{\green}[1]{\colorbox{green}{\textcolor{black}{#1}}}
+%\newcommand{\blau}[1]{\colorbox{blue}{\textcolor{black}{#1}}}
+\newcommand{\rot}[1]{\colorbox{red}{\textcolor{white}{#1}}}
+\newcommand{\betonung}[1]{\colorbox{red!10}{\textcolor{black}{#1}}}
+
+
+\newcommand{\leise}[1]{\colorbox{blue!10}{#1}} %%Leichtes rot
+\newcommand{\zitat}[1]{\colorbox{gray!10}{\enquote{#1}}} %%Leichtes rot
+\newcommand{\hh}[1]{\textsuperscript{#1}} %% Text Hochstellen
+\newcommand{\es}[1]{[#1]}
+
+\newcommand{\gottIco}[2][red]{%
+  \tikz[baseline]{
+    \node[inner sep=0pt,outer sep=0pt] (w) {#2};
+    \node[above=-.2cm of w, text=#1] {$\triangle$};
+  }%
+}
+
+\newcommand{\jesusIco}[2][red]{%
+  \tikz[baseline]{
+    \node[inner sep=0pt,outer sep=0pt] (w) {#2};
+    \node[above=-.2cm of w, text=#1] {\Large$\dagger$};
+  }%
+}
+
+\newcommand{\geistIco}[2][red]{%
+  \tikz[baseline]{
+    \node[inner sep=0pt,outer sep=0pt] (w) {#2};
+    \node[above=-.2cm of w, text=#1] {\Large$\preccurlyeq$};
+  }%
+}
+
+\newcommand{\herr}{HERR}
+
+\newcommand{\verslink}[3]{%
+  \begingroup
+  \edef\url{https://www.esrabibel.de/#1#2\%2C#3}%
+  \uline{\href{\url}{#2,#3}}%
+  \endgroup
+}
+
 \endinput

@@ -62,13 +62,22 @@
 % HILFSMAKROS FÜR FARBIGE BOXEN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Farbige Box mit Text- und Hintergrundfarbe
-% Verwendet colorbox statt soul-Paket für bessere Kompatibilität
-
-% Alternative: Colorbox-Makro
+% Colorbox-Makro
 % Verwendung: \cbox{Hintergrundfarbe}{Textfarbe}{Text}
 \newcommand{\cbox}[3]{%
   \colorbox{#1}{\textcolor{#2}{#3}}%
+}
+
+% Farbige Box mit Text- und Hintergrundfarbe
+% Verwendung: \btc{Hintergrundfarbe}{Textfarbe}{Text}
+\newcommand{\btc}[3]{%
+  \colorbox{#1}{\textcolor{#2}{#3}}%
+}
+
+% Highlight mit Hintergrundfarbe (optional)
+% Verwendung: \bt[Farbe]{Text} oder \bt{Text}
+\newcommand{\bt}[2][yellow]{%
+  \colorbox{#1}{\textcolor{black}{#2}}%
 }
 
 \endinput
