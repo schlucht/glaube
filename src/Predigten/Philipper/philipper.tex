@@ -5,6 +5,9 @@
 
 \usepackage{bible_style}
 \graphicspath{{../../assets/images/}}
+\usepackage{bible_style}
+\usepackage{textmakro}
+
 \usepackage{header}
 \usepackage{predigt}
 
@@ -28,9 +31,9 @@
     \centering
     \begin{tabular}{|p{3cm}|p{4cm}|}
         \hline
-        \verbP{passiv Veb}  & \verbN{normal Verb} \\ \hline
+        \verbP{passiv Veb}  & \vb{normal Verb} \\ \hline
         \verbI{imperativ Verb} & \ort{Orte} \\ \hline
-        \person{Personen} & \bindW{Bindewort} \\ \hline
+        \person{Personen} & \konj{Bindewort} \\ \hline
     \end{tabular}
     \caption{Übersicht der Farben}
 \end{table}
@@ -39,7 +42,7 @@
 \begin{spacing}{2}    
     \include{phil_1_ots}
     \include{phil_2_ots}
-    %\include{phil_3}
-    %\include{phil_4}
+    \include{phil_3}
+    \include{phil_4}
 \end{spacing}
 \end{document}
