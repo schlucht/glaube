@@ -38,7 +38,9 @@
 \RequirePackage{lmodern}
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
-\RequirePackage[table]{xcolor}
+\PassOptionsToPackage{table}{xcolor}
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\RequirePackage{xcolor}
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{geometry}
 \RequirePackage[version=4]{mhchem}
