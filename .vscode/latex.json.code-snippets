@@ -78,7 +78,21 @@
   "Space": {
     "prefix": "spa",
     "body": "\\\\spa{$1}$0"
+  },
+  "Betonung": {
+    "prefix": "bt",
+    "body": "\\\\betonung{TM_SELECTED_TEXT:$1}$0"
+  },
+  "Bibelbox": {
+    "prefix": "bb",
+    "body": [
+      "\\begin{bibelbox}{SCHL}{$1}{$2}",
+          "$3",
+      "\\end{bibelbox}$0"
+    ],
+    "description": "Insert bibelbox"
   }
+
 }
 
 	
