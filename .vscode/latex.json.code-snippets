@@ -91,6 +91,12 @@
       "\\end{bibelbox}$0"
     ],
     "description": "Insert bibelbox"
+  },
+  "Bibelverse": {
+    "prefix": "bv",
+    "body":[
+      "\\bibleverse{$1}($2)$0"
+    ]
   }
 
 }
