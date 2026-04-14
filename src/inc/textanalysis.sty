@@ -9,17 +9,14 @@
 \RequirePackage{colors}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALTE FARBDEFINITIONEN (auskommentiert - siehe colors.sty)
+% ALTE FARBDEFINITIONEN (bewusst auskommentiert)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \definecolor{verbcolor}{RGB}{0,128,0}          % Grün für Verbstämme
-% \definecolor{nouncolor}{RGB}{255,140,0}        % Orange für Nomen
-% \definecolor{conjcolor}{RGB}{255,0,0}          % Rot für Konjunktionen
-% \definecolor{prepcolor}{RGB}{0,0,255}          % Blau für Präpositionen/Partikel
-% \definecolor{annotcolor}{RGB}{128,128,128}     % Grau für Annotationen
-% \definecolor{pluralcolor}{RGB}{255,0,255}      % Magenta für Plural
-% \definecolor{locationcolor}{RGB}{200,150,255}  % Lila für Ortsangaben
-% \definecolor{imperacolor}{RGB}{243,231,8}      % Gelb für Imperativ
+% Historische Farbdefinitionen wurden nach colors.sty ausgelagert.
+% Alte Namenskonventionen (verbcolor/nouncolor/.../imperacolor)
+% bleiben nur als Doku stehen, um alte Commits nachvollziehen zu koennen.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Farben werden zentral in colors.sty gepflegt.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Makros für Verben und Verbformen
@@ -27,11 +24,11 @@
 % Textfarben
 \newcommand{\verbstamm}[1]{\textcolor{verbcolor}{#1}}           %Verb (normal Text)
 \newcommand{\verbpart}[1]{\textcolor{praepositioncolor}{#1}}    %Verbpartikel (Text)
-\newcommand{\verbImp}[1]{\textcolor{imperacolor}{#1}}           %Verb (Imperativ Text)
+\newcommand{\verbImp}[1]{\textcolor{verbimperativcolor}{#1}}    %Verb (Imperativ Text)
 % Hintergrundfarben      
-\newcommand{\verbN}[1]{\cbox{verbcolor}{white}{#1}}             %Verb (normal Block)  
-\newcommand{\verbI}[1]{\cbox{verbimperativcolor}{black}{#1}}    %Verb (Imperativ Blok)
-\newcommand{\verbP}[1]{\verbN{#1}\textsuperscript{\textbf{P}}}  %Verb (Passiv)
+\providecommand{\verbN}[1]{\cbox{verbcolor}{white}{#1}}             %Verb (normal Block)  
+\providecommand{\verbI}[1]{\cbox{verbimperativcolor}{black}{#1}}    %Verb (Imperativ Blok)
+\providecommand{\verbP}[1]{\verbN{#1}\textsuperscript{\textbf{P}}}  %Verb (Passiv)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -43,18 +40,18 @@
 % Duplikate entfernt - siehe unten für vereinheitlichte Versionen
 
 \newcommand{\pers}[1]{\textcolor{personcolor}{#1}}
-\newcommand{\person}[1]{\cbox{blau}{white}{#1}}
+\providecommand{\person}[1]{\cbox{personcolor}{white}{#1}}
 
-\newcommand{\orttxt}[1]{\textcolor{magenta}{#1}}
-\newcommand{\ort}[1]{\cbox{magenta}{white}{#1}}
+\newcommand{\orttxt}[1]{\textcolor{ortcolor}{#1}}
+\providecommand{\ort}[1]{\cbox{ortcolor}{white}{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Makros für Konjunktionen und Partikeln
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\konj}[1]{\textcolor{konjunktioncolor}{#1}}
-\newcommand{\bindW}[1]{\cbox{rot}{white}{#1}}
+\newcommand{\bindW}[1]{\cbox{konjunktioncolor}{white}{#1}}
 % Verben (Konjunktiv) - Rot
-\newcommand{\verbK}[1]{\cbox{konjunktioncolor}{white}{#1}}
+\providecommand{\verbK}[1]{\cbox{konjunktioncolor}{white}{#1}}
 % Duplikate entfernt - siehe unten für vereinheitlichte Versionen
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -55,7 +55,7 @@
 \ExplSyntaxOn
 
 % Verb (Normal) - Grün rgb(50,205,50)
-\NewDocumentCommand{\vb}{o m}{%
+\NewDocumentCommand{\vb}{o +m}{%
   \bool_if:NTF \l_color_verb_bool
     {
       \IfNoValueTF{#1}
@@ -66,7 +66,7 @@
 }
 
 % Verb (Imperativ) - Gelb rgb(255,255,0)
-\NewDocumentCommand{\verbI}{o m}{%
+\NewDocumentCommand{\verbI}{o +m}{%
   \bool_if:NTF \l_color_verbI_bool
     {
       \IfNoValueTF{#1}
@@ -77,7 +77,7 @@
 }
 
 % Verb (Passiv) - Grün + Superscript P
-\NewDocumentCommand{\verbP}{o m}{%
+\NewDocumentCommand{\verbP}{o +m}{%
   \bool_if:NTF \l_color_verbP_bool
     {
       \IfNoValueTF{#1}
@@ -96,7 +96,7 @@
 \ExplSyntaxOn
 
 % Nomen - Orange rgb(255,140,0)
-\NewDocumentCommand{\nomen}{o m}{%
+\NewDocumentCommand{\nomen}{o +m}{%
   \bool_if:NTF \l_color_nomen_bool
     {
       \IfNoValueTF{#1}
@@ -115,7 +115,7 @@
 \ExplSyntaxOn
 
 % Konjunktion - Rot rgb(255,0,0)
-\NewDocumentCommand{\konj}{o m}{%
+\NewDocumentCommand{\konj}{o +m}{%
   \bool_if:NTF \l_color_konj_bool
     {
       \IfNoValueTF{#1}
@@ -134,7 +134,7 @@
 \ExplSyntaxOn
 
 % Ort - Magenta rgb(255,0,255)
-\NewDocumentCommand{\ort}{o m}{%
+\NewDocumentCommand{\ort}{o +m}{%
   \bool_if:NTF \l_color_ort_bool
     {
       \IfNoValueTF{#1}
@@ -153,7 +153,7 @@
 \ExplSyntaxOn
 
 % Person (allgemein) - Blau rgb(100,100,205)
-\NewDocumentCommand{\person}{o m}{%
+\NewDocumentCommand{\person}{o +m}{%
   \bool_if:NTF \l_color_person_bool
     {
       \IfNoValueTF{#1}
@@ -164,7 +164,7 @@
 }
 
 % Mensch (allgemein) - Blau rgb(100,100,205)
-\NewDocumentCommand{\mensch}{o m}{%
+\NewDocumentCommand{\mensch}{o +m}{%
   \bool_if:NTF \l_color_person_bool
     {
       \IfNoValueTF{#1}
@@ -183,7 +183,7 @@
 \ExplSyntaxOn
 
 % Gott - Gnade (Himmelsblau) rgb(180,210,255)
-\NewDocumentCommand{\gott}{o m}{%
+\NewDocumentCommand{\gott}{o +m}{%
   \bool_if:NTF \l_color_gott_bool
     {
       \IfNoValueTF{#1}
@@ -194,7 +194,7 @@
 }
 
 % Jesus - Gnade (Himmelsblau) rgb(180,210,255)
-\NewDocumentCommand{\jesus}{o m}{%
+\NewDocumentCommand{\jesus}{o +m}{%
   \bool_if:NTF \l_color_jesus_bool
     {
       \IfNoValueTF{#1}
@@ -205,7 +205,7 @@
 }
 
 % Heiliger Geist - Gnade (Himmelsblau) rgb(180,210,255)
-\NewDocumentCommand{\geist}{o m}{%
+\NewDocumentCommand{\geist}{o +m}{%
   \bool_if:NTF \l_color_geist_bool
     {
       \IfNoValueTF{#1}
@@ -224,7 +224,7 @@
 \ExplSyntaxOn
 
 % Israel - Bund (Lila) rgb(220,180,255)
-\NewDocumentCommand{\israel}{o m}{%
+\NewDocumentCommand{\israel}{o +m}{%
   \bool_if:NTF \l_color_israel_bool
     {
       \IfNoValueTF{#1}
@@ -243,7 +243,7 @@
 \ExplSyntaxOn
 
 % Teufel - Gericht (Rot) rgb(255,180,180)
-\NewDocumentCommand{\teufel}{o m}{%
+\NewDocumentCommand{\teufel}{o +m}{%
   \bool_if:NTF \l_color_teufel_bool
     {
       \IfNoValueTF{#1}
@@ -295,14 +295,14 @@
 
 
 
-\newcommand{\green}[1]{\colorbox{green}{\textcolor{black}{#1}}}
+\newcommand{\green}[1]{\btc{green}{black}{#1}}
 %\newcommand{\blau}[1]{\colorbox{blue}{\textcolor{black}{#1}}}
-\newcommand{\rot}[1]{\colorbox{red}{\textcolor{white}{#1}}}
-\newcommand{\betonung}[1]{\colorbox{red!10}{\textcolor{black}{#1}}}
+\newcommand{\rot}[1]{\btc{red}{white}{#1}}
+\newcommand{\betonung}[1]{{\sethlcolor{red!10}\hl{#1}}}
 
 
-\newcommand{\leise}[1]{\colorbox{blue!10}{#1}} %%Leichtes rot
-\newcommand{\zitat}[1]{\colorbox{gray!10}{\enquote{#1}}} %%Leichtes rot
+\newcommand{\leise}[1]{\bt[blue!10]{#1}} %%Leichtes rot
+\newcommand{\zitat}[1]{\bt[gray!10]{\enquote{#1}}} %%Leichtes rot
 \newcommand{\hh}[1]{\textsuperscript{#1}} %% Text Hochstellen
 \newcommand{\es}[1]{[#1]}
 

@@ -5,6 +5,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{colors}[2026/02/28 Zentrale Farbdefinitionen]
+\RequirePackage{varwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % HAUPTFARBEN FÜR GRAMMATISCHE KATEGORIEN
@@ -65,19 +66,31 @@
 % Colorbox-Makro
 % Verwendung: \cbox{Hintergrundfarbe}{Textfarbe}{Text}
 \newcommand{\cbox}[3]{%
-  \colorbox{#1}{\textcolor{#2}{#3}}%
+  \colorbox{#1}{%
+    \begin{varwidth}{\dimexpr\linewidth-2\fboxsep\relax}
+      \textcolor{#2}{#3}%
+    \end{varwidth}%
+  }%
 }
 
 % Farbige Box mit Text- und Hintergrundfarbe
 % Verwendung: \btc{Hintergrundfarbe}{Textfarbe}{Text}
 \newcommand{\btc}[3]{%
-  \colorbox{#1}{\textcolor{#2}{#3}}%
+  \colorbox{#1}{%
+    \begin{varwidth}{\dimexpr\linewidth-2\fboxsep\relax}
+      \textcolor{#2}{#3}%
+    \end{varwidth}%
+  }%
 }
 
 % Highlight mit Hintergrundfarbe (optional)
 % Verwendung: \bt[Farbe]{Text} oder \bt{Text}
 \newcommand{\bt}[2][yellow]{%
-  \colorbox{#1}{\textcolor{black}{#2}}%
+  \colorbox{#1}{%
+    \begin{varwidth}{\dimexpr\linewidth-2\fboxsep\relax}
+      \textcolor{black}{#2}%
+    \end{varwidth}%
+  }%
 }
 
 \endinput
