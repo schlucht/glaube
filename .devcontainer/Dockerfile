@@ -1,16 +1,24 @@
-FROM texlive/texlive:latest
+FROM debian:stable-slim
 
+# System-Updates und Grundpakete
 RUN apt-get update && apt-get install -y \
-    latexmk \
-    texlive-latex-recommended \
-    texlive-latex-extra \
-    texlive-lang-german \
-    texlive-science \
-    texlive-humanities \
-    biber \
+    wget \
+    perl \
+    make \
     git \
+    xz-utils \
+    fontconfig \
+    lmodern \
+    biber \
+    latexmk \
+    texlive-full \
     && rm -rf /var/lib/apt/lists/*
 
-RUN tlmgr install iftex
+# Deutschsprachige Unterstützung (optional, falls nicht in texlive-full enthalten)
+RUN apt-get update && apt-get install -y texlive-lang-german && rm -rf /var/lib/apt/lists/*
 
+# Arbeitsverzeichnis setzen
 WORKDIR /workspaces/glaube
+
+# Standardbefehl (kann angepasst werden)
+CMD ["bash"]
