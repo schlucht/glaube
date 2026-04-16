@@ -1,178 +1,181 @@
-# Farbschema - LaTeX Projekt
+# Farbschema - LaTeX-Projekt
 
 ## Übersicht
 
-Alle Farbdefinitionen sind jetzt in `src/inc/colors.sty` zentralisiert.
+Die Farbdefinitionen und Markierungs-Makros liegen zentral in [src/inc/markierungen.sty](src/inc/markierungen.sty).
 
-## Standardisiertes Farbschema für grammatische Kategorien
+Die Datei kennt jetzt drei einheitliche Paletten:
 
-| Kategorie | Farbe | Makro | Beispiel |
-|-----------|-------|-------|----------|
-| **Personen** | Blau | `\person{Text}` | \person{Abraham} |
-| **Orte** | Magenta | `\ort{Text}` | \ort{Jerusalem} |
-| **Verben (Normal)** | Grün | `\verbN{Text}` | \verbN{ging} |
-| **Verben (Imperativ)** | Gelb | `\verbI{Text}` | \verbI{Gehe!} |
-| **Verben (Konjunktiv)** | Rot | `\verbK{Text}` | \verbK{würde gehen} |
-| **Verben (Passiv)** | Grün + P | `\verbP{Text}` | \verbP{wurde gegangen} |
-| **Konjunktionen** | Rot | `\konj{Text}`, `\bindW{Text}` | \konj{und} |
-| **Nomen** | Orange | `\nomen{Text}` | \nomen{Haus} |
-| **Präpositionen** | Blau | `\prep{Text}` | \prep{in} |
-| **Annotationen** | Grau (klein) | `\annot{Text}` | \annot{Erklärung} |
+1. Grundfarben
+2. Neonfarben
+3. Pastellfarben
 
-## RGB-Werte
+Zusätzlich unterstützen die Markierungs-Makros eine flexible Optionssyntax für Textfarbe oder Hintergrundmarkierung.
 
-### Grammatische Kategorien
+## Paletten
+
+### Grundfarben
+
 ```latex
-\definecolor{personcolor}{RGB}{100,100,205}        % Blau
-\definecolor{ortcolor}{RGB}{255,0,255}             % Magenta
-\definecolor{verbcolor}{RGB}{50,205,50}            % Grün
-\definecolor{verbimperativcolor}{RGB}{255,255,0}   % Gelb
-\definecolor{verbkonjunktivcolor}{RGB}{255,0,0}    % Rot
-\definecolor{nomencolor}{RGB}{255,140,0}           % Orange
-\definecolor{konjunktioncolor}{RGB}{255,0,0}       % Rot
-\definecolor{praepositioncolor}{RGB}{0,0,255}      % Blau
-\definecolor{annotationcolor}{RGB}{128,128,128}    % Grau
+\definecolor{grundgruen}{RGB}{50,205,50}
+\definecolor{grundgelb}{RGB}{226,211,85}
+\definecolor{grundrot}{RGB}{255,0,0}
+\definecolor{grundmagenta}{RGB}{255,0,255}
+\definecolor{grundblau}{RGB}{100,100,205}
 ```
 
-### Theologische Konzepte
+### Neonfarben
+
 ```latex
-\definecolor{gnade}{RGB}{180,210,255}      % sanftes Himmelsblau
-\definecolor{gericht}{RGB}{255,180,180}    % mildes Rot
-\definecolor{heiligkeit}{RGB}{255,240,180} % warmes Gold
-\definecolor{bund}{RGB}{220,180,255}       % Purpur/Lila
-\definecolor{infos}{RGB}{200,255,200}      % weiches Grün
-\definecolor{betonung}{RGB}{255,200,200}   % zartes Rosa
+\definecolor{neongruen}{RGB}{57,255,20}
+\definecolor{neongelb}{RGB}{255,255,0}
+\definecolor{neonpink}{RGB}{255,20,147}
+\definecolor{neonblau}{RGB}{77,77,255}
+\definecolor{neonorange}{RGB}{255,140,0}
+\definecolor{neonlila}{RGB}{199,21,133}
+\definecolor{neoncyan}{RGB}{0,255,255}
+\definecolor{neonrot}{RGB}{255,36,0}
 ```
 
-### Standard-Basisfarben
+### Pastellfarben
+
 ```latex
-\definecolor{rot}{RGB}{255,0,0}
-\definecolor{gelb}{RGB}{255,255,0}
-\definecolor{gruen}{RGB}{50,205,50}
-\definecolor{blau}{RGB}{100,100,205}
-\definecolor{magenta}{RGB}{255,0,255}
-\definecolor{orange}{RGB}{255,140,0}
-\definecolor{lila}{RGB}{220,180,255}
-\definecolor{rosa}{RGB}{238,153,239}
+\definecolor{pastellblau}{RGB}{180,210,255}
+\definecolor{pastellrot}{RGB}{255,180,180}
+\definecolor{pastellgelb}{RGB}{255,240,180}
+\definecolor{pastelllila}{RGB}{220,180,255}
+\definecolor{pastellgruen}{RGB}{200,255,200}
+\definecolor{pastellrosa}{RGB}{255,200,200}
 ```
 
-## Verwendung in verschiedenen Paketen
+## Kompatibilität
 
-### `textanalysis.sty`
-Für grammatische Textanalyse (Josua.tex, etc.)
+Für bestehende Dokumente bleiben die alten Farbnamen als Alias erhalten.
+
 ```latex
-\usepackage{textanalysis}
-
-\verbstamm{ging}             % Grün (durch verbcolor)
-\verbN{ging}                 % Grün (Colorbox)
-\verbI{Gehe}                 % Gelb (Imperativ)
-\verbP{wurde gesehen}        % Grün + Superscript P
-\verbK{würde gehen}          % Rot (Konjunktiv)
-\person{Abraham}             % Blau
-\ort{Jerusalem}              % Magenta
-\nomen{Haus}                 % Orange
-\konj{und}                   % Rot
-\prep{in}                    % Blau
-\annot{Erklärung}           % Grau, klein
+\colorlet{gruen}{grundgruen}
+\colorlet{gelb}{grundgelb}
+\colorlet{rot}{grundrot}
+\colorlet{magenta}{grundmagenta}
+\colorlet{blau}{grundblau}
+\colorlet{hellgruen}{pastellgruen}
+\colorlet{hellrot}{pastellrosa}
 ```
 
-### `bibeltext.sty`
-Für Bibeltexte mit Versvergleich (AT_Bibeltext.tex, NT_Bibeltext.tex)
-```latex
-\usepackage{bibeltext}
+Damit funktionieren alte Makros und ältere Dokumente weiterhin ohne Umstellung.
 
-% Gleiche Makros wie textanalysis.sty, aber mit Boolean-Kontrolle:
-\verbN{Text}    % Kann mit \bool_set_false:N \l_color_verbN_bool deaktiviert werden
-\verbI{Text}
-\verbP{Text}
-\verbK{Text}
-\person{Text}
-\ort{Text}
-\bind{Text}     % Basis-Bindewort
-\bindA{Text}    % Bindewort + Superscript A
-\bindB{Text}    % Bindewort + Superscript B
-\bindV{Text}    % Bindewort + Superscript V
+## Makro-Syntax
+
+Die Markierungs-Makros unterstützen jetzt eine kombinierte Optionssyntax.
+
+### Grundform
+
+```latex
+\verbN{Text}
 ```
 
-### `bible_style.sty`
-Allgemeine Bibel-Makros
-```latex
-\usepackage{bible_style}
+Ohne Option wird Textfarbe in der Grundpalette verwendet.
 
-% Verwendet colors.sty automatisch
-\lied{Nr. 123}
+### Optionen
+
+Die Optionen werden als komma-getrennte Liste angegeben:
+
+```latex
+\verbN[modus,palette]{Text}
+```
+
+#### Modus
+
+```latex
+b   % Hintergrundmarkierung
+t   % Textfarbe
+```
+
+#### Palette
+
+```latex
+g        % Grundfarben
+grund
+n        % Neonfarben
+neon
+p        % Pastellfarben
+pastell
+```
+
+### Beispiele
+
+```latex
+\verbN{Mein Text}        % Textfarbe in Grundgrün
+\verbN[b]{Mein Text}     % Hintergrundmarkierung in Pastellgrün
+\verbN[p]{Mein Text}     % Textfarbe in Pastellgrün
+\verbN[b,p]{Mein Text}   % Hintergrundmarkierung in Pastellgrün
+\verbN[b,n]{Mein Text}   % Hintergrundmarkierung in Neongrün
+\verbN[t,g]{Mein Text}   % Textfarbe in Grundgrün
+```
+
+Die gleiche Syntax gilt für diese Makros:
+
+```latex
+\verbN
+\verbI
+\verbP
+\konj
+\ort
+\person
+\betonung
+\info
+\lied
 \beten
-\green{Text}
-\rot{Text}
-\betonung{Text}
 ```
 
-## Hilfsmakros
+## Standardzuordnung
 
-### Farbige Boxen
-```latex
-% Aus colors.sty:
-\cbox{Hintergrundfarbe}{Textfarbe}{Text}
-\btc{Hintergrundfarbe}{Textfarbe}{Text}
-\bt[Hintergrundfarbe]{Text}
+Wenn keine Palette angegeben wird, gilt:
 
-% Beispiele:
-\cbox{gruen}{white}{Verb}
-\cbox{gelb}{black}{Imperativ}
-\cbox{magenta}{white}{Ort}
-```
+1. Textfarbe verwendet standardmäßig die Grundpalette.
+2. Hintergrundmarkierung verwendet standardmäßig die Pastellpalette.
 
-## Migration von alten Dateien
+Damit ist `\verbN[b]{Text}` automatisch eine gut lesbare Pastell-Markierung.
 
-### Alte Farbdefinitionen
-Alle alten Farbdefinitionen wurden auskommentiert (nicht gelöscht):
-- `bible_style.sty` - Zeilen mit `% \definecolor{...}`
-- `textanalysis.sty` - Zeilen mit `% \definecolor{...}`
-- `bibeltext.sty` - Zeilen mit `% \definecolor{...}`
-- `predigt.sty` - Alte Makros auskommentiert
+## Zuordnung der Makros
 
-### Vergleich Alt vs. Neu
+| Makro | Grundfarbe | Neonfarbe | Pastellfarbe |
+|-------|------------|-----------|--------------|
+| `\verbN` | grundgruen | neongruen | pastellgruen |
+| `\verbI` | grundgelb | neongelb | pastellgelb |
+| `\verbP` | grundgruen | neongruen | pastellgruen |
+| `\konj` | grundrot | neonrot | pastellrot |
+| `\ort` | grundmagenta | neonpink | pastelllila |
+| `\person` | grundblau | neonblau | pastellblau |
+| `\betonung` | grundrot | neonrot | pastellrosa |
+| `\info` | grundgruen | neongruen | pastellgruen |
+| `\lied` | grundgelb | neongelb | pastellgelb |
+| `\beten` | grundrot | neonrot | pastellrot |
 
-#### Alte Definitionen (auskommentiert)
-```latex
-% textanalysis.sty (alt):
-% \definecolor{locationcolor}{RGB}{200,150,255}  % Lila für Ortsangaben
+## Empfehlung
 
-% bibeltext.sty (alt):
-% \definecolor{rosa}{RGB}{238,153,239}  % für Orte
-```
+1. Für normalen Fließtext Grundfarben verwenden.
+2. Für hervorgehobene Markierungen im Text standardmäßig Pastellfarben verwenden.
+3. Neonfarben nur gezielt einsetzen, wenn starke visuelle Hervorhebung gewünscht ist.
+4. Neue Farben direkt in [src/inc/markierungen.sty](src/inc/markierungen.sty) ergänzen, nicht verteilt in mehreren Stil-Dateien.
 
-#### Neue Definitionen (colors.sty)
-```latex
-\definecolor{ortcolor}{RGB}{255,0,255}  % Magenta für Ortsangaben
-```
-
-## Best Practices
-
-1. **Immer `colors.sty` verwenden**: Alle neuen Dokumente sollten `colors.sty` direkt oder indirekt (über andere Pakete) laden
-2. **Einheitliche Makros**: Verwenden Sie `\person{}`, `\ort{}`, `\verbN{}` etc. statt direkte `\textcolor{}` Aufrufe
-3. **Keine neuen Farbdefinitionen**: Neue Farben nur in `colors.sty` hinzufügen
-4. **Boolean-Kontrolle**: In `bibeltext.sty` können Farben mit Booleans ein-/ausgeschaltet werden
-
-## Beispiel-Dokument
+## Beispiel
 
 ```latex
 \documentclass[12pt]{../../inc/mybib}
 \author{OTS}
 
 \setincpath{../../inc/}
-\usepackage{bible_style}      % Lädt colors.sty automatisch
-\usepackage{textanalysis}     % Lädt colors.sty automatisch
-\graphicspath{{../../assets/images/}}
+\usepackage{markierungen}
 
 \begin{document}
 
-\section{Textanalyse}
+\person{Abraham} \verbN{ging} nach \ort{Ur}.
 
-\person{Abraham} \verbN{ging} nach \ort{Ur}, \konj{und} 
-\person{Gott} \verbI{sprach} zu ihm.
-
-\annot{Dies ist eine Erklärung.}
+\verbI[b]{Gehe!}
+\verbI[b,n]{Gehe!}
+\betonung[p]{Wichtiger Gedanke}
+\info[b,p]{Hinweis}
 
 \end{document}
 ```

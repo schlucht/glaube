@@ -1,13 +1,7 @@
-%\usepackage{bibleref-german}
-%\usepackage[most]{tcolorbox}
-% \usepackage{soul}
 
 \RequirePackage{colors}
 
 \usetikzlibrary{positioning}
-% \usepackage{amssymb}
-% \usepackage{calc}
-
 
 \newcommand{\bib}[1]{%
   \IfStrEqCase{#1}{%
@@ -23,12 +17,9 @@
   }[\textbf{#1}]%
 }
 
-
-
 % Makros für Bibelzitate
 \newcommand{\bibtit}[1]{\large\bib{#1}}
 \newcommand{\tmpbib}{Hello}
-%\newcommand{\bv}[2]{\bibleverse {#1}(#2)}
 
 \newenvironment{bibeltext}[3]{%
   \quote \begin{itshape}
@@ -41,20 +32,6 @@
   \endquote
 }
 
-% \newenvironment{bibelbox2}[3]{%			
-%         \renewcommand{\tmpbib}{\textbf{\bibleverse{#2}(#3)}}
-%         \begin{tcolorbox}[
-%             title=\tmpbib \hspace{1.5cm} (\bibtit{#1}),
-%             colback=black!2!white,
-%             colframe=black!55!black,
-%             width=\textwidth,
-%             halign=justify  
-%         ]
-% 	}{%	
-% 		\newline		
-%         \end{tcolorbox}	
-% 	\endquote		
-% }
 \newcommand{\tmpbibtext}[3]{\textbf{\bibleverse{#2}(#3)}\quad(\bibtit{#1})}
 \newenvironment{bibelbox}[3]{%
   \begin{tcolorbox}[
@@ -76,13 +53,16 @@
   \bibleverse{#1}(#2)
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALTE FARBDEFINITIONEN (bewusst auskommentiert)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Historische lokale Farbwerte wurden nach colors.sty migriert.
-% Hinweis: In diesem Block gab es frueher doppelte/abweichende Definitionen
-% (z.B. blau) und Tippfehler in Kommentaren.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Herr zu HERR
+ \newcommand{\herr}{HERR}
+
+ % Versnummer verlinken
+\newcommand{\verslink}[3]{%
+  \begingroup
+  \edef\url{https://www.esrabibel.de/#1#2\%2C#3}%
+  \uline{\href{\url}{#2,#3}}%
+  \endgroup
+}
 
 
 

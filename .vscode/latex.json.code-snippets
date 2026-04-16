@@ -29,47 +29,31 @@
 	
   "Verben": {
     "prefix": "vb",
-    "body": "\\\\vb{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\verbN[b,p]{${TM_SELECTED_TEXT:$1}}$0"
+  },
+  "VerbenBox": {
+    "prefix": "vbb",
+    "body": "\\\\verbN[b,p]{${TM_SELECTED_TEXT:$1}}$0"
   },
   "Imperativ": {
     "prefix": "vi",
-    "body": "\\\\verbI{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\verbI[b,p]{${TM_SELECTED_TEXT:$1}}$0"
   },
   "Verbpassiv": {
     "prefix": "vp",
-    "body": "\\\\verbP{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\verbP[b,p]{${TM_SELECTED_TEXT:$1}}$0"
   },
   "Person": {
     "prefix": "ps",
-    "body": "\\\\person{${TM_SELECTED_TEXT:$1}}$0"
-  },
-  "Mensch": {
-    "prefix": "me",
-    "body": "\\\\mensch{${TM_SELECTED_TEXT:$1}}$0"
-  },
-  "Nomen": {
-    "prefix": "nm",
-    "body": "\\\\nomen{${TM_SELECTED_TEXT:$1}}$0"
-  },
+    "body": "\\\\person[b,p]{${TM_SELECTED_TEXT:$1}}$0"
+  }, 
   "Konjunktion": {
     "prefix": "kj",
-    "body": "\\\\konj{${TM_SELECTED_TEXT:$1}}$0"
-  },
-  "Präposition": {
-    "prefix": "pr",
-    "body": "\\\\prep{${TM_SELECTED_TEXT:$1}}$0"
-  },
-  "Partikel": {
-    "prefix": "pt",
-    "body": "\\\\partikel{${TM_SELECTED_TEXT:$1}}$0"
-  },
-  "Plural": {
-    "prefix": "pl",
-    "body": "\\\\plural{${TM_SELECTED_TEXT:$1}}$0"
-  },
+    "body": "\\\\konj[b,p]{${TM_SELECTED_TEXT:$1}}$0"
+  },  
   "Ort": {
     "prefix": "or",
-    "body": "\\\\ort{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\ort[b,p]{${TM_SELECTED_TEXT:$1}}$0"
   },
   "Annotation": {
     "prefix": "an",
@@ -81,7 +65,7 @@
   },
   "Betonung": {
     "prefix": "bt",
-    "body": "\\\\betonung{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\betonung[b,p]{${TM_SELECTED_TEXT:$1}}$0"
   },
   "Bibelbox": {
     "prefix": "bb",

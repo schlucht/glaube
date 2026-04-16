@@ -41,6 +41,7 @@
 \PassOptionsToPackage{table}{xcolor}
 \PassOptionsToPackage{dvipsnames}{xcolor}
 \RequirePackage{xcolor}
+\RequirePackage{colortbl}
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{geometry}
 \RequirePackage[version=4]{mhchem}
@@ -64,6 +65,9 @@
   citecolor=black
 }
 
+% \RequirePackage{./bible_style}
+% \RequirePackage{./textmakro}
+% \RequirePackage{./bibeltext}
 
 % Linien einfügen
 \KOMAoptions{headsepline=true, footsepline=true} % Linien aktivieren
