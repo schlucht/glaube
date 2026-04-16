@@ -1,0 +1,282 @@
+% markierungen.sty
+% Zentrale Datei für farbige Textmarkierungen und Boxen
+% Autor: OTS, 2026
+% Diese Datei ersetzt colors.sty, textmakro.sty und bibeltext.sty für Markierungen.
+\NeedsTeXFormat{LaTeX2e}
+\makeatletter
+\edef\markierungen@providesname{\@currpath\@currname}
+\expandafter\ProvidesPackage\expandafter{\markierungen@providesname}[2026/04/15 Zentrale Markierungsbefehle]
+\makeatother
+
+% Für flexible Markierungen: Textfarbe oder Hintergrund
+\RequirePackage{xcolor}
+\RequirePackage{soul}
+\RequirePackage{xifthen}
+\RequirePackage{xparse}
+\RequirePackage{varwidth}
+\RequirePackage{expl3}
+\RequirePackage[most]{tcolorbox}
+
+% Zentrales Makro: \marktext
+% #1 = Modus ('b' für Background, sonst Textfarbe), #2 = Farbe, #3 = Text
+\newcommand{\marktext}[3]{%
+  \ifthenelse{\equal{#1}{b}}% 
+    {\sethlcolor{#2}\hl{#3}}% Hintergrund
+    {\textcolor{#2}{#3}}% Textfarbe
+}
+
+% ------------------------------------------------------------
+
+% Grundfarben
+\definecolor{grundgruen}{RGB}{50,205,50}      % #32cd32
+\definecolor{grundgelb}{RGB}{226,211,85}      % #e2d355
+\definecolor{grundrot}{RGB}{255,0,0}          % #ff0000
+\definecolor{grundmagenta}{RGB}{255,0,255}    % #ff00ff
+\definecolor{grundblau}{RGB}{100,100,205}     % #6464cd
+
+% Neonfarben
+\definecolor{neongruen}{RGB}{57,255,20}       % #39ff14
+\definecolor{neongelb}{RGB}{255,255,0}        % #ffff00
+\definecolor{neonpink}{RGB}{255,20,147}       % #ff1493
+\definecolor{neonblau}{RGB}{77,77,255}        % #4d4dff
+\definecolor{neonorange}{RGB}{255,140,0}      % #ff8c00
+\definecolor{neonlila}{RGB}{199,21,133}       % #c71585
+\definecolor{neoncyan}{RGB}{0,255,255}        % #00ffff
+\definecolor{neonrot}{RGB}{255,36,0}          % #ff2400
+
+% Pastellfarben
+\definecolor{pastellblau}{RGB}{180,210,255}   % #b4d2ff
+\definecolor{pastellrot}{RGB}{255,180,180}    % #ffb4b4
+\definecolor{pastellgelb}{RGB}{255,240,180}   % #fff0b4
+\definecolor{pastelllila}{RGB}{220,180,255}   % #dcb4ff
+\definecolor{pastellgruen}{RGB}{200,255,200}  % #c8ffc8
+\definecolor{pastellrosa}{RGB}{255,200,200}   % #ffc8c8
+
+% Alias-Namen fuer bestehende Makros und alte Dokumente
+% \colorlet{gruen}{grundgruen}
+% \colorlet{gelb}{grundgelb}
+% \colorlet{rot}{grundrot}
+% \colorlet{magenta}{grundmagenta}
+% \colorlet{blau}{grundblau}
+% \colorlet{hellgruen}{pastellgruen}
+% \colorlet{hellrot}{pastellrosa}
+% \colorlet{pblue}{pastellblau}
+% \colorlet{prosa}{pastellrot}
+% \colorlet{pgelb}{pastellgelb}
+% \colorlet{plila}{pastelllila}
+% \colorlet{pgreen}{pastellgruen}
+% \colorlet{pred}{pastellrosa}
+
+
+% ------------------------------------------------------------
+% Schalter für Markierungen (ein/aus)
+\ExplSyntaxOn
+\bool_new:N \l_mark_verbN_bool
+\bool_new:N \l_mark_verbI_bool
+\bool_new:N \l_mark_verbP_bool
+\bool_new:N \l_mark_konj_bool
+\bool_new:N \l_mark_ort_bool
+\bool_new:N \l_mark_person_bool
+\bool_new:N \l_mark_betonung_bool
+\bool_new:N \l_mark_info_bool
+\bool_new:N \l_mark_lied_bool
+\bool_new:N \l_mark_beten_bool
+\bool_set_true:N \l_mark_verbN_bool
+\bool_set_true:N \l_mark_verbI_bool
+\bool_set_true:N \l_mark_verbP_bool
+\bool_set_true:N \l_mark_konj_bool
+\bool_set_true:N \l_mark_ort_bool
+\bool_set_true:N \l_mark_person_bool
+\bool_set_true:N \l_mark_betonung_bool
+\bool_set_true:N \l_mark_info_bool
+\bool_set_true:N \l_mark_lied_bool
+\bool_set_true:N \l_mark_beten_bool
+\ExplSyntaxOff
+
+% ------------------------------------------------------------
+% Hilfsmakro für farbige Boxen (mehrzeilig, keine hbox-Fehler)
+% \newcommand{\cbox}[3]{%
+%   \colorbox{#1}{%
+%     \begin{varwidth}{\dimexpr\linewidth-2\fboxsep\relax}
+%       \textcolor{#2}{#3}%
+%     \end{varwidth}%
+%   }%
+% }
+
+\newcommand{\cbox}[3]{%
+  \colorbox{#1}{%
+    \begin{varwidth}{\dimexpr\linewidth-2\fboxsep\relax}
+      \textcolor{#2}{#3}%
+    \end{varwidth}%
+  }%
+}
+
+% Zeilenumbruch in Boxen erlauben (für tcolorbox)
+% \newtcbox{\cbox}[3]{on line, colback=#1, coltext=#2, boxrule=0pt, arc=0mm, left=1pt, right=1pt, top=1pt, bottom=1pt, boxsep=0pt, enhanced, breakable}
+% % ------------------------------------------------------------
+% Hauptbefehle: Wort einfärben ODER markieren
+% Syntax:
+%   \verbN{Text}       -> Textfarbe in Grundfarbe
+%   \verbN[b]{Text}    -> Markierung in Pastellfarbe
+%   \verbN[p]{Text}    -> Textfarbe in Pastellfarbe
+%   \verbN[b,p]{Text}  -> Markierung in Pastellfarbe
+%   \verbN[b,n]{Text}  -> Markierung in Neonfarbe
+
+\ExplSyntaxOn
+\tl_new:N \l_mark_mode_tl
+\tl_new:N \l_mark_palette_tl
+\tl_new:N \l_mark_selected_color_tl
+
+\cs_new_protected:Npn \mark_parse_options:n #1 {
+  \tl_set:Nn \l_mark_mode_tl {t}
+  \tl_clear:N \l_mark_palette_tl
+  \tl_if_blank:nF {#1} {
+    \clist_map_inline:nn {#1} {
+      \str_case:enF { \tl_trim_spaces:n {##1} } {
+        {b} { \tl_set:Nn \l_mark_mode_tl {b} }
+        {t} { \tl_set:Nn \l_mark_mode_tl {t} }
+        {g} { \tl_set:Nn \l_mark_palette_tl {g} }
+        {grund} { \tl_set:Nn \l_mark_palette_tl {g} }
+        {n} { \tl_set:Nn \l_mark_palette_tl {n} }
+        {neon} { \tl_set:Nn \l_mark_palette_tl {n} }
+        {p} { \tl_set:Nn \l_mark_palette_tl {p} }
+        {pastell} { \tl_set:Nn \l_mark_palette_tl {p} }
+      } { }
+    }
+  }
+}
+
+\cs_new:Npn \mark_default_palette: {
+  \tl_if_blank:VTF \l_mark_palette_tl
+    {
+      \tl_if_eq:VnTF \l_mark_mode_tl {b} {p} {g}
+    }
+    {\l_mark_palette_tl}
+}
+
+\cs_new_protected:Npn \mark_select_color:nnn #1#2#3 {
+  \tl_set:Nx \l_mark_selected_color_tl {
+    \str_case:enF { \mark_default_palette: } {
+      {g} {#1}
+      {n} {#2}
+      {p} {#3}
+    } {#1}
+  }
+}
+
+\cs_new_protected:Npn \mark_apply:nnnnn #1#2#3#4#5 {
+  \mark_parse_options:n {#1}
+  \mark_select_color:nnn {#2} {#3} {#4}
+  \marktext{\l_mark_mode_tl}{\l_mark_selected_color_tl}{#5}
+}
+
+\cs_new_protected:Npn \mark_apply_box:nnnnn #1#2#3#4#5 {
+  \mark_parse_options:n {#1}
+  \mark_select_color:nnn {#2} {#3} {#4}
+  \tl_if_eq:VnTF \l_mark_mode_tl {b}
+    {\cbox{\l_mark_selected_color_tl}{black}{#5}}
+    {\textcolor{\l_mark_selected_color_tl}{#5}}
+}
+
+% VerbN (grün)
+\NewDocumentCommand{\verbN}{O{} +m}{%
+  \bool_if:NTF \l_mark_verbN_bool
+    {\mark_apply:nnnnn {#1} {grundgruen} {neongruen} {pastellgruen} {#2}}
+    {#2}%
+}
+% VerbI (gelb)
+\NewDocumentCommand{\verbI}{O{} +m}{%
+  \bool_if:NTF \l_mark_verbI_bool
+    {\mark_apply:nnnnn {#1} {grundgelb} {neongelb} {pastellgelb} {#2}}
+    {#2}%
+}
+% VerbP (grün + P)
+\NewDocumentCommand{\verbP}{O{} +m}{%
+  \bool_if:NTF \l_mark_verbP_bool
+    {\mark_apply:nnnnn {#1} {grundgruen} {neongruen} {pastellgruen} {#2}\textsuperscript{\textbf{P}}}
+    {#2\textsuperscript{\textbf{P}}}%
+}
+% Konj (rot)
+\NewDocumentCommand{\konj}{O{} +m}{%
+  \bool_if:NTF \l_mark_konj_bool
+    {\mark_apply:nnnnn {#1} {grundrot} {neonrot} {pastellrot} {#2}}
+    {#2}%
+}
+% Ort (magenta)
+\NewDocumentCommand{\ort}{O{} +m}{%
+  \bool_if:NTF \l_mark_ort_bool
+    {\mark_apply:nnnnn {#1} {grundmagenta} {neonpink} {pastelllila} {#2}}
+    {#2}%
+}
+% Person (blau)
+\NewDocumentCommand{\person}{O{} +m}{%
+  \bool_if:NTF \l_mark_person_bool
+    {\mark_apply:nnnnn {#1} {grundblau} {neonblau} {pastellblau} {#2}}
+    {#2}%
+}
+% Betonung (hellrot)
+\NewDocumentCommand{\betonung}{O{} +m}{%
+  \bool_if:NTF \l_mark_betonung_bool
+    {\mark_apply:nnnnn {#1} {grundrot} {neonrot} {pastellrosa} {#2}}
+    {#2}%
+}
+% Info (hellgrün)
+\NewDocumentCommand{\info}{O{} +m}{%
+  \bool_if:NTF \l_mark_info_bool
+    {\mark_apply:nnnnn {#1} {grundgruen} {neongruen} {pastellgruen} {#2}}
+    {#2}%
+}
+% Lied (gelb)
+\NewDocumentCommand{\lied}{O{} +m}{%
+  \bool_if:NTF \l_mark_lied_bool
+    {\mark_apply_box:nnnnn {#1} {grundgelb} {neongelb} {pastellgelb} {#2}}
+    {#2}%
+}
+% beten (rot)
+\NewDocumentCommand{\beten}{O{} +m}{%
+  \bool_if:NTF \l_mark_beten_bool
+    {\mark_apply_box:nnnnn {#1} {grundrot} {neonrot} {pastellrot} {#2}}
+    {#2}%
+}
+\ExplSyntaxOff
+
+% ------------------------------------------------------------
+% Schalter zum Ein-/Ausschalten der Markierungen
+% Beispiel: \markierungenOff, \markierungenOn
+\ExplSyntaxOn
+\cs_new_protected:Npn \markierungen_set_all_false: {
+  \bool_set_false:N \l_mark_verbN_bool
+  \bool_set_false:N \l_mark_verbI_bool
+  \bool_set_false:N \l_mark_verbP_bool
+  \bool_set_false:N \l_mark_konj_bool
+  \bool_set_false:N \l_mark_ort_bool
+  \bool_set_false:N \l_mark_person_bool
+  \bool_set_false:N \l_mark_betonung_bool
+  \bool_set_false:N \l_mark_info_bool
+  \bool_set_false:N \l_mark_lied_bool
+  \bool_set_false:N \l_mark_beten_bool
+}
+\cs_new_protected:Npn \markierungen_set_all_true: {
+  \bool_set_true:N \l_mark_verbN_bool
+  \bool_set_true:N \l_mark_verbI_bool
+  \bool_set_true:N \l_mark_verbP_bool
+  \bool_set_true:N \l_mark_konj_bool
+  \bool_set_true:N \l_mark_ort_bool
+  \bool_set_true:N \l_mark_person_bool
+  \bool_set_true:N \l_mark_betonung_bool
+  \bool_set_true:N \l_mark_info_bool
+  \bool_set_true:N \l_mark_lied_bool
+  \bool_set_true:N \l_mark_beten_bool
+}
+\NewDocumentCommand{\markierungenOff}{}{\markierungen_set_all_false:}
+\NewDocumentCommand{\markierungenOn}{}{\markierungen_set_all_true:}
+\ExplSyntaxOff
+
+% ------------------------------------------------------------
+% Alte Makros (auskommentiert, nicht mehr benötigt)
+%\input{colors.sty}
+%\input{textmakro.sty}
+%\input{bibeltext.sty}
+
+% Ende der Datei
+% \endinput

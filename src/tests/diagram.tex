@@ -21,27 +21,27 @@
 \bool_set_true:N \l_color_ort_bool
 \bool_set_true:N \l_color_bindW_bool
 
-\NewDocumentCommand{\verbN}{m}{
+%\NewDocumentCommand{\verbN}{m}{
   \bool_if:NTF \l_color_verbN_bool
     {\colorbox{green}{\textcolor{black}{#1}}}
     {#1}
 }
-\NewDocumentCommand{\verbI}{m}{
+%\NewDocumentCommand{\verbI}{m}{
   \bool_if:NTF \l_color_verbI_bool
     {\colorbox{yellow}{\textcolor{black}{#1}}}
     {#1}
 }
-\NewDocumentCommand{\verbP}{m}{
+%\NewDocumentCommand{\verbP}{m}{
   \bool_if:NTF \l_color_verbP_bool
     {\verbN{#1}\textsuperscript{\textbf{P}}}
     {#1}
 }
-\NewDocumentCommand{\ort}{m}{
+%\NewDocumentCommand{\ort}{m}{
   \bool_if:NTF \l_color_ort_bool
     {\colorbox{magenta}{\textcolor{white}{#1}}}
     {#1}
 }
-\NewDocumentCommand{\person}{m}{
+%\NewDocumentCommand{\person}{m}{
   \bool_if:NTF \l_color_person_bool
     {\colorbox{blue}{\textcolor{white}{#1}}}
     {#1}
