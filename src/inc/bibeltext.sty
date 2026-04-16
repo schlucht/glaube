@@ -4,24 +4,20 @@
 % Version: 1.0
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{bibeltext}[2026/02/28 Bibeltext Makros für Versvergleich]
+\makeatletter
+\edef\bibeltext@providesname{\@currpath\@currname}
+\expandafter\ProvidesPackage\expandafter{\bibeltext@providesname}[2026/02/28 Bibeltext Makros für Versvergleich]
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Benötigte Pakete
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage{colors}
+\RequirePackage{markierungen}
 \RequirePackage{tabularx}
 \RequirePackage{xparse}
 \RequirePackage{calc}
 \RequirePackage{expl3}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ALTE FARBDEFINITIONEN (bewusst auskommentiert)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Historische Farbwerte wurden nach colors.sty verschoben.
-% Diese Datei nutzt nur noch die zentralen Farben aus colors.sty.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Verstab-System: Mehrsprachige Bibelverse
@@ -97,119 +93,9 @@
      }
  }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Boolean-Schalter für grammatische Farbmarkierungen
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\bool_new:N \l_color_verbN_bool
-\bool_new:N \l_color_verbI_bool
-\bool_new:N \l_color_verbP_bool
-\bool_new:N \l_color_verbK_bool
-\bool_new:N \l_color_person_bool
-\bool_new:N \l_color_ort_bool
-\bool_new:N \l_color_bindW_bool
-\bool_new:N \l_color_bindA_bool
-\bool_new:N \l_color_bindB_bool
-\bool_new:N \l_color_bindV_bool
-
-% Standardmäßig alle Farben aktiviert
-\bool_set_true:N \l_color_verbN_bool
-\bool_set_true:N \l_color_verbI_bool
-\bool_set_true:N \l_color_verbP_bool
-\bool_set_true:N \l_color_verbK_bool
-\bool_set_true:N \l_color_person_bool
-\bool_set_true:N \l_color_ort_bool
-\bool_set_true:N \l_color_bindW_bool
-\bool_set_true:N \l_color_bindA_bool
-\bool_set_true:N \l_color_bindB_bool
-\bool_set_true:N \l_color_bindV_bool
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% VEREINHEITLICHTE MAKROS (wie in textanalysis.sty)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Verben (Normal) - Grün
-\NewDocumentCommand{\verbN}{m}{
-  \bool_if:NTF \l_color_verbN_bool
-    {\cbox{gruen}{white}{#1}}
-    {#1}
-}
-
-% Verben (Imperativ) - Gelb
-\NewDocumentCommand{\verbI}{m}{
-  \bool_if:NTF \l_color_verbI_bool
-    {\cbox{gelb}{black}{#1}}
-    {#1}
-}
-
-% Verben (Passiv) - Grün mit Superscript P
-\NewDocumentCommand{\verbP}{m}{
-  \bool_if:NTF \l_color_verbP_bool
-    {\verbN{#1}\textsuperscript{\textbf{P}}}
-    {#1}
-}
-
-% Verben (Konjunktiv) - Rot
-\NewDocumentCommand{\verbK}{m}{
-  \bool_if:NTF \l_color_verbK_bool
-    {\cbox{rot}{white}{#1}}
-    {#1}
-}
-
-% Ortsangaben - Magenta
-\NewDocumentCommand{\ort}{m}{
-  \bool_if:NTF \l_color_ort_bool
-    {\cbox{magenta}{white}{#1}}
-    {#1}
-}
-
-% Personen - Blau
-\NewDocumentCommand{\person}{m}{
-  \bool_if:NTF \l_color_person_bool
-    {\cbox{blau}{white}{#1}}
-    {#1}
-}
-
-% Bindewörter (Basis) - Rot
-\NewDocumentCommand{\bind}{m}{
-  \bool_if:NTF \l_color_bindW_bool
-    {\cbox{rot}{white}{#1}}
-    {#1}
-}
-
-% Bindewörter mit Annotationen
-\NewDocumentCommand{\bindA}{m}{
-  \bool_if:NTF \l_color_bindA_bool
-    {\bind{#1}\textsuperscript{\textbf{A}}}
-    {#1}
-}
-
-\NewDocumentCommand{\bindB}{m}{
-  \bool_if:NTF \l_color_bindB_bool
-    {\bind{#1}\textsuperscript{\textbf{B}}}
-    {#1}
-}
-
-\NewDocumentCommand{\bindV}{m}{
-  \bool_if:NTF \l_color_bindV_bool
-    {\bind{#1}\textsuperscript{\textbf{V}}}
-    {#1}
-}
-
-\ExplSyntaxOff
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Hilfsmakros
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\hr}{\par\noindent\hrulefill\par}
-\newcommand{\lineheight}[1]{\setlength{\baselineskip}{{#1}\baselineskip}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Optional: Absatzformatierung (kann aktiviert werden)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \setlength{\parindent}{0pt}
-% \setlength{\parskip}{0.4em}
+% einfaches Makro für Fußnoten-Annotationen
+\newcommand{\annot}[1]{{\footnotesize\textit{{#1}}}}
 
 \endinput
+
+

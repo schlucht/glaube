@@ -13,6 +13,7 @@
 \RequirePackage{graphicx}
 \RequirePackage[table]{xcolor}
 \RequirePackage[most]{tcolorbox}
+\RequirePackage{colortbl}
 \RequirePackage{geometry}
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{bibleref-german}

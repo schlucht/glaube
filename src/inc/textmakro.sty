@@ -4,336 +4,336 @@
 % Version: 1.0
 % Verwendung: \makro{Text} für Textfarbe, \makro[b]{Text} für Box-Hintergrundfarbe
 
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{textmakro}[2026/02/28 Text-Markierungs-Makros]
+% \NeedsTeXFormat{LaTeX2e}
+% \ProvidesPackage{textmakro}[2026/02/28 Text-Markierungs-Makros]
 
-\RequirePackage{colors}
-\RequirePackage{xparse}
+% \RequirePackage{colors}
+% \RequirePackage{xparse}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Boolean-Schalter für Farbmarkierungen (optional)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ExplSyntaxOn
+% \ExplSyntaxOn
 
-% Boolean-Variablen definieren
-\bool_new:N \l_color_verb_bool
-\bool_new:N \l_color_verbI_bool
-\bool_new:N \l_color_verbP_bool
-\bool_new:N \l_color_nomen_bool
-\bool_new:N \l_color_konj_bool
-\bool_new:N \l_color_ort_bool
-\bool_new:N \l_color_person_bool
-\bool_new:N \l_color_gott_bool
-\bool_new:N \l_color_jesus_bool
-\bool_new:N \l_color_geist_bool
-\bool_new:N \l_color_israel_bool
-\bool_new:N \l_color_teufel_bool
-\bool_new:N \l_color_sp_bool
+% % Boolean-Variablen definieren
+% \bool_new:N \l_color_verb_bool
+% \bool_new:N \l_color_verbI_bool
+% \bool_new:N \l_color_verbP_bool
+% \bool_new:N \l_color_nomen_bool
+% \bool_new:N \l_color_konj_bool
+% \bool_new:N \l_color_ort_bool
+% \bool_new:N \l_color_person_bool
+% \bool_new:N \l_color_gott_bool
+% \bool_new:N \l_color_jesus_bool
+% \bool_new:N \l_color_geist_bool
+% \bool_new:N \l_color_israel_bool
+% \bool_new:N \l_color_teufel_bool
+% \bool_new:N \l_color_sp_bool
 
-% Standardmäßig alle Farben aktiviert
-\bool_set_true:N \l_color_verb_bool
-\bool_set_true:N \l_color_verbI_bool
-\bool_set_true:N \l_color_verbP_bool
-\bool_set_true:N \l_color_nomen_bool
-\bool_set_true:N \l_color_konj_bool
-\bool_set_true:N \l_color_ort_bool
-\bool_set_true:N \l_color_person_bool
-\bool_set_true:N \l_color_gott_bool
-\bool_set_true:N \l_color_jesus_bool
-\bool_set_true:N \l_color_geist_bool
-\bool_set_true:N \l_color_israel_bool
-\bool_set_true:N \l_color_teufel_bool
-\bool_set_true:N \l_color_sp_bool
+% % Standardmäßig alle Farben aktiviert
+% \bool_set_true:N \l_color_verb_bool
+% \bool_set_true:N \l_color_verbI_bool
+% \bool_set_true:N \l_color_verbP_bool
+% \bool_set_true:N \l_color_nomen_bool
+% \bool_set_true:N \l_color_konj_bool
+% \bool_set_true:N \l_color_ort_bool
+% \bool_set_true:N \l_color_person_bool
+% \bool_set_true:N \l_color_gott_bool
+% \bool_set_true:N \l_color_jesus_bool
+% \bool_set_true:N \l_color_geist_bool
+% \bool_set_true:N \l_color_israel_bool
+% \bool_set_true:N \l_color_teufel_bool
+% \bool_set_true:N \l_color_sp_bool
 
-\ExplSyntaxOff
+% \ExplSyntaxOff
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% VERBEN
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\ExplSyntaxOn
-
-% Verb (Normal) - Grün rgb(50,205,50)
-\NewDocumentCommand{\vb}{o +m}{%
-  \bool_if:NTF \l_color_verb_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{verbcolor}{#2}}                    % Nur Textfarbe
-        {\cbox{verbcolor}{white}{#2}}                  % Box-Hintergrund
-    }
-    {#2}                                               % Keine Farbe
-}
-
-% Verb (Imperativ) - Gelb rgb(255,255,0)
-\NewDocumentCommand{\verbI}{o +m}{%
-  \bool_if:NTF \l_color_verbI_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{verbimperativcolor}{#2}}                     % Nur Textfarbe
-        {\cbox{verbimperativcolor}{black}{#2}}                   % Box-Hintergrund
-    }
-    {#2}                                                         % Keine Farbe
-}
-
-% Verb (Passiv) - Grün + Superscript P
-\NewDocumentCommand{\verbP}{o +m}{%
-  \bool_if:NTF \l_color_verbP_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{verbcolor}{#2}\textsuperscript{\textbf{P}}}     % Nur Textfarbe + P
-        {\cbox{verbcolor}{white}{#2}\textsuperscript{\textbf{P}}}   % Box-Hintergrund + P
-    }
-    {#2\textsuperscript{\textbf{P}}}                                % Nur P, keine Farbe
-}
-
-\ExplSyntaxOff
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% NOMEN
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\ExplSyntaxOn
-
-% Nomen - Orange rgb(255,140,0)
-\NewDocumentCommand{\nomen}{o +m}{%
-  \bool_if:NTF \l_color_nomen_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{nomencolor}{#2}}                   % Nur Textfarbe
-        {\cbox{nomencolor}{white}{#2}}                 % Box-Hintergrund
-    }
-    {#2}                                              % Keine Farbe
-}
-
-\ExplSyntaxOff
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% KONJUNKTIONEN
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\ExplSyntaxOn
-
-% Konjunktion - Rot rgb(255,0,0)
-\NewDocumentCommand{\konj}{o +m}{%
-  \bool_if:NTF \l_color_konj_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{konjunktioncolor}{#2}}                      % Nur Textfarbe
-        {\cbox{konjunktioncolor}{white}{#2}}                    % Box-Hintergrund
-    }
-    {#2}                                                       % Keine Farbe
-}
-
-\ExplSyntaxOff
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ORTE UND GEOGRAPHIE
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\ExplSyntaxOn
-
-% Ort - Magenta rgb(255,0,255)
-\NewDocumentCommand{\ort}{o +m}{%
-  \bool_if:NTF \l_color_ort_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{ortcolor}{#2}}                  % Nur Textfarbe
-        {\cbox{ortcolor}{white}{#2}}                % Box-Hintergrund
-    }
-    {#2}                                           % Keine Farbe
-}
-
-\ExplSyntaxOff
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% PERSONEN - ALLGEMEIN
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\ExplSyntaxOn
-
-% Person (allgemein) - Blau rgb(100,100,205)
-\NewDocumentCommand{\person}{o +m}{%
-  \bool_if:NTF \l_color_person_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{personcolor}{#2}}                     % Nur Textfarbe
-        {\cbox{personcolor}{white}{#2}}                   % Box-Hintergrund
-    }
-    {#2}                                                 % Keine Farbe
-}
-
-% Mensch (allgemein) - Blau rgb(100,100,205)
-\NewDocumentCommand{\mensch}{o +m}{%
-  \bool_if:NTF \l_color_person_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{personcolor}{#2}}                     % Nur Textfarbe
-        {\cbox{personcolor}{white}{#2}}                   % Box-Hintergrund
-    }
-    {#2}                                                 % Keine Farbe
-}
-
-\ExplSyntaxOff
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% THEOLOGISCHE PERSONEN - GOTTHEIT
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\ExplSyntaxOn
-
-% Gott - Gnade (Himmelsblau) rgb(180,210,255)
-\NewDocumentCommand{\gott}{o +m}{%
-  \bool_if:NTF \l_color_gott_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{gnade}{#2}}                    % Nur Textfarbe
-        {\cbox{gnade}{black}{#2}}                  % Box-Hintergrund
-    }
-    {#2}                                          % Keine Farbe
-}
-
-% Jesus - Gnade (Himmelsblau) rgb(180,210,255)
-\NewDocumentCommand{\jesus}{o +m}{%
-  \bool_if:NTF \l_color_jesus_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{gnade}{#2}}                    % Nur Textfarbe
-        {\cbox{gnade}{black}{#2}}                  % Box-Hintergrund
-    }
-    {#2}                                          % Keine Farbe
-}
-
-% Heiliger Geist - Gnade (Himmelsblau) rgb(180,210,255)
-\NewDocumentCommand{\geist}{o +m}{%
-  \bool_if:NTF \l_color_geist_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{gnade}{#2}}                    % Nur Textfarbe
-        {\cbox{gnade}{black}{#2}}                  % Box-Hintergrund
-    }
-    {#2}                                          % Keine Farbe
-}
-
-\ExplSyntaxOff
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% THEOLOGISCHE PERSONEN - VOLK GOTTES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\ExplSyntaxOn
-
-% Israel - Bund (Lila) rgb(220,180,255)
-\NewDocumentCommand{\israel}{o +m}{%
-  \bool_if:NTF \l_color_israel_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{bund}{#2}}                     % Nur Textfarbe
-        {\cbox{bund}{black}{#2}}                   % Box-Hintergrund
-    }
-    {#2}                                          % Keine Farbe
-}
-
-\ExplSyntaxOff
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% THEOLOGISCHE PERSONEN - GEGENSPIELER
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\ExplSyntaxOn
-
-% Teufel - Gericht (Rot) rgb(255,180,180)
-\NewDocumentCommand{\teufel}{o +m}{%
-  \bool_if:NTF \l_color_teufel_bool
-    {
-      \IfNoValueTF{#1}
-        {\textcolor{gericht}{#2}}                  % Nur Textfarbe
-        {\cbox{gericht}{black}{#2}}                % Box-Hintergrund
-    }
-    {#2}                                          % Keine Farbe
-}
-
-\ExplSyntaxOff
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% HILFSMAKROS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % VERBEN
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \ExplSyntaxOn
 
-% % Teufel - Gericht (Rot) rgb(255,180,180)
-% \NewDocumentCommand{\spa}{m}{%
-%   \bool_if:NTF \l_color_sp_bool
-%     {     
-%         {\vspace*{#1cm}}                  % Einzug
-%     }                                   
+% % Verb (Normal) - Grün rgb(50,205,50)
+% \NewDocumentCommand{\vb}{o +m}{%
+%   \bool_if:NTF \l_color_verb_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{verbcolor}{#2}}                    % Nur Textfarbe
+%         {\cbox{verbcolor}{white}{#2}}                  % Box-Hintergrund
+%     }
+%     {#2}                                               % Keine Farbe
+% }
+
+% % Verb (Imperativ) - Gelb rgb(255,255,0)
+% %\NewDocumentCommand{\verbI}{o +m}{%
+%   \bool_if:NTF \l_color_verbI_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{verbimperativcolor}{#2}}                     % Nur Textfarbe
+%         {\cbox{verbimperativcolor}{black}{#2}}                   % Box-Hintergrund
+%     }
+%     {#2}                                                         % Keine Farbe
+% }
+
+% % Verb (Passiv) - Grün + Superscript P
+% %\NewDocumentCommand{\verbP}{o +m}{%
+%   \bool_if:NTF \l_color_verbP_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{verbcolor}{#2}\textsuperscript{\textbf{P}}}     % Nur Textfarbe + P
+%         {\cbox{verbcolor}{white}{#2}\textsuperscript{\textbf{P}}}   % Box-Hintergrund + P
+%     }
+%     {#2\textsuperscript{\textbf{P}}}                                % Nur P, keine Farbe
 % }
 
 % \ExplSyntaxOff
 
-% Annotation - Grau, klein, kursiv
-\newcommand{\annot}[1]{{\footnotesize\textit{[#1]}}}
-\newcommand{\spa}[1]{\hspace*{#1em}} % Horizontale Einrückung
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % NOMEN
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\sethlcolor{gray!10}
-% \bt und \btc Makros sind jetzt in colors.sty definiert
+% \ExplSyntaxOn
 
-% Gebet-Makro
-\newcommand{\beten}{\btc{gnade}{black}{Gebet}}
+% % Nomen - Orange rgb(255,140,0)
+% \NewDocumentCommand{\nomen}{o +m}{%
+%   \bool_if:NTF \l_color_nomen_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{nomencolor}{#2}}                   % Nur Textfarbe
+%         {\cbox{nomencolor}{white}{#2}}                 % Box-Hintergrund
+%     }
+%     {#2}                                              % Keine Farbe
+% }
 
-% Diverse Fontstyles
-\newcommand{\aus}[1]{\textcolor{red}{ #1 }} %%Markiert den Text der nicht in den Druck soll
-%\renewcommand{\aus}[1]{} %%Kommentar entfernen und der markierte Text wird ausgeblendet
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Diverse Farbpaletten
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\lied}[1]{%
-  \btc{yellow}{blue}{Lied: #1}%
-}
+% \ExplSyntaxOff
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % KONJUNKTIONEN
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \ExplSyntaxOn
+
+% % Konjunktion - Rot rgb(255,0,0)
+% \NewDocumentCommand{\konj}{o +m}{%
+%   \bool_if:NTF \l_color_konj_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{konjunktioncolor}{#2}}                      % Nur Textfarbe
+%         {\cbox{konjunktioncolor}{white}{#2}}                    % Box-Hintergrund
+%     }
+%     {#2}                                                       % Keine Farbe
+% }
+
+% \ExplSyntaxOff
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % ORTE UND GEOGRAPHIE
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \ExplSyntaxOn
+
+% % Ort - Magenta rgb(255,0,255)
+% %\NewDocumentCommand{\ort}{o +m}{%
+%   \bool_if:NTF \l_color_ort_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{ortcolor}{#2}}                  % Nur Textfarbe
+%         {\cbox{ortcolor}{white}{#2}}                % Box-Hintergrund
+%     }
+%     {#2}                                           % Keine Farbe
+% }
+
+% \ExplSyntaxOff
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % PERSONEN - ALLGEMEIN
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \ExplSyntaxOn
+
+% % Person (allgemein) - Blau rgb(100,100,205)
+% %\NewDocumentCommand{\person}{o +m}{%
+%   \bool_if:NTF \l_color_person_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{personcolor}{#2}}                     % Nur Textfarbe
+%         {\cbox{personcolor}{white}{#2}}                   % Box-Hintergrund
+%     }
+%     {#2}                                                 % Keine Farbe
+% }
+
+% % Mensch (allgemein) - Blau rgb(100,100,205)
+% \NewDocumentCommand{\mensch}{o +m}{%
+%   \bool_if:NTF \l_color_person_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{personcolor}{#2}}                     % Nur Textfarbe
+%         {\cbox{personcolor}{white}{#2}}                   % Box-Hintergrund
+%     }
+%     {#2}                                                 % Keine Farbe
+% }
+
+% \ExplSyntaxOff
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % THEOLOGISCHE PERSONEN - GOTTHEIT
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \ExplSyntaxOn
+
+% % Gott - Gnade (Himmelsblau) rgb(180,210,255)
+% \NewDocumentCommand{\gott}{o +m}{%
+%   \bool_if:NTF \l_color_gott_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{gnade}{#2}}                    % Nur Textfarbe
+%         {\cbox{gnade}{black}{#2}}                  % Box-Hintergrund
+%     }
+%     {#2}                                          % Keine Farbe
+% }
+
+% % Jesus - Gnade (Himmelsblau) rgb(180,210,255)
+% \NewDocumentCommand{\jesus}{o +m}{%
+%   \bool_if:NTF \l_color_jesus_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{gnade}{#2}}                    % Nur Textfarbe
+%         {\cbox{gnade}{black}{#2}}                  % Box-Hintergrund
+%     }
+%     {#2}                                          % Keine Farbe
+% }
+
+% % Heiliger Geist - Gnade (Himmelsblau) rgb(180,210,255)
+% \NewDocumentCommand{\geist}{o +m}{%
+%   \bool_if:NTF \l_color_geist_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{gnade}{#2}}                    % Nur Textfarbe
+%         {\cbox{gnade}{black}{#2}}                  % Box-Hintergrund
+%     }
+%     {#2}                                          % Keine Farbe
+% }
+
+% \ExplSyntaxOff
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % THEOLOGISCHE PERSONEN - VOLK GOTTES
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \ExplSyntaxOn
+
+% % Israel - Bund (Lila) rgb(220,180,255)
+% \NewDocumentCommand{\israel}{o +m}{%
+%   \bool_if:NTF \l_color_israel_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{bund}{#2}}                     % Nur Textfarbe
+%         {\cbox{bund}{black}{#2}}                   % Box-Hintergrund
+%     }
+%     {#2}                                          % Keine Farbe
+% }
+
+% \ExplSyntaxOff
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % THEOLOGISCHE PERSONEN - GEGENSPIELER
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \ExplSyntaxOn
+
+% % Teufel - Gericht (Rot) rgb(255,180,180)
+% \NewDocumentCommand{\teufel}{o +m}{%
+%   \bool_if:NTF \l_color_teufel_bool
+%     {
+%       \IfNoValueTF{#1}
+%         {\textcolor{gericht}{#2}}                  % Nur Textfarbe
+%         {\cbox{gericht}{black}{#2}}                % Box-Hintergrund
+%     }
+%     {#2}                                          % Keine Farbe
+% }
+
+% \ExplSyntaxOff
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % HILFSMAKROS
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% % \ExplSyntaxOn
+
+% % % Teufel - Gericht (Rot) rgb(255,180,180)
+% % \NewDocumentCommand{\spa}{m}{%
+% %   \bool_if:NTF \l_color_sp_bool
+% %     {     
+% %         {\vspace*{#1cm}}                  % Einzug
+% %     }                                   
+% % }
+
+% % \ExplSyntaxOff
+
+% % Annotation - Grau, klein, kursiv
+% \newcommand{\annot}[1]{{\footnotesize\textit{[#1]}}}
+% \newcommand{\spa}[1]{\hspace*{#1em}} % Horizontale Einrückung
+
+% \sethlcolor{gray!10}
+% % \bt und \btc Makros sind jetzt in colors.sty definiert
+
+% % Gebet-Makro
+% \newcommand{\beten}{\btc{gnade}{black}{Gebet}}
+
+% % Diverse Fontstyles
+% \newcommand{\aus}[1]{\textcolor{red}{ #1 }} %%Markiert den Text der nicht in den Druck soll
+% %\renewcommand{\aus}[1]{} %%Kommentar entfernen und der markierte Text wird ausgeblendet
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% % Diverse Farbpaletten
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newcommand{\lied}[1]{%
+%   \btc{yellow}{blue}{Lied: #1}%
+% }
 
 
 
-\newcommand{\green}[1]{\btc{green}{black}{#1}}
-%\newcommand{\blau}[1]{\colorbox{blue}{\textcolor{black}{#1}}}
-\newcommand{\rot}[1]{\btc{red}{white}{#1}}
-\newcommand{\betonung}[1]{{\sethlcolor{red!10}\hl{#1}}}
+% \newcommand{\green}[1]{\btc{green}{black}{#1}}
+% %\newcommand{\blau}[1]{\colorbox{blue}{\textcolor{black}{#1}}}
+% \newcommand{\rot}[1]{\btc{red}{white}{#1}}
+% \newcommand{\betonung}[1]{{\sethlcolor{red!10}\hl{#1}}}
 
 
-\newcommand{\leise}[1]{\bt[blue!10]{#1}} %%Leichtes rot
-\newcommand{\zitat}[1]{\bt[gray!10]{\enquote{#1}}} %%Leichtes rot
-\newcommand{\hh}[1]{\textsuperscript{#1}} %% Text Hochstellen
-\newcommand{\es}[1]{[#1]}
+% \newcommand{\leise}[1]{\bt[blue!10]{#1}} %%Leichtes rot
+% \newcommand{\zitat}[1]{\bt[gray!10]{\enquote{#1}}} %%Leichtes rot
+% \newcommand{\hh}[1]{\textsuperscript{#1}} %% Text Hochstellen
+% \newcommand{\es}[1]{[#1]}
 
-\newcommand{\gottIco}[2][red]{%
-  \tikz[baseline]{
-    \node[inner sep=0pt,outer sep=0pt] (w) {#2};
-    \node[above=-.2cm of w, text=#1] {$\triangle$};
-  }%
-}
+% \newcommand{\gottIco}[2][red]{%
+%   \tikz[baseline]{
+%     \node[inner sep=0pt,outer sep=0pt] (w) {#2};
+%     \node[above=-.2cm of w, text=#1] {$\triangle$};
+%   }%
+% }
 
-\newcommand{\jesusIco}[2][red]{%
-  \tikz[baseline]{
-    \node[inner sep=0pt,outer sep=0pt] (w) {#2};
-    \node[above=-.2cm of w, text=#1] {\Large$\dagger$};
-  }%
-}
+% \newcommand{\jesusIco}[2][red]{%
+%   \tikz[baseline]{
+%     \node[inner sep=0pt,outer sep=0pt] (w) {#2};
+%     \node[above=-.2cm of w, text=#1] {\Large$\dagger$};
+%   }%
+% }
 
-\newcommand{\geistIco}[2][red]{%
-  \tikz[baseline]{
-    \node[inner sep=0pt,outer sep=0pt] (w) {#2};
-    \node[above=-.2cm of w, text=#1] {\Large$\preccurlyeq$};
-  }%
-}
+% \newcommand{\geistIco}[2][red]{%
+%   \tikz[baseline]{
+%     \node[inner sep=0pt,outer sep=0pt] (w) {#2};
+%     \node[above=-.2cm of w, text=#1] {\Large$\preccurlyeq$};
+%   }%
+% }
 
-\newcommand{\herr}{HERR}
+% \newcommand{\herr}{HERR}
 
-\newcommand{\verslink}[3]{%
-  \begingroup
-  \edef\url{https://www.esrabibel.de/#1#2\%2C#3}%
-  \uline{\href{\url}{#2,#3}}%
-  \endgroup
-}
+% \newcommand{\verslink}[3]{%
+%   \begingroup
+%   \edef\url{https://www.esrabibel.de/#1#2\%2C#3}%
+%   \uline{\href{\url}{#2,#3}}%
+%   \endgroup
+% }
 
-\endinput
+% \endinput
