@@ -20,7 +20,6 @@
     "**/*.gz": true,
     "**/*.fls": true,
   },
-  "editor.wrapColumn": 120,
-  "editor.wordWrap": "wordWrapColumn"
+  "editor.wordWrap": "on"
   
 }
