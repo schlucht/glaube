@@ -26,3 +26,10 @@
 {"rule":"KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2","sentence":"^\\Q11Nicht dass ich das aufgrund von Mangel sage, denn ich habe gelernt, worin ich bin, genügsam zu sein.\\E$"}
 {"rule":"KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2","sentence":"^\\Q11Nicht dass ich das aufgrund von Mangel sage, denn ich habe gelernt, worin ich bin, genügsam zu sein.\\E$"}
 {"rule":"GERMAN_WRONG_WORD_IN_CONTEXT_LEIB_LAIB","sentence":"^\\QUnd er nahm das Brot, dankte, brach es, gab es ihnen und sprach: Dies ist mein Leib der für euch gegeben wird; das tut zu meinem Gedächtnis!\\E$"}
+{"rule":"UNPAIRED_BRACKETS","sentence":"^\\QIMos(1:)Der Auftrag an die Patriarchen sich zu vermehren und ein Volk zu bilden.\\E$"}
+{"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QWir müssen einander zur Rechenschaft ziehen, denn wir alle gehen durch Zeiten, in denen unser Fleisch eine andere Richtung einschlagen will als die, die Gott in der Bibel offenbart hat.\\E$"}
+{"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QWenn er aber nicht auf sie hören wird, so sage es der Gemeinde; wenn er aber auch auf die Gemeinde nicht hören wird, so sei er dir wie der Heide und der Zöllner.\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QHeute wollen wir uns Jahwe Rapha der dein Arzt anschauen.\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QZum Beispiel Naeman in IKoen(5:), er wurde von Gott geheilt, obwohl er nicht mal Jude war.\\E$"}
+{"rule":"UNPAIRED_BRACKETS","sentence":"^\\QZum Beispiel Naeman in IKoen(5:), er wurde von Gott geheilt, obwohl er nicht mal Jude war.\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\Q../../inc/\\E$"}

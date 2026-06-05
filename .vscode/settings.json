@@ -1,5 +1,17 @@
 {
   "latex-workshop.formatting.latex": "latexindent",   
+  "ltex.enabled": true,
+  "ltex.latex.environments": {
+    "block": "default",
+    "bibelbox": "default"
+  },
+  "ltex.latex.commands": {
+    "bibleverse": "ignore",
+    "lied": "default",
+    "info": "default",
+    "beten": "default",
+    "betonung": "default"
+  },
   "editor.overtypeCursorStyle": "line",
   "editor.cursorStyle": "line",
   "files.exclude": {
