@@ -2,6 +2,7 @@
 \ProvidesClass{mybib}[2025/01/28 Custom Bibel Vorlage]
 
 % Weitergabe aller Optionen an die geladene Klasse
+\DeclareOption{14pt}{\PassOptionsToClass{fontsize=14pt}{scrartcl}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{scrartcl}}
 \ProcessOptions\relax
 

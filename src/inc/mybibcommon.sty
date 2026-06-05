@@ -69,7 +69,11 @@
 
 \clearpairofpagestyles
 \graphicspath{{../assets/images}}
-\ihead{\includegraphics[height=1cm]{logo.png}}
+\newcommand{\headerlogo}{\includegraphics[height=1cm]{logo.png}}
+\newcommand{\setheaderlogo}[2][1cm]{%
+  \renewcommand{\headerlogo}{\includegraphics[height=#1]{#2}}%
+}
+\ihead{\headerlogo}
 \chead{\headmark}
 \ifoot{\today}
 \cfoot{Seite \thepage}

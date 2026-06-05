@@ -1,6 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{mybibbook}[2025/01/28 Custom Bibel Vorlage]
 
+\DeclareOption{14pt}{\PassOptionsToClass{fontsize=14pt}{scrbook}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{scrbook}}
 \ProcessOptions\relax
 
