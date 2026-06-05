@@ -33,3 +33,6 @@
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QZum Beispiel Naeman in IKoen(5:), er wurde von Gott geheilt, obwohl er nicht mal Jude war.\\E$"}
 {"rule":"UNPAIRED_BRACKETS","sentence":"^\\QZum Beispiel Naeman in IKoen(5:), er wurde von Gott geheilt, obwohl er nicht mal Jude war.\\E$"}
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\Q../../inc/\\E$"}
+{"rule":"DE_DU_UPPER_LOWER","sentence":"^\\Q[] [b, p]Beten zur Begrüssung [] und anschliessend singen wir zusammen das Lied [] [b]Du bist das Licht der Welt.\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\Q/inc/\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QKen Ham, Jonathan Sarfati, Carl Wieland 2011\\E$"}

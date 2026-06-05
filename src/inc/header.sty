@@ -1,18 +1,7 @@
-\setlength{\headheight}{38pt}
-\setlength{\topmargin}{-10pt}
-\setlength{\textheight}{650pt}
-\setlength{\footskip}{40pt}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{header}[2026/06/05 Kompatibilitaetspaket fuer gemeinsame Vorlage]
 
-% Linien einfügen
-\KOMAoptions{headsepline=true, footsepline=true} % Linien aktivieren
-\KOMAoptions{headsepline=0.4pt, footsepline=0.4pt} % Liniendicke anpassen
-
-% Kopf- und Fußzeilen definieren
-\clearpairofpagestyles
-
-\ihead{\includegraphics[height=1cm]{mnr-green.png}}
-\chead{\headmark}
-% \ohead{\today}
-\ifoot{\today}
-\cfoot{Seite \thepage}
-\ofoot{Autor: \makeatletter\@author\makeatother}
+\makeatletter
+\edef\header@common{\@currpath mybibcommon}
+\expandafter\RequirePackage\expandafter{\header@common}
+\makeatother
