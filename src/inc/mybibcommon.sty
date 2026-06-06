@@ -77,7 +77,9 @@
 \chead{\headmark}
 \ifoot{\today}
 \cfoot{Seite \thepage}
-\ofoot{Autor: \makeatletter\@author\makeatother}
+\makeatletter
+\AtBeginDocument{\ofoot{Autor: \@author}}
+\makeatother
 
 \geometry{
    left=25mm,
@@ -105,11 +107,6 @@
 \biblerefstyle{Lutherbibel}
 \biblerefformat{lang}
 
-\newcommand{\numcirc}[2][]{%
-  \tikz[baseline=(char.base)]{%
-    \node[shape=circle,fill=purple!70,text=white,inner sep=0.6pt,minimum size=1.6em,font=\sffamily\small,#1] (char) {#2};%
-  }%
-}
 
 \RequirePackage{markierungen}
 \RequirePackage{bibeltext}

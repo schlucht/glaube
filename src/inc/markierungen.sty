@@ -275,10 +275,20 @@
 % ------------------------------------------------------------
 \newcommand{\spa}[1]{\hspace*{#1em}} % Horizontale Einrückung
 
+\newcommand{\numcirc}[2][]{%
+  \tikz[baseline=(char.base)]{%
+    \node[shape=circle,fill=purple!70,text=white,inner sep=0.6pt,minimum size=1.6em,font=\sffamily\small,#1] (char) {#2};%
+  }%
+}
 \newcommand{\zB}{z.\,B.}
 \newcommand{\uA}{u.\,a.}
 \newcommand{\nChr}{n.\,Chr.}
 \newcommand{\vChr}{v.\,Chr.}
+
+% Bemerkungen zur Notation
+\newcommand{\annot}[1]{{\footnotesize\textit{{#1}}}}
+% Herr zu HERR
+ \newcommand{\herr}{HERR}
 
 % Ende der Datei
 % \endinput

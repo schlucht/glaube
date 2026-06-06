@@ -36,3 +36,8 @@
 {"rule":"DE_DU_UPPER_LOWER","sentence":"^\\Q[] [b, p]Beten zur Begrüssung [] und anschliessend singen wir zusammen das Lied [] [b]Du bist das Licht der Welt.\\E$"}
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\Q/inc/\\E$"}
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QKen Ham, Jonathan Sarfati, Carl Wieland 2011\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QBOSS steht für vier verschiedene Rollen, die Jesus als Leiter ausfüllte und die auszufüllen er uns als Leiter beruft: B = BOSS; der Chef O = Out Front; Der Anführer S = Supply; Versorger S = Serve; Diener\\E$"}
+{"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QDenn Gott seinen Sohn nicht in die Welt gesandt, damit er die Welt richte, sondern damit die Welt durch ihn errettet werde.\\E$"}
+{"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QOder, dass ich ein geordneteres Leben führen soll?\\E$"}
+{"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QDenn so hat Gott die Welt geliebt, dass er seinen eingeborenen Sohn gab, damit jeder, der an ihn glaubt, dass er seinen eingeborenen Sohn gab, damit jeder, der an ihn glaubt, nicht verloren gehe, sondern ewiges Leben habe.\\E$"}
+{"rule":"UNPAIRED_BRACKETS","sentence":"^\\QIMos(1:) Der Auftrag an die Patriarchen sich zu vermehren und ein Volk zu bilden.\\E$"}
