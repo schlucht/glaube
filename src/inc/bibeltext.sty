@@ -18,6 +18,7 @@
 \RequirePackage{xparse}
 \RequirePackage{calc}
 \RequirePackage{expl3}
+\RequirePackage{array}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Verstab-System: Mehrsprachige Bibelverse
@@ -26,6 +27,7 @@
 % Konfigurierbares Layout
 \newcommand{\VersNumberBox}[1]{\makebox[0em][r]{\textsuperscript{#1}}}
 \newcommand{\VersSourceFmt}[1]{[\textsc{#1}] }
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 \ExplSyntaxOn
 \clist_new:N \g_lothar_versions_clist
@@ -82,7 +84,7 @@
    \lothar_version_selected_p:nTF { #2 }
      {
        \noindent
-       \begin{tabularx}{\linewidth}{@{} l X@{}}        
+       \begin{tabularx}{\linewidth}{@{} l Y@{}}        
          \VersNumberBox{#1} & 
          \lothar_is_default_p:nTF{#2}
          {#3}         

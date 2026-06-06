@@ -79,12 +79,7 @@ Kernmakros/Umgebungen:
 - `\biblezit{Buch}{Kap:Vers}`
 - `\verslink{Buch}{Kap}{Vers}` (Link auf esrabibel.de)
 
-Wichtiger Hinweis:
-- Datei enthaelt `\RequirePackage{colors}`.
-- Im Repo existiert aktuell `colors1.sty`, nicht `colors.sty`.
-- Falls es dabei zu Paketauflosungsproblemen kommt, sollte entweder
-	- `colors1.sty` auf `colors.sty` umbenannt werden, oder
-	- `bible_style.sty` auf `\RequirePackage{colors1}` umgestellt werden.
+
 
 ## Header/Kompatibilitaet
 
