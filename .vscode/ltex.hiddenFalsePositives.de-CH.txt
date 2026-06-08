@@ -41,3 +41,4 @@
 {"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QOder, dass ich ein geordneteres Leben führen soll?\\E$"}
 {"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QDenn so hat Gott die Welt geliebt, dass er seinen eingeborenen Sohn gab, damit jeder, der an ihn glaubt, dass er seinen eingeborenen Sohn gab, damit jeder, der an ihn glaubt, nicht verloren gehe, sondern ewiges Leben habe.\\E$"}
 {"rule":"UNPAIRED_BRACKETS","sentence":"^\\QIMos(1:) Der Auftrag an die Patriarchen sich zu vermehren und ein Volk zu bilden.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qca. 67-68 unter Kaiser Nero Verfassungsort.\\E$"}
