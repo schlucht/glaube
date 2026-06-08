@@ -58,6 +58,7 @@
   \par
   \noindent
   \textbf{Vers(#1)}\quad #2
+  \par
 }
 
 \NewDocumentCommand{\versmarker}{m}
@@ -80,10 +81,11 @@
 
 \NewDocumentCommand{\satz}{m m +m}
 {
-  \par
-  \noindent
+  % \par
+  % \noindent
   \hspace*{\fpeval{#2}em}
   \textcolor{black!\fpeval{100-#2*15}}{#3}
+  \par
 }
 
 \NewDocumentCommand{\hauptsatz}{O{0} +m}
