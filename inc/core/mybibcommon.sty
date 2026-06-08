@@ -1,0 +1,102 @@
+\NeedsTeXFormat{LaTeX2e}
+
+\makeatletter
+\edef\mybibcommonprovidesname{\@currpath\@currname}
+\expandafter\ProvidesPackage\expandafter{\mybibcommonprovidesname}[2026/06/05 Gemeinsame Bibel-Vorlage]
+
+% Pfad-Handling für \input und \import
+\edef\mybibcommoncurrpath{{\@currpath}}
+\@ifundefined{input@path}{%
+  \def\mybibcommonoldinputpath{}%
+}{%
+  \let\mybibcommonoldinputpath\input@path
+}
+\edef\input@path{\mybibcommoncurrpath\mybibcommonoldinputpath}
+\makeatother
+
+% ------------------------------------------------
+% Engine / Sprache / Fonts
+% ------------------------------------------------
+
+\RequirePackage{iftex}
+
+\ifPDFTeX
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[ngerman]{babel}
+  \RequirePackage{lmodern}
+\else
+  \RequirePackage{fontspec}
+  \RequirePackage{polyglossia}
+
+  \setdefaultlanguage{german}
+  \setotherlanguage{greek}
+  \setotherlanguage{hebrew}
+
+  \setmainfont{Linux Libertine O}
+  \newfontfamily\greekfont{Gentium Plus}
+  \newfontfamily\hebrewfont{FreeSerif}
+\fi
+
+% ------------------------------------------------
+% Allgemeine Pakete (Core)
+% ------------------------------------------------
+
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+
+\PassOptionsToPackage{table}{xcolor}
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\RequirePackage{xcolor}
+\RequirePackage{colortbl}
+
+\RequirePackage{csquotes}
+\RequirePackage{microtype}
+\RequirePackage{amssymb}
+\RequirePackage{calc}
+
+\RequirePackage{setspace}
+\RequirePackage{multicol}
+\RequirePackage{soul}
+\RequirePackage[normalem]{ulem}
+\RequirePackage{longtable}
+
+\RequirePackage[version=4]{mhchem}
+\RequirePackage{numprint}
+
+\RequirePackage{import}
+\RequirePackage{xstring}
+
+\RequirePackage[colorlinks=true, linkcolor=blue, urlcolor=black, citecolor=black]{hyperref}
+
+% ------------------------------------------------
+% Bibel-spezifische Erweiterungen
+% ------------------------------------------------
+
+\RequirePackage{bibleref-german}
+\biblerefstyle{Lutherbibel}
+\biblerefformat{lang}
+
+% \RequirePackage{markierungen}
+% \RequirePackage{bibeltext}
+% \RequirePackage{bible_style}
+
+% ------------------------------------------------
+% Eigene Helfer
+% ------------------------------------------------
+
+% Input-Pfad setzen
+\newcommand{\setincpath}[1]{%
+  \makeatletter
+  \def\input@path{{#1}}%
+  \makeatother
+}
+
+% einfacher Block
+\newenvironment{block}[1][]{%
+  \vspace{0.5em}%
+  \noindent\textbf{#1}\par%
+  \vspace{0.0em}%
+}{%
+  \vspace{1.2em}\par\noindent%
+}

@@ -1,0 +1,21 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{analyse}[2026/06/08 Bibel Analyse]
+
+\RequirePackage{tcolorbox}
+\RequirePackage{xparse}
+
+% Analyse-Box
+\NewDocumentEnvironment{analysevers}{mmm}
+{
+  \begin{tcolorbox}[
+    colback=white,
+    colframe=black!40,
+    title=\textbf{\bibleverse{#1}(#2:#3)},
+    fonttitle=\bfseries
+  ]
+  \begin{spacing}{1.4}
+}
+{
+  \end{spacing}
+  \end{tcolorbox}
+}

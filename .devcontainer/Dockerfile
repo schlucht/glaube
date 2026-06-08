@@ -20,5 +20,7 @@ RUN apt-get update && apt-get install -y texlive-lang-german && rm -rf /var/lib/
 # Arbeitsverzeichnis setzen
 WORKDIR /workspaces/glaube
 
+ENV TEXINPUTS=/workspaces/glaube/inc//:/workspaces/glaube/assets//:
+
 # Standardbefehl (kann angepasst werden)
 CMD ["bash"]

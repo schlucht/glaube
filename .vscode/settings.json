@@ -52,6 +52,7 @@
     "**/*.toc": true,
     "**/*.gz": true,
     "**/*.fls": true,
+    "**/*.xdv": true,
   },
   "editor.wordWrap": "on"
   
