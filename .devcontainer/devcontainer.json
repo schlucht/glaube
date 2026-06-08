@@ -19,7 +19,7 @@
             "name": "latexmk",
             "command": "latexmk",
             "args": [
-              "-pdf",
+              "-pdfxe",
               "-synctex=1",
               "-interaction=nonstopmode",
               "-file-line-error",
@@ -29,8 +29,8 @@
         ],
         "latex-workshop.latex.recipes": [
           {
-            "name": "latexmk (PDF)",
-            "tools": ["latexmk"]
+            "name": "latexmk (XeLaTeX)",
+            "tools": ["latexmk (xelatex)"]
           }
         ],
         "latex-workshop.view.pdf.viewer": "tab",
