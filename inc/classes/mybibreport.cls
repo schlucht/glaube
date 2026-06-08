@@ -34,7 +34,13 @@
 % ------------------------------------------------
 
 \makeatletter
-\def\input@path{{../layout/}{../core/}{../modules/}}
+\def\input@path{
+  {../inc/layout/}
+  {../inc/core/}
+  {../inc/modules/}
+  {../inc/modules/bible/}
+  {../inc/modules/formatting/}
+}
 \makeatother
 
 \KOMAoptions{
@@ -56,6 +62,7 @@
 % ------------------------------------------------
 % Module
 % -----------------------------------------------
+\RequirePackage{analyse}
 \RequirePackage{markierungen}
 \RequirePackage{bibeltext}
 \RequirePackage{bible_style}
