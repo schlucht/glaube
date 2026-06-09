@@ -5,6 +5,8 @@
     "context": ".."
   },
   "workspaceFolder": "/workspaces/glaube",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/glaube,type=bind",
+
   "customizations": {
     "vscode": {
       "extensions": [
@@ -16,7 +18,7 @@
       "settings": {
         "latex-workshop.latex.tools": [
           {
-            "name": "latexmk",
+            "name": "latexmk (xelatex)",
             "command": "latexmk",
             "args": [
               "-pdfxe",
@@ -44,5 +46,6 @@
       }
     }
   },
+
   "remoteUser": "root"
 }
