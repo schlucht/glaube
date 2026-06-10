@@ -54,6 +54,6 @@
     "**/*.fls": true,
     "**/*.xdv": true,
   },
-  "editor.wordWrap": "on"
+  "editor.wordWrap": "on"  
   
 }

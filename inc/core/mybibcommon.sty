@@ -33,9 +33,11 @@
   \setotherlanguage{greek}
   \setotherlanguage{hebrew}
 
-  \setmainfont{Libertinus Serif}
-  \newfontfamily\greekfont{Gentium Plus}
-  \newfontfamily\hebrewfont{FreeSerif}
+  \defaultfontfeatures{Path=/workspaces/glaube/assets/fonts/}
+
+  %\setmainfont{Libertinus Serif}
+  \newfontfamily\greekfont[/workspaces/glaube/assets/fonts/]{grk.ttf}
+  \newfontfamily\hebrewfont[/workspaces/glaube/assets/fonts/]{Hbrw.ttf}
 \fi
 
 \RequirePackage{xifthen}
