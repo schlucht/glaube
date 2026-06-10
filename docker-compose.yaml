@@ -10,4 +10,4 @@ services:
     tty: true
     stdin_open: true
     environment:
-      TEXINPUTS: "/workspaces/glaube/inc//:"
+      TEXINPUTS: "/workspaces/glaube/inc//:/workspaces/glaube/assets//"
