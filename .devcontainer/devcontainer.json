@@ -4,8 +4,9 @@
     "dockerfile": "Dockerfile",
     "context": ".."
   },
+
+  // Wichtig: VS Code mountet automatisch korrekt
   "workspaceFolder": "/workspaces/glaube",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/glaube,type=bind",
 
   "customizations": {
     "vscode": {
