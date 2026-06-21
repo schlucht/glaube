@@ -5,7 +5,7 @@
     "block": "default",
     "bibelbox": "default"
   },
-  
+"latex-workshop.latex.autoBuild.run": "never",
 "latex-workshop.latex.tools": [
   {
     "name": "latexmk (xelatex)",
