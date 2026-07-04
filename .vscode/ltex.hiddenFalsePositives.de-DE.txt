@@ -1,0 +1,4 @@
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qschreien werden.\\E$"}
+{"rule":"DE_CASE","sentence":"^\\QWenn wir mit den Menschen über Jesus reden wollen, dann heisst es: Ach Jesus, den?\\E$"}
+{"rule":"DE_CASE","sentence":"^\\QAm folgenden Tag, als viele Leute, die zum Fest erschienen waren, hörten, dass Jesus nach Jerusalem komme, Es war kurz vor dem Passah Fest.\\E$"}
+{"rule":"DOPPELPUNKT_GROSS","sentence":"^\\QJesus verspricht uns: ich gebe ihnen ewiges Leben, und sie werden in Ewigkeit nicht verloren gehen, und niemand wird sie aus meiner Hand reißen.\\E$"}
