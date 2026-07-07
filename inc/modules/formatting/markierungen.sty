@@ -28,6 +28,7 @@
 
 % Grundfarben
 \definecolor{grundgruen}{RGB}{50,205,50}      % #32cd32
+\definecolor{dunkelgruen}{RGB}{48,164,48}     % #30a430
 \definecolor{grundgelb}{RGB}{226,211,85}      % #e2d355
 \definecolor{grundrot}{RGB}{255,0,0}          % #ff0000
 \definecolor{grundmagenta}{RGB}{255,0,255}    % #ff00ff
@@ -192,7 +193,7 @@
 % VerbP (grün + P)
 \NewDocumentCommand{\verbP}{O{} +m}{%
   \bool_if:NTF \l_mark_verbP_bool
-    {\mark_apply:nnnnn {#1} {grundgruen} {neongruen} {pastellgruen} {#2}\textsuperscript{\textbf{P}}}
+    {\mark_apply:nnnnn {#1} {dunkelgruen} {neongruen} {pastellgruen} {#2}\textsuperscript{\textbf{P}}}
     {#2\textsuperscript{\textbf{P}}}%
 }
 % Konj (rot)
@@ -286,6 +287,7 @@
 \newcommand{\hr}{\par\noindent\hrulefill\par}
 \newcommand{\lineheight}[1]{\setlength{\baselineskip}{{#1}\baselineskip}}
 \newcommand{\q}[1]{\blockquote{#1}}
+\newcommand{\hh}[1]{\textsuperscript{\textbf{#1 }}}
 
 % Bemerkungen zur Notation
 \newcommand{\annot}[1]{{\footnotesize\textit{{#1}}}}
