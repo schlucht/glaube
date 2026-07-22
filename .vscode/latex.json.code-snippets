@@ -29,31 +29,31 @@
 	
   "Verben": {
     "prefix": "vb",
-    "body": "\\\\verbN[b,p]{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\verbN[b, p]{${TM_SELECTED_TEXT:$1}}$0"
   },
   "VerbenBox": {
     "prefix": "vbb",
-    "body": "\\\\verbN[b,p]{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\verbN[b, p]{${TM_SELECTED_TEXT:$1}}$0"
   },
   "Imperativ": {
     "prefix": "vi",
-    "body": "\\\\verbI[b,p]{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\verbI[b, p]{${TM_SELECTED_TEXT:$1}}$0"
   },
   "Verbpassiv": {
     "prefix": "vp",
-    "body": "\\\\verbP[b,p]{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\verbP[b, p]{${TM_SELECTED_TEXT:$1}}$0"
   },
   "Person": {
     "prefix": "ps",
-    "body": "\\\\person[b,p]{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\person[b, p]{${TM_SELECTED_TEXT:$1}}$0"
   }, 
   "Konjunktion": {
     "prefix": "kj",
-    "body": "\\\\konj[b,p]{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\konj[b, p]{${TM_SELECTED_TEXT:$1}}$0"
   },  
   "Ort": {
     "prefix": "or",
-    "body": "\\\\ort[b,p]{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\ort[b, p]{${TM_SELECTED_TEXT:$1}}$0"
   },
   "Annotation": {
     "prefix": "an",
@@ -65,7 +65,7 @@
   },
   "Betonung": {
     "prefix": "bt",
-    "body": "\\\\betonung[b,p]{${TM_SELECTED_TEXT:$1}}$0"
+    "body": "\\\\betonung[b, p]{${TM_SELECTED_TEXT:$1}}$0"
   },
   "Bibelbox": {
     "prefix": "bb",
@@ -80,6 +80,12 @@
     "prefix": "bv",
     "body":[
       "\\bibleverse{$1}($2)$0"
+    ]
+  },
+   "Bibelzitat": {
+    "prefix": "bz",
+    "body":[
+      "\\biblezit{$1}{$2}$0"
     ]
   }
 

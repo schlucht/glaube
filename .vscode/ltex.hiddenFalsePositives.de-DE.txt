@@ -1,0 +1,7 @@
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qschreien werden.\\E$"}
+{"rule":"DE_CASE","sentence":"^\\QWenn wir mit den Menschen über Jesus reden wollen, dann heisst es: Ach Jesus, den?\\E$"}
+{"rule":"DE_CASE","sentence":"^\\QAm folgenden Tag, als viele Leute, die zum Fest erschienen waren, hörten, dass Jesus nach Jerusalem komme, Es war kurz vor dem Passah Fest.\\E$"}
+{"rule":"DOPPELPUNKT_GROSS","sentence":"^\\QJesus verspricht uns: ich gebe ihnen ewiges Leben, und sie werden in Ewigkeit nicht verloren gehen, und niemand wird sie aus meiner Hand reißen.\\E$"}
+{"rule":"LEIDE_LEIDER","sentence":"^\\Q214Wenn ihr im Namen des Christus, 2des Gesalbten, geschmäht werdet, 2[seid ihr] Selige, 3weil der Geist 3– der [Geist] der Herrlichkeit und Gottes – 3auf euch ruht; 4bei ihnen wird er gelästert, 4bei euch aber verherrlicht; 315es leide nämlich keiner von euch 4als Mörder 4oder Dieb 4oder Übeltäter 4oder als ein Aufseher fremder Angelegenheiten.\\E$"}
+{"rule":"DE_CASE","sentence":"^\\Q214Wenn ihr im Namen des Christus, 2des Gesalbten, geschmäht werdet, 2[seid ihr] Selige, 3weil der Geist 3– der [Geist] der Herrlichkeit und Gottes – 3auf euch ruht; 4bei ihnen wird er gelästert, 4bei euch aber verherrlicht; 315es leide nämlich keiner von euch 4als Mörder 4oder Dieb 4oder Übeltäter 4oder als ein Aufseher fremder Angelegenheiten.\\E$"}
+{"rule":"DOPPELTE_SATZZEICHEN","sentence":"^\\QPetrus hatte sicher auch noch die Worte von Jesus im Kopf, der ihm 3x sagte: Hüte meine Schafe!.\\E$"}

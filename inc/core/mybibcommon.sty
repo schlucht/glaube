@@ -1,0 +1,167 @@
+\NeedsTeXFormat{LaTeX2e}
+
+\makeatletter
+\edef\mybibcommonprovidesname{\@currpath\@currname}
+\expandafter\ProvidesPackage\expandafter{\mybibcommonprovidesname}[2026/06/05 Gemeinsame Bibel-Vorlage]
+
+% Pfad-Handling für \input und \import
+\edef\mybibcommoncurrpath{{\@currpath}}
+\@ifundefined{input@path}{%
+  \def\mybibcommonoldinputpath{}%
+}{%
+  \let\mybibcommonoldinputpath\input@path
+}
+\edef\input@path{\mybibcommoncurrpath\mybibcommonoldinputpath}
+\makeatother
+
+% ------------------------------------------------
+% Engine / Sprache / Fonts
+% ------------------------------------------------
+
+\RequirePackage{iftex}
+
+\ifPDFTeX
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[ngerman]{babel}
+  \RequirePackage{lmodern}
+\else
+  \RequirePackage{fontspec}
+  \RequirePackage{polyglossia}
+
+  % Schutz vor geerbten globalen Font-Pfaden aus anderen Praeambeln
+  \defaultfontfeatures{}
+
+  \setdefaultlanguage{german}
+  \setotherlanguage{greek}
+  \setotherlanguage{hebrew}
+
+  % Hauptschrift bleibt LaTeX-Standard (kein explizites \setmainfont)
+  % Lokale Fonts nur fuer Griechisch/Hebraeisch verwenden
+  \newfontfamily\greekfont[Path=/workspaces/glaube/assets/fonts/]{grk.ttf}
+  \newfontfamily\hebrewfont[Path=/workspaces/glaube/assets/fonts/]{Hbrw.ttf}
+\fi
+
+\RequirePackage{xifthen}
+\RequirePackage{xparse}
+\RequirePackage{varwidth}
+\RequirePackage{expl3}
+
+% ------------------------------------------------
+% Allgemeine Pakete (Core)
+% ------------------------------------------------
+
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+
+\PassOptionsToPackage{table}{xcolor}
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\RequirePackage{xcolor}
+\RequirePackage{colortbl}
+
+\RequirePackage{csquotes}
+\RequirePackage{microtype}
+\RequirePackage{amssymb}
+\RequirePackage{calc}
+
+\RequirePackage{setspace}
+\RequirePackage{multicol}
+\RequirePackage{soul}
+\RequirePackage[normalem]{ulem}
+\RequirePackage{longtable}
+
+\providecommand{\DZA}{1}
+\providecommand{\DFA}{8mm}
+
+\AtBeginDocument{\setstretch{\DZA}}
+
+\RequirePackage[version=4]{mhchem}
+\RequirePackage{numprint}
+
+\RequirePackage{import}
+\RequirePackage{xstring}
+
+\RequirePackage[colorlinks=true, linkcolor=blue, urlcolor=black, citecolor=black]{hyperref}
+
+% ------------------------------------------------
+% Bibel-spezifische Erweiterungen
+% ------------------------------------------------
+
+\RequirePackage{bibleref-german}
+
+
+\makeatletter
+
+% Zusatzfelder
+\newcommand{\bibleref}[1]{\def\@bibleref{#1}}
+
+% Default (falls nichts gesetzt)
+\newcommand{\@bibleref}{}
+
+\newcommand{\mytitlepage}{
+  \begin{titlepage}
+    \centering
+
+    \vspace*{2cm}
+
+    % Logo (falls gesetzt)
+    \ifx\headerlogo\empty\else
+    \headerlogo
+    \fi
+
+    % Titel
+    {\Huge \bfseries \@title \par}
+    \vspace{0.8cm}
+
+    % Untertitel / Erklärung
+    \ifx\@subtitle\empty\else
+      {\Large \itshape \@subtitle \par}
+      \vspace{1.5cm}
+    \fi
+
+    % Bibelstelle
+    \ifx\@bibleref\empty\else
+    {\large \textbf{\@bibleref} \par}
+    \vspace{2cm}
+    \fi
+
+    % Autor
+    {\large \@author \par}
+    \vspace{0.5cm}
+
+    % Datum
+    {\normalsize \@date \par}
+
+    \vfill
+
+  \end{titlepage}
+}
+
+\makeatother
+
+\biblerefstyle{Lutherbibel}
+\biblerefformat{lang}
+
+% \RequirePackage{markierungen}
+% \RequirePackage{bibeltext}
+% \RequirePackage{bible_style}
+
+% ------------------------------------------------
+% Eigene Helfer
+% ------------------------------------------------
+
+% Input-Pfad setzen
+\newcommand{\setincpath}[1]{%
+  \makeatletter
+  \def\input@path{{#1}}%
+  \makeatother
+}
+
+% einfacher Block
+\newenvironment{block}[1][]{%
+  \vspace{0.5em}%
+  \noindent\textbf{#1}\par%
+  \vspace{0.0em}%
+}{%
+  \vspace{1.2em}\par\noindent%
+}

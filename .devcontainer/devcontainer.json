@@ -4,7 +4,10 @@
     "dockerfile": "Dockerfile",
     "context": ".."
   },
+
+  // Wichtig: VS Code mountet automatisch korrekt
   "workspaceFolder": "/workspaces/glaube",
+
   "customizations": {
     "vscode": {
       "extensions": [
@@ -16,10 +19,10 @@
       "settings": {
         "latex-workshop.latex.tools": [
           {
-            "name": "latexmk",
+            "name": "latexmk (xelatex)",
             "command": "latexmk",
             "args": [
-              "-pdf",
+              "-pdfxe",
               "-synctex=1",
               "-interaction=nonstopmode",
               "-file-line-error",
@@ -29,8 +32,8 @@
         ],
         "latex-workshop.latex.recipes": [
           {
-            "name": "latexmk (PDF)",
-            "tools": ["latexmk"]
+            "name": "latexmk (XeLaTeX)",
+            "tools": ["latexmk (xelatex)"]
           }
         ],
         "latex-workshop.view.pdf.viewer": "tab",
@@ -44,5 +47,6 @@
       }
     }
   },
+
   "remoteUser": "root"
 }

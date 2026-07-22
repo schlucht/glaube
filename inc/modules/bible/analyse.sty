@@ -1,0 +1,101 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{analyse}[2026/06/08 Bibel Analyse System]
+
+\RequirePackage{xparse}
+\RequirePackage{longtable}
+
+% Haupt-Umgebung
+\NewDocumentEnvironment{bibelanalyse}{mmm}
+{
+  \section{#1 #2,#3}
+}
+{}
+
+% Abschnitt: Text
+\NewDocumentCommand{\analysistexte}{+m}{
+  \subsection{Text}
+  #1
+}
+
+% Abschnitt: Hinweise
+\NewDocumentEnvironment{hinweise}{}{
+  \subsection{Hinweise}
+  \begin{itemize}
+}{
+  \end{itemize}
+}
+
+% Abschnitt: Beobachtungen
+\NewDocumentEnvironment{beobachtungen}{}{
+  \subsection{Beobachtungen}
+  \begin{itemize}
+}{
+  \end{itemize}
+}
+
+% Abschnitt: Aussage/Absicht
+\NewDocumentEnvironment{aussageabsicht}{}{
+  \subsection{Aussage / Absicht}
+  \begin{longtable}{l p{6cm} p{6cm}}
+  \hline
+  \textbf{Vers} & \textbf{Aussage} & \textbf{Absicht} \\
+  \hline
+  \endfirsthead
+  \hline
+  \textbf{Vers} & \textbf{Aussage} & \textbf{Absicht} \\
+  \hline
+  \endhead
+}{
+  \end{longtable}
+}
+
+% ------------------------------------------------
+% Vers: setzt Versnummer schön voran
+% ------------------------------------------------
+
+\NewDocumentCommand{\vers}{m +m}
+{
+  \par
+  \noindent
+  \textbf{Vers(#1)}\quad #2
+  \par
+}
+
+\NewDocumentCommand{\versmarker}{m}
+{  
+  \textsuperscript{\textbf{#1}}\,
+}
+
+% ------------------------------------------------
+% Satzteil: Einrückung + Zeilenumbruch
+% ------------------------------------------------
+
+\NewDocumentCommand{\satzteil}{m +m}
+{
+  \par
+  \noindent
+  \hspace*{#1em}#2
+}
+
+\RequirePackage{xfp} % wichtig!
+
+\NewDocumentCommand{\satz}{m m +m}
+{
+  % \par
+  % \noindent
+  \hspace*{\fpeval{#2}em}
+  \textcolor{black!\fpeval{100-#2*15}}{#3}
+  \par
+}
+
+\NewDocumentCommand{\hauptsatz}{O{0} +m}
+{
+  \satz{haupt}{#1}{#2}
+}
+
+\NewDocumentCommand{\nebensatz}{O{1} +m}
+{
+  \satz{neben}{#1}{#2}
+}
+
+
