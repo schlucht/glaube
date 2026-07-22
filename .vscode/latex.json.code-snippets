@@ -81,6 +81,12 @@
     "body":[
       "\\bibleverse{$1}($2)$0"
     ]
+  },
+   "Bibelzitat": {
+    "prefix": "bz",
+    "body":[
+      "\\biblezit{$1}{$2}$0"
+    ]
   }
 
 }

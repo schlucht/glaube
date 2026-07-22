@@ -1,6 +1,7 @@
 
 
 \usetikzlibrary{positioning}
+\RequirePackage{varwidth}
 
 \newcommand{\bib}[1]{%
   \IfStrEqCase{#1}{%
@@ -32,6 +33,7 @@
 }
 
 \newcommand{\tmpbibtext}[3]{\textbf{\bibleverse{#2}(#3)}\quad(\bibtit{#1})}
+
 \newenvironment{bibelbox}[3]{%
   \begin{tcolorbox}[
       title=\tmpbibtext{#1}{#2}{#3},
@@ -48,13 +50,16 @@
 }
 
 \newcommand{\biblezit}[2]{%
-  \bib{SCHL}
-  \bibleverse{#1}(#2)
+  \colorbox{black!15}{%
+    \begin{varwidth}{\dimexpr\linewidth-2\fboxsep\relax}
+      \textcolor{black}{\bibleverse{#1}(#2)}
+    \end{varwidth}%
+  }%
 }
 
 
 
- % Versnummer verlinken
+% Versnummer verlinken
 \newcommand{\verslink}[3]{%
   \begingroup
   \edef\url{https://www.esrabibel.de/#1#2\%2C#3}%

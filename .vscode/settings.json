@@ -8,6 +8,17 @@
   "latex-workshop.latex.autoBuild.run": "never",
   "latex-workshop.latex.tools": [
     {
+      "name": "latexmk (lualatex)",
+      "command": "latexmk",
+      "args": [
+        "-pdflua",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
       "name": "latexmk (xelatex)",
       "command": "latexmk",
       "args": [
@@ -27,6 +38,12 @@
     "betonung": "default"
   },
   "latex-workshop.latex.recipes": [
+    {
+      "name": "LuaLaTeX",
+      "tools": [
+        "latexmk (lualatex)"
+      ]
+    },
     {
       "name": "XeLaTeX",
       "tools": [

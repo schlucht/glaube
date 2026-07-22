@@ -29,15 +29,17 @@
   \RequirePackage{fontspec}
   \RequirePackage{polyglossia}
 
+  % Schutz vor geerbten globalen Font-Pfaden aus anderen Praeambeln
+  \defaultfontfeatures{}
+
   \setdefaultlanguage{german}
   \setotherlanguage{greek}
   \setotherlanguage{hebrew}
 
-  \defaultfontfeatures{Path=/workspaces/glaube/assets/fonts/}
-
-  %\setmainfont{Libertinus Serif}
-  \newfontfamily\greekfont[/workspaces/glaube/assets/fonts/]{grk.ttf}
-  \newfontfamily\hebrewfont[/workspaces/glaube/assets/fonts/]{Hbrw.ttf}
+  % Hauptschrift bleibt LaTeX-Standard (kein explizites \setmainfont)
+  % Lokale Fonts nur fuer Griechisch/Hebraeisch verwenden
+  \newfontfamily\greekfont[Path=/workspaces/glaube/assets/fonts/]{grk.ttf}
+  \newfontfamily\hebrewfont[Path=/workspaces/glaube/assets/fonts/]{Hbrw.ttf}
 \fi
 
 \RequirePackage{xifthen}
@@ -67,6 +69,11 @@
 \RequirePackage{soul}
 \RequirePackage[normalem]{ulem}
 \RequirePackage{longtable}
+
+\providecommand{\DZA}{1}
+\providecommand{\DFA}{8mm}
+
+\AtBeginDocument{\setstretch{\DZA}}
 
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{numprint}
@@ -99,7 +106,7 @@
 
     % Logo (falls gesetzt)
     \ifx\headerlogo\empty\else
-      \headerlogo
+    \headerlogo
     \fi
 
     % Titel
@@ -114,8 +121,8 @@
 
     % Bibelstelle
     \ifx\@bibleref\empty\else
-      {\large \textbf{\@bibleref} \par}
-      \vspace{2cm}
+    {\large \textbf{\@bibleref} \par}
+    \vspace{2cm}
     \fi
 
     % Autor
@@ -125,7 +132,7 @@
     % Datum
     {\normalsize \@date \par}
 
-    \vfill    
+    \vfill
 
   \end{titlepage}
 }

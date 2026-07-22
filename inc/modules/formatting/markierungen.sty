@@ -50,6 +50,7 @@
 \definecolor{pastellgelb}{RGB}{255,240,180}   % #fff0b4
 \definecolor{pastelllila}{RGB}{220,180,255}   % #dcb4ff
 \definecolor{pastellgruen}{RGB}{200,255,200}  % #c8ffc8
+\definecolor{pastdunkelgruen}{RGB}{164,193,164}  % #a4c1a4
 \definecolor{pastellrosa}{RGB}{255,200,200}   % #ffc8c8
 
 % Alias-Namen fuer bestehende Makros und alte Dokumente
@@ -193,7 +194,7 @@
 % VerbP (grün + P)
 \NewDocumentCommand{\verbP}{O{} +m}{%
   \bool_if:NTF \l_mark_verbP_bool
-    {\mark_apply:nnnnn {#1} {dunkelgruen} {neongruen} {pastellgruen} {#2}\textsuperscript{\textbf{P}}}
+    {\mark_apply:nnnnn {#1} {dunkelgruen} {neongruen} {pastdunkelgruen} {#2}\textsuperscript{\textbf{P}}}
     {#2\textsuperscript{\textbf{P}}}%
 }
 % Konj (rot)
@@ -290,7 +291,7 @@
 \newcommand{\hh}[1]{\textsuperscript{\textbf{#1 }}}
 
 % Bemerkungen zur Notation
-\newcommand{\annot}[1]{{\footnotesize\textit{{#1}}}}
+\newcommand{\annot}[1]{{\footnotesize\textit{{(#1)}}}}
 % Herr zu HERR
  \newcommand{\herr}{HERR}
 
