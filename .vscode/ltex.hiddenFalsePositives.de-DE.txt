@@ -6,3 +6,4 @@
 {"rule":"DE_CASE","sentence":"^\\Q214Wenn ihr im Namen des Christus, 2des Gesalbten, geschmäht werdet, 2[seid ihr] Selige, 3weil der Geist 3– der [Geist] der Herrlichkeit und Gottes – 3auf euch ruht; 4bei ihnen wird er gelästert, 4bei euch aber verherrlicht; 315es leide nämlich keiner von euch 4als Mörder 4oder Dieb 4oder Übeltäter 4oder als ein Aufseher fremder Angelegenheiten.\\E$"}
 {"rule":"DOPPELTE_SATZZEICHEN","sentence":"^\\QPetrus hatte sicher auch noch die Worte von Jesus im Kopf, der ihm 3x sagte: Hüte meine Schafe!.\\E$"}
 {"rule":"DE_SUBJECT_VERB_AGREEMENT","sentence":"^\\QBeide Male war Hagar dem Engel des Herrn gehorsam.\\E$"}
+{"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QDer, der alle Menschen geheilt hat, die zu ihm kamen Mk 1:34?\\E$"}
