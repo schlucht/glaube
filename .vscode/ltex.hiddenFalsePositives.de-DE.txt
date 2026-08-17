@@ -7,3 +7,4 @@
 {"rule":"DOPPELTE_SATZZEICHEN","sentence":"^\\QPetrus hatte sicher auch noch die Worte von Jesus im Kopf, der ihm 3x sagte: Hüte meine Schafe!.\\E$"}
 {"rule":"DE_SUBJECT_VERB_AGREEMENT","sentence":"^\\QBeide Male war Hagar dem Engel des Herrn gehorsam.\\E$"}
 {"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QDer, der alle Menschen geheilt hat, die zu ihm kamen Mk 1:34?\\E$"}
+{"rule":"RAN_RUM_RAUF_REIN_RAUS_RUNTER_NEU","sentence":"^\\QDas Opfer von Jesus Christus hat uns reingewaschen.\\E$"}
