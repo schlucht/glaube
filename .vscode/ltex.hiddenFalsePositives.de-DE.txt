@@ -8,3 +8,10 @@
 {"rule":"DE_SUBJECT_VERB_AGREEMENT","sentence":"^\\QBeide Male war Hagar dem Engel des Herrn gehorsam.\\E$"}
 {"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QDer, der alle Menschen geheilt hat, die zu ihm kamen Mk 1:34?\\E$"}
 {"rule":"RAN_RUM_RAUF_REIN_RAUS_RUNTER_NEU","sentence":"^\\QDas Opfer von Jesus Christus hat uns reingewaschen.\\E$"}
+{"rule":"DE_CASE","sentence":"^\\QEs kommt aus dem grossen Theologie Buch von John MacArthur Biblische Lehre.\\E$"}
+{"rule":"DE_CASE","sentence":"^\\QAus diesen Fragen gibt es folgendes Inhaltsverzeichnis: Einführung in die Schrift Die inspiration der Schrift Die Autorität der Schrift Die Irrtumslosigkeit der Schrift Die Bewahrung der Schrift Das Lehren und Predigen der Schrift Die Verpflichtung gegenüber der Schrift\\E$"}
+{"rule":"DE_SUBJECT_VERB_AGREEMENT","sentence":"^\\QNur so können wir prüfen, ob wir auf dem richtigen Weg mit Jesus Christus sind.\\E$"}
+{"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QDie Adventisten, haben ein Prophetin die ihnen das Wort erklärt.\\E$"}
+{"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QDie Adventisten haben eine Prophetin die ihnen das Wort erklärt.\\E$"}
+{"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QDie orthodoxen Juden haben die Bibel plus die Auslegungsbücher der Talmut.\\E$"}
+{"rule":"GERMAN_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QDie katholische Kirche hat die Bibel plus die Aussagen der Kirchenväter und der Katechismus.\\E$"}
