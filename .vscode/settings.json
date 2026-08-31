@@ -72,7 +72,7 @@
     "**/*.fls": true,
     "**/*.xdv": true,
   },
-  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrap": "bounded",  
   "cSpell.words": [
     "Apero",
     "Birgisch"
