@@ -1,0 +1,98 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mybiblayout}[2026/06/08 Layout für Bibel-Dokumente]
+
+% ------------------------------------------------
+% KOMA-Script Fixes
+% ------------------------------------------------
+
+\RequirePackage{graphicx}
+\RequirePackage{scrhack}
+\RequirePackage{listings}
+\RequirePackage[automark]{scrlayer-scrpage}
+
+\makeatletter
+\providecommand{\scr@tso@lstlisting@linefill}{}
+\providecommand{\scr@tso@lstlisting@pagenumberformat}{}
+\makeatother
+
+\KOMAoptions{listof=flat}
+
+% ------------------------------------------------
+% Seitenlayout
+% ------------------------------------------------
+
+\RequirePackage{geometry}
+
+\geometry{
+   a4paper,
+   left=25mm,
+   right=20mm,
+   top=25mm,
+   bottom=25mm,
+   marginpar=3cm,
+   head=38pt
+}
+
+% ------------------------------------------------
+% Grafik-Standard
+% ------------------------------------------------
+
+\graphicspath{{../../assets/images/}}
+
+% ------------------------------------------------
+% Logo-System
+% ------------------------------------------------
+
+\newcommand{\headerlogo}{}
+
+\newcommand{\setheaderlogo}[2][1cm]{%
+  \renewcommand{\headerlogo}{%
+    \includegraphics[height=#1]{#2}%
+  }%
+}
+
+% ------------------------------------------------
+% Header / Footer (KOMA)
+% ------------------------------------------------
+
+\AtBeginDocument{
+
+  \makeatletter
+
+  \KOMAoptions{
+    headsepline=true,
+    footsepline=true
+  }
+
+  \setkomafont{pageheadfoot}{\normalfont}
+
+  \clearpairofpagestyles
+
+  % Header
+  \ihead{%
+    \ifx\headerlogo\empty
+      \headmark
+    \else
+      \headerlogo
+    \fi
+  }
+
+  % Footer
+  \ifoot{\today}
+  \cfoot{Seite \thepage}
+  \ofoot{Autor: \@author}
+
+  \setlength{\footheight}{28.8pt}
+
+  \setlength{\footskip}{\DFA}
+
+  \makeatother
+}
+
+% ------------------------------------------------
+% kleine Layout-Verbesserungen
+% ------------------------------------------------
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+\renewcommand{\arraystretch}{1.5}

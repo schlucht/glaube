@@ -1,0 +1,101 @@
+% bibeltext.sty
+% Makros für Bibeltexte mit Versvergleich und grammatischen Annotationen
+% Autor: OTS
+% Version: 1.0
+
+\NeedsTeXFormat{LaTeX2e}
+\makeatletter
+\edef\bibeltext@providesname{\@currpath\@currname}
+\expandafter\ProvidesPackage\expandafter{\bibeltext@providesname}[2026/02/28 Bibeltext Makros für Versvergleich]
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Benötigte Pakete
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{markierungen}
+\RequirePackage{tabularx}
+\RequirePackage{xparse}
+\RequirePackage{calc}
+\RequirePackage{expl3}
+\RequirePackage{array}
+\RequirePackage{tcolorbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Verstab-System: Mehrsprachige Bibelverse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Konfigurierbares Layout
+\newcommand{\VersNumberBox}[1]{\makebox[0em][r]{\textsuperscript{#1}}}
+\newcommand{\VersSourceFmt}[1]{[\textsc{#1}] }
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\ExplSyntaxOn
+\clist_new:N \g_lothar_versions_clist
+\tl_new:N \g_lothar_default_tl
+
+% Setze die Default-Bibel
+\NewDocumentCommand{\setdefault}{m}
+ {
+   \tl_gset:Nn \g_lothar_default_tl { #1 }
+ }
+
+% Setze die Auswahl-Liste
+\NewDocumentCommand{\setversions}{m}
+ {
+   \clist_gset:Nn \g_lothar_versions_clist { #1 }
+ }
+
+\NewDocumentCommand{\getdefault}{}{\tl_use:N \g_lothar_default_tl}
+\NewDocumentCommand{\getversions}{}{\clist_use:Nn \g_lothar_versions_clist {, }}
+
+% Prüfen, ob Version gesetzt werden soll
+\prg_new_conditional:Npnn \lothar_version_selected_p:n #1 { p, T, F, TF }
+ {
+   % Wenn Liste leer -> nur Default anzeigen
+   \clist_if_empty:NTF \g_lothar_versions_clist
+     {
+       \tl_if_eq:NnTF \g_lothar_default_tl { #1 }
+         { \prg_return_true: }
+         { \prg_return_false: }
+     }
+     {
+       % Wenn "ALL" in Liste -> alle anzeigen
+       \clist_if_in:NnTF \g_lothar_versions_clist { ALL }
+         { \prg_return_true: }
+         {
+           % Sonst prüfen, ob Version in Liste ist
+           \clist_if_in:NnTF \g_lothar_versions_clist { #1 }
+             { \prg_return_true: } { \prg_return_false: }
+         }
+     }
+ }
+
+% Prüfen, ob #1 die Default-Version ist
+\prg_new_conditional:Npnn \lothar_is_default_p:n #1 { p, T, F, TF }
+  {
+    \tl_if_eq:NnTF \g_lothar_default_tl { #1 }
+      { \prg_return_true: } { \prg_return_false: }
+  }
+
+% Makro für die Ausgabe von Versen mit verschiedenen Übersetzungen
+% \verstab{Versnummer}{Übersetzung}{Text}
+\NewDocumentCommand{\verstab}{ m m +m }
+ {
+   \lothar_version_selected_p:nTF { #2 }
+     {
+       \noindent
+       \begin{tabularx}{\linewidth}{@{} l Y@{}}        
+         \VersNumberBox{#1} & 
+         \lothar_is_default_p:nTF{#2}
+         {#3}         
+         {\VersSourceFmt{#2}  #3}
+       \end{tabularx}\par
+     }
+     {        
+     }
+ }
+
+\endinput
+
+
