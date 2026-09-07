@@ -1,42 +1,35 @@
 \author{OTS}
-\documentclass[14pt]{../../inc/mybib}
+\documentclass[12pt]{mybibreport}
 
-\setincpath{../../inc/}
-
-\usepackage{bible_style}
-\usepackage{bibeltext}
-\graphicspath{{../../assets/images/}}
-\usepackage{header}
+\graphicspath{{../../../assets/images/}}
+\setheaderlogo{mnr-green.png}
 \usepackage{changepage}
 
 % Optional: Absatzformatierung für schönere Blockoptik
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.4em}
-\newcommand{\mySpacing}{1}
-\newcommand{\myRight}{55mm}
-
-\setlength{\footheight}{29pt} % oder etwas mehr, je nach Boxhöhe
-\setlength{\footskip}{40pt}   % optional, falls Abstand zum Text zu klein
+\setlength{\parskip}{0.6em}
+\renewcommand{\arraystretch}{0.8}
+   % optional, falls Abstand zum Text zu klein
 \author{ESRA-BIBEL}
 \setlength{\baselineskip}{3.5\baselineskip}
 \begin{document}
 \tableofcontents
 %\newpage
-\begin{adjustwidth*}{0mm}{\myRight} % [linke Einrückung]{rechte Einrückung}
+%\begin{adjustwidth*}{0mm}{\myRight} % [linke Einrückung]{rechte Einrückung}
     \leavevmode
-    \begin{spacing}{\mySpacing} 
+    
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-        % \input{Matthäus/matth}  
+        \input{Matthäus/matth}  
         % \input{Philipper/phil}      
-        % \input{1_Petrus/petr_1}  
-          \input{2_Petrus/2Petrus}    
+        % \input{1_Petrus/1petrus}  
+        % \input{2_Petrus/2Petrus}    
         % \input{1_Timotheus/1tim}      
         % \input{Philemon/philm}     
       
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
        
       
-    \end{spacing}
-\end{adjustwidth*}
+    
+%\end{adjustwidth*}
 \end{document}
 

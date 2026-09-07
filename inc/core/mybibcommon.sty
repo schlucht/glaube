@@ -58,6 +58,7 @@
 \PassOptionsToPackage{dvipsnames}{xcolor}
 \RequirePackage{xcolor}
 \RequirePackage{colortbl}
+\RequirePackage[most]{tcolorbox}
 
 \RequirePackage{csquotes}
 \RequirePackage{microtype}
@@ -81,13 +82,23 @@
 \RequirePackage{import}
 \RequirePackage{xstring}
 
-\RequirePackage[colorlinks=true, linkcolor=blue, urlcolor=black, citecolor=black]{hyperref}
+% \RequirePackage[colorlinks=true, linkcolor=blue, urlcolor=black, citecolor=black]{hyperref}
+
+\makeatletter
+\@ifpackageloaded{hyperref}{%
+  \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=black, citecolor=black}%
+}{%
+  \RequirePackage[colorlinks=true, linkcolor=blue, urlcolor=black, citecolor=black]{hyperref}%
+}
+\makeatother
 
 % ------------------------------------------------
 % Bibel-spezifische Erweiterungen
 % ------------------------------------------------
 
 \RequirePackage{bibleref-german}
+\RequirePackage{verse}
+\RequirePackage{paracol} 
 
 
 \makeatletter
@@ -158,10 +169,31 @@
 }
 
 % einfacher Block
-\newenvironment{block}[1][]{%
+\renewenvironment{block}[1][]{%
   \vspace{0.5em}%
   \noindent\textbf{#1}\par%
   \vspace{0.0em}%
 }{%
   \vspace{1.2em}\par\noindent%
 }
+
+\newtcbtheorem{lehre}{Lehrsatz}
+{
+    colback=blue!5, 
+    colframe=blue!50!black 
+}
+{th}
+
+\newtcbtheorem{beobachtung}{Beobachtung}
+{
+    colback=green!5, 
+    colframe=green!50!black 
+}
+{th}
+
+\newtcbtheorem{anwendung}{Anwendung}
+{
+    colback=yellow!5, 
+    colframe=yellow!50!black 
+}
+{th}

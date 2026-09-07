@@ -67,6 +67,30 @@
   \endgroup
 }
 
+% Versnummer Bibelserver
+\newcommand{\linkbib}[2]{%
+  \begingroup
+  \edef\url{https://www.bibleserver.com/SLT/#1#2}%
+  \uline{\href{\url}{\biblezit{#1}{#2}}}%
+  \endgroup
+}
+
+%% Zwei Spalten Auslegung der Titel
+\newcommand{\chaptertitle}[1]{% 
+    %\begin{center} 
+        \subsection*{#1}
+    %\end{center} 
+    \medskip }
+%% Zwei Spalten Links Bibel Rechts Auslegung
+\newenvironment{auslegung}[1]
+    {%
+        \setlength{\columnsep}{1cm}
+        \chaptertitle{#1}%
+        \begin{paracol}{2}%
+    }
+    {%
+        \end{paracol}%
+    }
 
 
 

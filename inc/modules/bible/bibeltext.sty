@@ -19,7 +19,7 @@
 \RequirePackage{calc}
 \RequirePackage{expl3}
 \RequirePackage{array}
-\RequirePackage{tcolorbox}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Verstab-System: Mehrsprachige Bibelverse
@@ -95,6 +95,19 @@
      {        
      }
  }
+
+\NewDocumentCommand{\versauslegung}{ m m +m +m}
+{
+  \verstab{#1}{#2}{#3}
+  \switchcolumn
+  #4
+  \switchcolumn*
+  \par 
+  \noindent\makebox[\textwidth]{\rule{\textwidth}{0.4pt}}
+  \par
+  
+  %\medskip
+}
 
 \endinput
 

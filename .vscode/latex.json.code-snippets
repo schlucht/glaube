@@ -87,6 +87,12 @@
     "body":[
       "\\biblezit{$1}{$2}$0"
     ]
+  },
+   "Bibellink": {
+    "prefix": "bl",
+    "body":[
+      "\\linkbib{$1}{$2}$0"
+    ]
   }
 
 }
