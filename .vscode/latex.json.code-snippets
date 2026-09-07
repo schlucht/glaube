@@ -76,6 +76,15 @@
     ],
     "description": "Insert bibelbox"
   },
+  "Textblock": {
+    "prefix": "tb",
+    "body": [
+      "\\begin{otsblock}{$1}",
+          "$2",
+      "\\end{otsblock}$0"
+    ],
+    "description": "Insert bibelbox"
+  },
   "Bibelverse": {
     "prefix": "bv",
     "body":[
@@ -93,7 +102,8 @@
     "body":[
       "\\linkbib{$1}{$2}$0"
     ]
-  }
+  },
+
 
 }
 
