@@ -1,0 +1,136 @@
+
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage[table]{xcolor}
+
+\hypersetup{ pdfpagemode=FullScreen }
+
+\definecolor{mnrgreen}{HTML}{009640}
+\setbeamercolor{frametitle}{fg=mnrgreen, bg=black}
+\setbeamercolor{background canvas}{bg=black}
+\setbeamercolor{normal text}{bg=black, fg=white}
+\setbeamercolor{title}{bg=black, fg=mnrgreen}
+\setbeamercolor{footer}{bg=mnrgreen, fg=white}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamercolor{block title}{fg=mnrgreen,bg=mnrgreen!5}
+\setbeamercolor{block body}{fg=black,bg=mnrgreen!50}
+\setbeamerfont{block body}{size=\large}
+\setbeamerfont{block title}{size=\Large}
+
+\setbeamercolor{enumerate item}{fg=mnrgreen}
+\setbeamercolor{item}{fg=mnrgreen}
+\setbeamerfont{itemize/enumerate body}{size=\Large}
+
+\setbeamerfont{title}{size=\Huge,series=\bfseries}
+
+\setbeamertemplate{enumerate item}{
+    \tikz[baseline=(n.base)]{
+        \node[
+            circle,
+            draw=mnrgreen,
+            fill=black,
+            text=mnrgreen,
+            inner sep=2pt,
+            font=\bfseries
+            ](n){\theenumi};
+        ]
+    }
+}
+
+\setbeamertemplate{itemize item}{%
+  \tikz[baseline=(n.base)]{
+    \shade[
+    shading=radial,
+    inner color=mnrgreen!30,
+    outer color=mnrgreen
+    ](0,0) circle (8pt);
+  }
+}
+
+\setbeamertemplate{frametitle}{%
+  \begin{beamercolorbox}[
+      wd=\paperwidth,
+      sep=0.1cm,
+  ]{frametitle}
+    
+      \hbox to \paperwidth{%
+        \hspace{0.3cm}%
+        \includegraphics[height=.7cm]{mnr-green.png}%
+        \hfill
+      }
+      \vspace{-0.7cm}
+      \centering 
+      \textbf{\insertframetitle}
+  \end{beamercolorbox}
+
+  % --- Linie über die ganze Breite des Titelblocks ---
+  \begin{tikzpicture}[overlay, yshift=.6cm]
+    \draw[mnrgreen, line width=1pt]
+      (-1.0cm,0) -- (\paperwidth,0);
+  \end{tikzpicture}
+
+  \vspace*{.2cm}
+}
+
+\setbeamertemplate{footline}{
+    {\color{mnrgreen}\rule{\paperwidth}{1pt}}
+    \begin{beamercolorbox}[
+        wd=\paperwidth,
+        ht=1.5em,
+        dp=0.3cm,
+        rightskip=0.5cm]{footer}    
+    \hspace*{.5cm}    
+    \vspace*{-.18cm}
+    \insertpagenumber
+    \hfill
+    \date{\today}
+    \hfill   
+    \insertauthor\hfill   
+    
+    \end{beamercolorbox}
+}
+
+\newcommand{\pagetitle}[1]{%
+    \begin{center}
+        \includegraphics[height=1.8cm]{mnr-green.png}
+        
+        \vspace{0.3cm}
+        \textcolor{mnrgreen}{\Huge\bfseries #1}
+    \end{center}
+}
+
+\newcommand{\img}[1] {%
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth]{%
+            #1
+        }
+        \caption{Die Bibel}
+        \label{fig:placeholder}
+    \end{figure}
+}
+
+\newcommand{\hh}[1]{\textsuperscript{\textbf{#1}}}
+
+\newcommand{\numcirc}[2][]{%
+  \tikz[baseline=(char.base)]{%
+    \node[shape=circle,fill=mnrgreen!70,text=white,inner sep=0.6pt,minimum size=1.6em,font=\sffamily\small,#1] (char) {#2};%
+  }%
+}
+
+\title{
+    \includegraphics[height=1.8cm]{mnr-green.png}\\
+    The title
+}
+\author{My name}
+\institute[MNR]
+{
+    \inst{1}%
+    Mitternachtsruf\\
+    Evangelische Gemeinde
+    \and 
+    \inst{2}%
+    Missionswerk
+}
+\date{\today}
