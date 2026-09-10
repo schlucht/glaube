@@ -33,20 +33,24 @@
 
 % ------------------------------------------------
 % Layout laden (Header, Geometry, etc.)
+% {../inc/layout/}
 % ------------------------------------------------
 
 \RequirePackage{mybiblayout}
 
 % ------------------------------------------------
 % Core laden (Fonts, Bibel, etc.)
+% {../inc/core/}
 % ------------------------------------------------
 
 \RequirePackage{mybibcommon}
 
 % ------------------------------------------------
 % Module
+%{../inc/modules/bible/}
+%{../inc/modules/formatting/}
 % -----------------------------------------------
-\RequirePackage{markierungen}
 \RequirePackage{bibeltext}
 \RequirePackage{bible_style}
+\RequirePackage{markierungen}
 
