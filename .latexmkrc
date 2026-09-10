@@ -36,8 +36,8 @@ $ENV{'TEXINPUTS'} = join(
 print "latexmkrc loaded: $root_dir/.latexmkrc\n";
 print "TEXINPUTS=$ENV{'TEXINPUTS'}\n";
 
-$out_dir = "$root_dir/build";
-$aux_dir = "$root_dir/build";
+# $out_dir = "$root_dir/build";
+# $aux_dir = "$root_dir/build";
 
 
 
