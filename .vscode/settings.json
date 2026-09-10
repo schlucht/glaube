@@ -5,13 +5,14 @@
     "block": "default",
     "bibelbox": "default"
   },
-  "latex-workshop.latex.autoBuild.run": "never",  
+  "latex-workshop.latex.autoBuild.run": "never",
   "latex-workshop.latex.tools": [
     {
       "name": "latexmk (lualatex)",
       "command": "latexmk",
-      
       "args": [
+        "-r",
+        "%WORKSPACE_FOLDER%/.latexmkrc",
         "-pdf",
         "-synctex=1",
         "-interaction=nonstopmode",
@@ -22,10 +23,9 @@
     {
       "name": "latexmk (xelatex)",
       "command": "latexmk",
-      "env": {
-        "TEXINPUTS": "${workspaceFolder}/inc//:${workspaceFolder}/assets//:"
-      },
       "args": [
+        "-r",
+        "%WORKSPACE_FOLDER%/.latexmkrc",
         "-pdfxe",
         "-synctex=1",
         "-interaction=nonstopmode",
@@ -34,7 +34,6 @@
       ]
     }
   ],
-
   "latex-workshop.latex.recipes": [
     {
       "name": "LuaLaTeX",
@@ -70,7 +69,7 @@
     "**/*.fls": true,
     "**/*.xdv": true,
   },
-  "editor.wordWrap": "bounded",  
+  "editor.wordWrap": "bounded",
   "cSpell.words": [
     "Apero",
     "Birgisch"
