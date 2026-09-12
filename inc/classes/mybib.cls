@@ -52,5 +52,6 @@
 % -----------------------------------------------
 \RequirePackage{bibeltext}
 \RequirePackage{bible_style}
+\RequirePackage{analyse}
 \RequirePackage{markierungen}
 
