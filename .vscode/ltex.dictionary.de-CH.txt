@@ -43,3 +43,8 @@ Serve
 SCHL
 ELB
 Jud
+Fernseh
+mnr-green
+Gitt
+Schurze
+IThes
