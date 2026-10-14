@@ -47,3 +47,5 @@
 {"rule":"DE_REPEATEDWORDS","sentence":"^\\QMit der teilweisen Inspiration verknüpft ist der Gedanke, dass einige Abschnitte der Schrift mehr inspiriert seien als andere, sodass Wahrheit und Irrtum eine Frage des Grades der Erkenntnis werden.\\E$"}
 {"rule":"DE_REPEATEDWORDS","sentence":"^\\QWie die Theorie der teilweisen Inspiration überlässt sie dem Einzelnen als letzte Authorität die Entscheidung darüber, was wahr und was falsch ist.\\E$"}
 {"rule":"DE_REPEATEDWORDS","sentence":"^\\QWie die Theorie der teilweisen Inspiration überlässt sie dem Einzelnen als letzte Autorität die Entscheidung darüber, was wahr und was falsch ist.\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QAnton und ich waren im gleichen EBTC-Kurs Bibellesen mit Gewinn und ich habe ihn dann am letzten Tag angesprochen und gefragt, ob er bei uns in Naters auch mal so ein Bibelverteilen durchführen wollte.\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QBahnhof Brig ist nicht mehr der grosse Umschlagplatz, sondern ein Endbahnhof und ein Startbahnhof nach Italien und in die Üssuschwiiz\\E$"}
