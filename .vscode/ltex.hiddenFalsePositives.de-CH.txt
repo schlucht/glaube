@@ -49,3 +49,4 @@
 {"rule":"DE_REPEATEDWORDS","sentence":"^\\QWie die Theorie der teilweisen Inspiration überlässt sie dem Einzelnen als letzte Autorität die Entscheidung darüber, was wahr und was falsch ist.\\E$"}
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QAnton und ich waren im gleichen EBTC-Kurs Bibellesen mit Gewinn und ich habe ihn dann am letzten Tag angesprochen und gefragt, ob er bei uns in Naters auch mal so ein Bibelverteilen durchführen wollte.\\E$"}
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QBahnhof Brig ist nicht mehr der grosse Umschlagplatz, sondern ein Endbahnhof und ein Startbahnhof nach Italien und in die Üssuschwiiz\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QEs war im Herbst Mitte November bis Mitte Dezember um 444 . Alles fing auf einer Burg oder Palast in Susa an.\\E$"}
