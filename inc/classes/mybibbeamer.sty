@@ -33,18 +33,17 @@
             text=mnrgreen,
             inner sep=2pt,
             font=\bfseries
-            ](n){\theenumi};
-        ]
+            ](n){\theenumi};        
     }
 }
 
 \setbeamertemplate{itemize item}{%
-  \tikz[baseline=(n.base)]{
+  \tikz[baseline=-0.6ex]{
     \shade[
     shading=radial,
     inner color=mnrgreen!30,
     outer color=mnrgreen
-    ](0,0) circle (8pt);
+    ](0,0) circle (4pt);
   }
 }
 
