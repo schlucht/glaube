@@ -51,3 +51,6 @@
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QBahnhof Brig ist nicht mehr der grosse Umschlagplatz, sondern ein Endbahnhof und ein Startbahnhof nach Italien und in die Üssuschwiiz\\E$"}
 {"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QEs war im Herbst Mitte November bis Mitte Dezember um 444 . Alles fing auf einer Burg oder Palast in Susa an.\\E$"}
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QEs war die Zeit, wo FEG-Visp\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QIIChr 36:20 Es war nicht ungewöhnlich, dass ein Jude ein so Verantwortungsvollen posten bekam.\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QWir haben hier im Wallis so ausdrücke wie: [b, p]O, Gott, [b, p]Jessus Gott das sind alles Stossgebete die zu Gott gehen.\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QWir haben hier im Wallis so ausdrücke wie: [b, p]O, Gott, [b, p]Jessus Gott, das sind alles Stossgebete, die zu Gott gehen.\\E$"}
