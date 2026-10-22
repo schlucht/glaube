@@ -1,5 +1,53 @@
 {
-  "latex-workshop.formatting.latex": "latexindent",   
+  "latex-workshop.formatting.latex": "latexindent",
+  "ltex.enabled": true,
+  "ltex.latex.environments": {
+    "block": "default",
+    "bibelbox": "default"
+  },
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk (lualatex)",
+      "command": "latexmk",
+      "args": [
+        "-r",
+        "%WORKSPACE_FOLDER%/.latexmkrc",
+        "-pdf",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "latexmk (xelatex)",
+      "command": "latexmk",
+      "args": [
+        "-r",
+        "%WORKSPACE_FOLDER%/.latexmkrc",
+        "-pdfxe",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "LuaLaTeX",
+      "tools": [
+        "latexmk (lualatex)"
+      ]
+    },
+    {
+      "name": "XeLaTeX",
+      "tools": [
+        "latexmk (xelatex)"
+      ]
+    }
+  ],
   "editor.overtypeCursorStyle": "line",
   "editor.cursorStyle": "line",
   "files.exclude": {
@@ -19,8 +67,11 @@
     "**/*.toc": true,
     "**/*.gz": true,
     "**/*.fls": true,
+    "**/*.xdv": true,
   },
-  "editor.wrapColumn": 120,
-  "editor.wordWrap": "wordWrapColumn"
-  
+  "editor.wordWrap": "bounded",
+  "cSpell.words": [
+    "Apero",
+    "Birgisch"
+  ]
 }
