@@ -43,14 +43,7 @@
 {"rule":"UNPAIRED_BRACKETS","sentence":"^\\QIMos(1:) Der Auftrag an die Patriarchen sich zu vermehren und ein Volk zu bilden.\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qca. 67-68 unter Kaiser Nero Verfassungsort.\\E$"}
 {"rule":"DE_AGREEMENT","sentence":"^\\Q9 Der Herr zögert nicht die Verheissung hinaus, wie etliche es für ein Hinauszögern halten, sondern er ist langmütig gegen uns, weil er nicht will, dass jemand verloren gehe, sondern dass jedermann Raum zur Busse habe.\\E$"}
-{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qmnr-green\\E$"}
-{"rule":"DE_REPEATEDWORDS","sentence":"^\\QMit der teilweisen Inspiration verknüpft ist der Gedanke, dass einige Abschnitte der Schrift mehr inspiriert seien als andere, sodass Wahrheit und Irrtum eine Frage des Grades der Erkenntnis werden.\\E$"}
-{"rule":"DE_REPEATEDWORDS","sentence":"^\\QWie die Theorie der teilweisen Inspiration überlässt sie dem Einzelnen als letzte Authorität die Entscheidung darüber, was wahr und was falsch ist.\\E$"}
-{"rule":"DE_REPEATEDWORDS","sentence":"^\\QWie die Theorie der teilweisen Inspiration überlässt sie dem Einzelnen als letzte Autorität die Entscheidung darüber, was wahr und was falsch ist.\\E$"}
-{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QAnton und ich waren im gleichen EBTC-Kurs Bibellesen mit Gewinn und ich habe ihn dann am letzten Tag angesprochen und gefragt, ob er bei uns in Naters auch mal so ein Bibelverteilen durchführen wollte.\\E$"}
-{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QBahnhof Brig ist nicht mehr der grosse Umschlagplatz, sondern ein Endbahnhof und ein Startbahnhof nach Italien und in die Üssuschwiiz\\E$"}
-{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QEs war im Herbst Mitte November bis Mitte Dezember um 444 . Alles fing auf einer Burg oder Palast in Susa an.\\E$"}
-{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QEs war die Zeit, wo FEG-Visp\\E$"}
-{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QIIChr 36:20 Es war nicht ungewöhnlich, dass ein Jude ein so Verantwortungsvollen posten bekam.\\E$"}
-{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QWir haben hier im Wallis so ausdrücke wie: [b, p]O, Gott, [b, p]Jessus Gott das sind alles Stossgebete die zu Gott gehen.\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QHanani, der Bruder von Nehemia, ist zusammen mit etlichen Männern aus Jerusalem zurückgekehrt.\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QNeh 1:2 Ein Teil der verschleppten Juden sind schon vor knapp 100 Jahren zurück nach Israel gegangen.\\E$"}
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QWir haben hier im Wallis so ausdrücke wie: [b, p]O, Gott, [b, p]Jessus Gott, das sind alles Stossgebete, die zu Gott gehen.\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QWir haben hier im Wallis so ausdrücke wie: [b, p]O, Gott oder [b, p]Jessus Gott, das sind alles Stossgebete, die zu Gott gehen.\\E$"}
