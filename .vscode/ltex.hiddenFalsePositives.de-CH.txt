@@ -47,3 +47,4 @@
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QNeh 1:2 Ein Teil der verschleppten Juden sind schon vor knapp 100 Jahren zurück nach Israel gegangen.\\E$"}
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QWir haben hier im Wallis so ausdrücke wie: [b, p]O, Gott, [b, p]Jessus Gott, das sind alles Stossgebete, die zu Gott gehen.\\E$"}
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QWir haben hier im Wallis so ausdrücke wie: [b, p]O, Gott oder [b, p]Jessus Gott, das sind alles Stossgebete, die zu Gott gehen.\\E$"}
+{"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QVorher waren wir 8 Monate im Fotostudio Fux.\\E$"}
