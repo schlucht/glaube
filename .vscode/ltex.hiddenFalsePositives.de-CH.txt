@@ -48,3 +48,5 @@
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QWir haben hier im Wallis so ausdrücke wie: [b, p]O, Gott, [b, p]Jessus Gott, das sind alles Stossgebete, die zu Gott gehen.\\E$"}
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QWir haben hier im Wallis so ausdrücke wie: [b, p]O, Gott oder [b, p]Jessus Gott, das sind alles Stossgebete, die zu Gott gehen.\\E$"}
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QVorher waren wir 8 Monate im Fotostudio Fux.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qund lasst uns aufeinander achtgeben, damit wir uns gegenseitig anspornen zur Liebe und zu guten Werken, indem wir unsere eigene Versammlung nicht verlassen, wie es einige zu tun pflegen, sondern einander ermahnen, und das umso mehr, als ihr den Tag herannahen seht!\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qmnr-green\\E$"}
