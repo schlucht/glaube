@@ -74,6 +74,15 @@
     ],
     "description": "Insert bibelbox"
   },
+  "Bibelquote": {
+    "prefix": "bq",
+    "body": [
+      "\\begin{bibelquote}{SCHL}{$1}{$2}",
+      "$3",
+      "\\end{bibelquote}$0"
+    ],
+    "description": "Insert bibelbox"
+  },
   "Textblock": {
     "prefix": "tb",
     "body": [

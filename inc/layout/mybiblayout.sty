@@ -13,6 +13,7 @@
 \makeatletter
 \providecommand{\scr@tso@lstlisting@linefill}{}
 \providecommand{\scr@tso@lstlisting@pagenumberformat}{}
+\makeatletter \newcommand{\getauthor}{\@author} \makeatother
 \makeatother
 
 \KOMAoptions{listof=flat}
@@ -80,7 +81,7 @@
   % Footer
   \ifoot{\today}
   \cfoot{Seite \thepage}
-  \ofoot{Autor: \@author}
+  \ofoot{Autor: \getauthor}
 
   \setlength{\footheight}{28.8pt}
 

@@ -1,5 +1,4 @@
 
-
 \usetikzlibrary{positioning}
 \RequirePackage{varwidth}
 
@@ -18,7 +17,7 @@
 }
 
 % Makros für Bibelzitate
-\newcommand{\bibtit}[1]{\large\bib{#1}}
+\newcommand{\bibtit}[1]{\large\bib{#1}\normalfont}
 \newcommand{\tmpbib}{Hello}
 
 \newenvironment{bibeltext}[3]{%
@@ -45,6 +44,19 @@
       fonttitle=\bfseries,
       sharp corners
     ]
+    }{%
+  \end{tcolorbox}
+}
+
+\newenvironment{bibelquote}[3]{%
+  \begin{tcolorbox}[      
+      colback=white,
+      colframe=black!75!white,
+      width=\textwidth,   
+      boxrule=-1pt,leftrule=1pt,
+      sharp corners
+    ]
+    \tmpbibtext{#1}{#2}{#3}\\    
     }{%
   \end{tcolorbox}
 }
