@@ -1,219 +1,103 @@
-# Projekt Organisation - LaTeX Vorlagen
+# Projektorganisation - LaTeX Vorlagen
 
-## Verzeichnisstruktur
+## Aktueller Stand
 
-### `/src/inc/` - Zentrale Stil- und Klassendateien
+Das Projekt nutzt eine zentrale Klassen-/Paketstruktur in `src/inc`.
+Die wichtigste Neuerung ist die gemeinsame Basisdatei `mybibcommon.sty`, die von den Klassen geladen wird.
 
-Dieser Ordner enthält alle wiederverwendbaren LaTeX-Pakete und Klassen für das gesamte Projekt:
+## Struktur in src/inc
 
-#### Hauptklassen
-- **`mybib.cls`** - Hauptklasse für Bibelstudienmaterialien (basiert auf scrartcl)
-  - Enthält alle grundlegenden Pakete (babel, fontspec, tcolorbox, etc.)
-  - Definiert Header/Footer-Layout mit Logo
-  - Geometrie-Einstellungen
+### Klassen
 
-- **`mybibbook.cls`** - Klasse für längere Buchprojekte
+- `mybib.cls` (Basis: `scrartcl`)
+- `mybibreport.cls` (Basis: `scrreprt`)
+- `mybibbook.cls` (Basis: `scrbook`)
 
-#### Stil-Dateien (.sty)
-- **`colors.sty`** ⭐ **NEU** - Zentrale Farbdefinitionen
-  - Alle Farbdefinitionen an einem Ort
-  - Grammatische Kategorien:
-    - Personen: Blau (`personcolor`)
-    - Orte: Magenta (`ortcolor`)
-    - Verben: Grün (`verbcolor`)
-    - Imperativ: Gelb (`verbimperativcolor`)
-    - Konjunktiv: Rot (`verbkonjunktivcolor`)
-  - Theologische Konzepte (gnade, gericht, heiligkeit, bund, etc.)
-  - Standard-Basisfarben (rot, gelb, gruen, blau, magenta, orange, lila, rosa)
-  - Hilfsmakros: `\bt{}`, `\btc{}`, `\cbox{}`
+Alle drei Klassen sind schlanke Wrapper und laden die gemeinsame Basis `mybibcommon.sty`.
 
-- **`bible_style.sty`** - Bibel-spezifische Makros
-  - Bibelzitate-Makros (`\bib{}`, `\bibeltext{}`, `\bibelbox{}`)
-  - Highlight-Makros
-  - Diverse Formatierungshilfen
-  - Verwendet `colors.sty` für alle Farben
+### Zentrale Pakete
 
-- **`textanalysis.sty`** ⭐ **NEU**
-  - Makros für grammatische Textanalyse (Hebräisch, Griechisch, Deutsch)
-  - Verwendet `colors.sty` für standardisierte Farben
-  - Farbcodierte grammatische Kategorien:
-    - Verben: `\verbstamm{}`, `\verbN{}` (grün), `\verbI{}` (gelb), `\verbP{}` (grün+P), `\verbK{}` (rot)
-    - Nomen: `\nomen{}` (orange)
-    - Personen: `\pers{}`, `\person{}` (blau)
-    - Ortsangaben: `\ort{}` (magenta)
-    - Konjunktionen: `\konj{}`, `\bindW{}` (rot)
-    - Präpositionen: `\prep{}`, `\partikel{}` (blau)
-    - Annotationen: `\annot{}` (grau, klein)
+- `mybibcommon.sty`
+  - gemeinsames Paket-Setup (Sprache, Fonts, Layout, Kopf-/Fusszeile, Geometrie)
+  - definiert `\setincpath{...}`
+  - definiert `\setheaderlogo[hoehe]{datei}`
+  - lädt automatisch:
+    - `markierungen.sty`
+    - `bibeltext.sty`
+    - `bible_style.sty`
 
-- **`textmakro.sty`** ⭐ **NEU** - Vereinfachte Text-Makros
-  - Einfache, übersichtliche Makros mit optionaler Box-/Textfarbe
-  - Syntax: `\makro{Text}` (Textfarbe) oder `\makro[b]{Text}` (Box)
-  - **Verben**: `\verb{}`, `\verbI{}` (imperativ), `\verbP{}` (passiv)
-  - **Nomen**: `\nomen{}`
-  - **Konjunktionen**: `\konj{}`
-  - **Orte**: `\ort{}`
-  - **Personen**: `\person{}`, `\mensch{}`
-  - **Theologisch**: `\gott{}`, `\jesus{}`, `\geist{}`, `\israel{}`, `\teufel{}`
-  - Dokumentation: [src/inc/dokus/textmakro_anleitung.md](src/inc/dokus/textmakro_anleitung.md)
+- `markierungen.sty`
+  - Markierungs-Makros (z. B. `\verbN`, `\person`, `\info`, `\beten`)
+  - Optionen fuer Text-/Hintergrundfarbe und Paletten
+  - globale Schalter: `\markierungenOff`, `\markierungenOn`
 
-- **`bibeltext.sty`** ⭐ **NEU**
-  - Verwendet `colors.sty` für standardisierte Farben
-  - Verstab-System für mehrsprachige Bibelverse
-    - `\verstab{Versnummer}{Übersetzung}{Text}`
-    - `\setdefault{Übersetzung}` - Hauptübersetzung setzen
-    - `\setversions{Liste}` - Zu anzeigende Übersetzungen auswählen
-  - Grammatische Makros mit optionalen Farben (per Boolean aktivierbar):
-    - Verben: `\verbN{}` (grün), `\verbI{}` (gelb), `\verbP{}` (grün+P), `\verbK{}` (rot)
-    - Personen: `\person{}` (blau)
-    - Orte: `\ort{}` (magenta)
-    - Bindewörter: `\bind{}`, `\bindA{}`, `\bindB{}`, `\bindV{}` (rot)
-  - Hilfsmakros: `\hr`, `\lineheight{}`
+- `bibeltext.sty`
+  - Verstab-System für Übersetzungsvergleich
+  - Makros wie `\setdefault`, `\setversions`, `\verstab`
 
-- **`predigt.sty`** - Predigt-spezifische Makros
-  - Verwendet `colors.sty` für standardisierte Farben
-  - Hilfsmakros (`\hr`, `\lineheight{}`, `\q{}`)
-  - Verweist auf `textanalysis.sty` für grammatische Makros
+- `bible_style.sty`
+  - Bibelzitat-Makros und Boxen (`bibelbox`)
+  - Übersetzungskürzel via `\bib{...}`
 
-- **`header.sty`** - Alternative Header/Footer Einstellungen
-  - Überschreibt die Standard-Header aus mybib.cls
-  - Benutzerdefinierte Kopf- und Fußzeilen
+### Weitere Pakete
 
-- **`beamerthememnrstyle.sty`** - Beamer-Präsentationsthema
+- `header.sty`
+  - Kompatibilitätspaket, delegiert auf `mybibcommon.sty`
+- `beamerthememnrstyle.sty`
+  - separates Beamer-Theme
 
-#### Hilfsdateien
-- **`bibelbücher.txt`** - Liste aller Bibelbücher
+### Legacy/Altbestand
 
-## Verwendung
+- `textmakro.sty`, `textanalysis.sty`, `predigt.sty`, `colors1.sty`
+  - historischer Bestand, teils auskommentiert
+  - für neue Dokumente nicht der primäre Einstieg
 
-### Standard-Dokument
+## Standard-Präambel (neu)
+
 ```latex
-\documentclass[12pt]{../../inc/mybib}
-\author{Ihr Name}
-
-\setincpath{../../inc/}
-\usepackage{bible_style}
-\graphicspath{{../../assets/images/}}
-
-\begin{document}
-% Ihr Inhalt
-\end{document}
-```
-
-### Textanalyse-Dokument 
-```latex
-\documentclass[12pt]{../../inc/mybib}
+\documentclass[fontsize=14pt]{../../inc/mybib}
 \author{OTS}
 
 \setincpath{../../inc/}
-\usepackage{bible_style}
-\usepackage{textanalysis}  % Für grammatische Analyse
 \graphicspath{{../../assets/images/}}
 
-% Absatzformatierung (optional)
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
+\newcommand{\Name}{Max}
+\setheaderlogo{mnr-green.png}
+
+% falls noetig fuer scrlayer-scrpage
+\setlength{\footheight}{30.4pt}
 
 \begin{document}
-\section{Textanalysen}
-\konj{Denn} das Wort \pers{Gottes} \verbstamm{ist} lebendig...
+% Inhalt
 \end{document}
 ```
 
-### Predigt-Dokument
+Wichtig:
+- `\author{...}` in die Präambel (vor `\begin{document}`).
+- `\usepackage{bible_style}`, `\usepackage{bibeltext}`, `\usepackage{markierungen}` sind bei `mybib*`-Klassen normalerweise nicht mehr nötig.
+
+## Logo im Header
+
+Globaler Standard wird in `mybibcommon.sty` gesetzt.
+Pro Dokument kann das Logo so überschrieben werden:
+
 ```latex
-\documentclass[12pt]{../../inc/mybib}
-\author{Lothar Schmid}
-
-\setincpath{../../inc/}
-\usepackage{bible_style}
-\usepackage{header}    % Alternative Header-Einstellungen
-\usepackage{predigt}   % Predigt-Makros
-\graphicspath{{../../assets/images/}}
-
-\begin{document}
-% Predigt-Inhalt
-\end{document}
+\setheaderlogo{mnr-green.png}
+\setheaderlogo[1.2cm]{logo.png}
 ```
 
-### Bibeltext-Dokument (z.B. AT_Bibeltext.tex, NT_Bibeltext.tex)
-```latex
-\documentclass[14pt]{../../inc/mybib}
-\author{OTS}
+## Dokumentation
 
-\setincpath{../../inc/}
-\usepackage{bible_style}
-\usepackage{bibeltext}  % Verstab-System und grammatische Makros
-\graphicspath{{../../assets/images/}}
-\usepackage{header}
-\usepackage{changepage}
+- Gesamtübersicht der Pakete:
+  - [src/inc/dokus/sty_dokumentation.md](src/inc/dokus/sty_dokumentation.md)
 
-% Absatzformatierung
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.4em}
+- Kompaktes Cheatsheet für Markierungen:
+  - [src/inc/dokus/markierungen_cheatsheet.md](src/inc/dokus/markierungen_cheatsheet.md)
 
-% Konfiguration für Versvergleich
-\setdefault{SCHL}           % Schlachter als Hauptversion
-\setversions{SCHL,ELB,GR}   % Zeige diese Übersetzungen an
-% \setversions{ALL}         % oder: zeige alle Übersetzungen
+## Hinweise für neue Dateien
 
-\begin{document}
-% Mehrsprachige Verse
-\verstab{1}{SCHL}{Im Anfang war das Wort...}
-\verstab{1}{ELB}{Im Anfang war das Wort...}
-\verstab{1}{GR}{Ἐν ἀρχῇ ἦν ὁ λόγος...}
-
-% Grammatische Markierungen (mit optionalen Farben)
-\verbN{sprach} \person{Gott} zu \person{Abraham} in \ort{Ur}
-\end{document}
-```
-
-## Projektbereiche
-
-### `/src/EBTC/` - EBTC Studienmaterialien
-- **3A/** - Textanalysen (nutzt textanalysis.sty)
-- **GnGP/** - Gott nach Gottes Plan
-- **Hg1/**, **Hg2/** - Hermeneutik
-- **Substitution/** - Substitutionstheorie
-
-### `/src/Predigten/` - Predigtmanuskripte
-- **Vorlage/** - Predigtvorlagen
-- Verschiedene Predigtreihen (Philipper, Psalm63, etc.)
-
-### `/src/Bibel/` - Bibelkommentare
-- **AT/** - Altes Testament
-- **NT/** - Neues Testament
-
-### `/src/Vorträge/` - Präsentationen und Vorträge
-
-### `/src/Briefe/` - Briefvorlagen
-
-## Änderungsprotokoll
-
-### 28.02.2026
-- ✅ Neue Datei `textanalysis.sty` erstellt
-- ✅ Grammatische Makros von `Josua.tex` nach `textanalysis.sty` verschoben
-- ✅ `Josua.tex` bereinigt und `textanalysis.sty` eingebunden
-- ✅ Neue Datei `bibeltext.sty` erstellt
-- ✅ Verstab-System und grammatische Makros von `AT_Bibeltext.tex` und `NT_Bibeltext.tex` nach `bibeltext.sty` verschoben
-- ✅ `AT_Bibeltext.tex` bereinigt und `bibeltext.sty` eingebunden
-- ✅ `NT_Bibeltext.tex` bereinigt und `bibeltext.sty` eingebunden
-- ✅ **Neue Datei `colors.sty` erstellt** - Zentrale Farbdefinitionen
-- ✅ **Farbdefinitionen zentralisiert**: Alle Farben aus `bible_style.sty`, `textanalysis.sty`, `bibeltext.sty` und `predigt.sty` nach `colors.sty` verschoben
-- ✅ **Standardisierte Farbschema**:
-  - Personen = Blau
-  - Orte = Magenta
-  - Verben = Grün
-  - Imperativ = Gelb
-  - Konjunktiv = Rot
-  - Verben Passiv = Grün + Superscript "P"
-- ✅ **Alte Farbdefinitionen auskommentiert** (nicht gelöscht) zum Vergleich
-- ✅ **Makros vereinheitlicht**: `\verbN`, `\verbI`, `\verbP`, `\verbK`, `\person`, `\ort`, `\bindW` in allen Dateien konsistent
-- 📝 Bessere Trennung zwischen projektweiten Stilen (inc/) und dokumentspezifischen Einstellungen
-
-## Best Practices
-
-1. **Wiederverwendbare Makros** gehören in `/src/inc/*.sty` Dateien
-2. **Dokumentspezifische Einstellungen** bleiben in den `.tex` Dateien
-3. **Relative Pfade** nutzen: `../../inc/mybib`
-4. **Standardautor** kann in der Dokumentklasse überschrieben werden
-5. **Bilder** zentral in `/src/assets/images/` ablegen
+1. Klasse aus `src/inc` verwenden (`mybib`, `mybibreport`, `mybibbook`).
+2. `\author{...}` immer vor `\begin{document}` setzen.
+3. `\setincpath` und `\graphicspath` in der Präambel setzen.
+4. Headerlogo bei Bedarf mit `\setheaderlogo` überschreiben.
+5. Markierungsmakros direkt verwenden (kommen über `mybibcommon`).
