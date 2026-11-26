@@ -172,8 +172,8 @@
 }
 
 \cs_new_protected:Npn \mark_apply_box:nnnnn #1#2#3#4#5 {
-  \mark_parse_options:n {#1}
   \mark_select_color:nnn {#2} {#3} {#4}
+  \mark_parse_options:n {#1}
   \tl_if_eq:VnTF \l_mark_mode_tl {b}
     {\cbox{\l_mark_selected_color_tl}{black}{#5}}
     {\textcolor{\l_mark_selected_color_tl}{#5}}
