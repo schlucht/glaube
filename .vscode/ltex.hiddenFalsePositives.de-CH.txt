@@ -50,3 +50,6 @@
 {"rule":"SWISS_GERMAN_SPELLER_RULE","sentence":"^\\QVorher waren wir 8 Monate im Fotostudio Fux.\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qund lasst uns aufeinander achtgeben, damit wir uns gegenseitig anspornen zur Liebe und zu guten Werken, indem wir unsere eigene Versammlung nicht verlassen, wie es einige zu tun pflegen, sondern einander ermahnen, und das umso mehr, als ihr den Tag herannahen seht!\\E$"}
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qmnr-green\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qund in den weiteren Versen fünf und sechs nimmt Petrus Bezug auf die Schöpfung und auf die Sintflut.\\E$"}
+{"rule":"DE_AGREEMENT","sentence":"^\\QDarum gibt Petrus in Vers 9 eine Erklärung dazu ab Der Herr zögert nicht die Verheissung hinaus, wie etliche es für ein Hinauszögern halten, sondern er ist langmütig gegen uns, weil er nicht will, dass jemand verloren gehe, sondern dass jedermann Raum zur Busse bekomme.\\E$"}
+{"rule":"GERMAN_WRONG_WORD_IN_CONTEXT_LEIB_LAIB","sentence":"^\\QUnd er nahm das Brot, dankte, brach es, gab es ihnen und sprach: Das ist mein Leib, der für euch gegeben wird; das tut zu meinem Gedächtnis!\\E$"}
